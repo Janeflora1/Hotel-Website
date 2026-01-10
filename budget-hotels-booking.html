@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Budget Hotels - TravelMate Singapore</title>
+    <title>Book Hotels/Budget Hotels - TravelMate Singapore</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,27 +12,15 @@
         <div class="nav-container">
             <div class="logo">
                 <svg class="logo-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#B40000;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <!-- Red circle background -->
-                    <circle cx="60" cy="50" r="40" fill="url(#logoGradient)" />
-                    <!-- Airplane emoji -->
-                    <text x="60" y="50" font-size="50" text-anchor="middle" dominant-baseline="middle">✈️</text>
-                    <!-- Green T on bottom left -->
-                    <text x="20" y="85" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#486220" text-anchor="middle" dominant-baseline="middle">T</text>
-                    <!-- Green M on bottom right -->
-                    <text x="100" y="85" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#486220" text-anchor="middle" dominant-baseline="middle">M</text>
+                    <text x="60" y="45" font-size="50" text-anchor="middle" dominant-baseline="middle">✈️</text>
+                    <text x="60" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#486220" text-anchor="middle" dominant-baseline="middle">TravelMate</text>
                 </svg>
                 <span>TravelMate</span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="student-housing.html">Student Housing</a></li>
-                <li><a href="budget-hotels.html">Budget Hotels</a></li>
+                <li><a href="budget-hotels.html">Hotels/Budget Hotels</a></li>
                 <li><a href="short-term-stays.html">Short-Term Rentals (Cove)</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -42,7 +30,7 @@
     <!-- Hero Section -->
     <section class="budget-hotels-hero">
         <div class="hero-content">
-            <h1>Book Budget Hotels in Singapore</h1>
+            <h1>Book Hotels/Budget Hotels in Singapore</h1>
             <p>Find and reserve your perfect budget-friendly accommodation</p>
         </div>
     </section>
@@ -51,7 +39,7 @@
     <div class="container">
         <!-- Filter Section -->
         <div class="filter-section" style="margin-top: 2rem; margin-bottom: 2rem;">
-            <button class="filter-toggle-btn" onclick="toggleFilterPanel()">🔍 Filter Hotels</button>
+            <button class="filter-toggle-btn" onclick="toggleFilterPanel()">🔍 Filter Hotels/Budget Hotels</button>
             <div id="filterPanel" class="filter-panel hidden">
                 <div class="filter-panel-header">
                     <h3>Filter by:</h3>
@@ -127,7 +115,7 @@
         <!-- Hotels Grid -->
         <div class="hotels-booking-grid">
             <!-- Hotel 1: Jen Singapore Orchardgateway -->
-            <div class="hotel-booking-card" data-price="226" data-location="Somerset" data-amenities="Near Subway,Swimming Pool,Air Conditioner,Gym">
+            <div class="hotel-booking-card" data-price="96" data-location="Somerset" data-amenities="Near Subway,Swimming Pool,Air Conditioner,Gym">
                 <div class="hotel-booking-header">
                     <h3>Jen Singapore Orchardgateway by Shangri-La</h3>
                     <span class="location-tag">📍 Somerset (Orchard Road)</span>
@@ -136,11 +124,11 @@
                     <p class="hotel-address">277 Orchard Rd, Singapore, 238858</p>
                     <div class="room-options">
                         <div class="room">
-                            <strong>Club Twin</strong><br>SGD$226/night<br>
+                            <strong>Club Twin</strong><br>SGD$96/night<br>
                             <small>Premium bedding, access to club lounge benefits</small>
                         </div>
                         <div class="room">
-                            <strong>Club King</strong><br>SGD$226/night<br>
+                            <strong>Club King</strong><br>SGD$96/night<br>
                             <small>Premium bedding, access to club lounge benefits</small>
                         </div>
                     </div>
@@ -154,12 +142,12 @@
                         <p><strong>Phone:</strong> +65 6708 8880</p>
                         <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
                     </div>
-                    <button class="book-now-btn" onclick="openBookingModal('Jen Singapore Orchardgateway by Shangri-La', 226)">BOOK NOW</button>
+                    <button class="book-now-btn" onclick="openBookingModal('Jen Singapore Orchardgateway by Shangri-La', 96)">BOOK NOW</button>
                 </div>
             </div>
 
             <!-- Hotel 2: Genting Hotel Jurong -->
-            <div class="hotel-booking-card" data-price="165" data-location="Jurong East" data-amenities="Near Shopping Center,Near Supermarket,Balcony,Swimming Pool,Air Conditioner">
+            <div class="hotel-booking-card" data-price="70" data-location="Jurong East" data-amenities="Near Shopping Center,Near Supermarket,Balcony,Swimming Pool,Air Conditioner">
                 <div class="hotel-booking-header">
                     <h3>Genting Hotel Jurong</h3>
                     <span class="location-tag">📍 Jurong East</span>
@@ -168,11 +156,11 @@
                     <p class="hotel-address">2 Town Hall Link, Singapore, 608516</p>
                     <div class="room-options">
                         <div class="room">
-                            <strong>Superior Twin</strong><br>SGD$165/night<br>
+                            <strong>Superior Twin Guest Room</strong><br>SGD$70/night<br>
                             <small>Two single beds, contemporary style</small>
                         </div>
                         <div class="room">
-                            <strong>Deluxe Twin</strong><br>SGD$181/night<br>
+                            <strong>Deluxe Twin Guest Room</strong><br>SGD$75/night<br>
                             <small>More space, upgraded décor</small>
                         </div>
                     </div>
@@ -187,12 +175,12 @@
                         <p><strong>Phone:</strong> +65 6577 8881</p>
                         <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
                     </div>
-                    <button class="book-now-btn" onclick="openBookingModal('Genting Hotel Jurong', 165)">BOOK NOW</button>
+                    <button class="book-now-btn" onclick="openBookingModal('Genting Hotel Jurong', 70)">BOOK NOW</button>
                 </div>
             </div>
 
             <!-- Hotel 3: Sheraton Towers Singapore -->
-            <div class="hotel-booking-card" data-price="207" data-location="Newton" data-amenities="Near Subway,Elevator,Gym">
+            <div class="hotel-booking-card" data-price="90" data-location="Newton" data-amenities="Near Subway,Elevator,Gym">
                 <div class="hotel-booking-header">
                     <h3>Sheraton Towers Singapore</h3>
                     <span class="location-tag">📍 Newton</span>
@@ -201,11 +189,11 @@
                     <p class="hotel-address">39 Scotts Rd, Singapore, 228230</p>
                     <div class="room-options">
                         <div class="room">
-                            <strong>Deluxe King</strong><br>SGD$207/night<br>
+                            <strong>Deluxe King Guest Room</strong><br>SGD$90/night<br>
                             <small>Luxurious king bed, elegant furnishings</small>
                         </div>
                         <div class="room">
-                            <strong>Deluxe Twin</strong><br>SGD$230/night<br>
+                            <strong>Deluxe Twin Guest Room</strong><br>SGD$93/night<br>
                             <small>Two single beds, spacious layout</small>
                         </div>
                     </div>
@@ -218,12 +206,12 @@
                         <p><strong>Phone:</strong> +65 6577 8882</p>
                         <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
                     </div>
-                    <button class="book-now-btn" onclick="openBookingModal('Sheraton Towers Singapore', 207)">BOOK NOW</button>
+                    <button class="book-now-btn" onclick="openBookingModal('Sheraton Towers Singapore', 90)">BOOK NOW</button>
                 </div>
             </div>
 
             <!-- Hotel 4: Dorsett Singapore -->
-            <div class="hotel-booking-card" data-price="180" data-location="Outram Park" data-amenities="Near Subway,Near Bus Station,Near Shopping Center,Gym,Air Conditioner">
+            <div class="hotel-booking-card" data-price="80" data-location="Outram Park" data-amenities="Near Subway,Near Bus Station,Near Shopping Center,Gym,Air Conditioner">
                 <div class="hotel-booking-header">
                     <h3>Dorsett Singapore (Newly Refurbished)</h3>
                     <span class="location-tag">📍 Outram Park</span>
@@ -232,11 +220,11 @@
                     <p class="hotel-address">333 New Bridge Rd, Singapore, 088765</p>
                     <div class="room-options">
                         <div class="room">
-                            <strong>Dorsett Twin</strong><br>SGD$180/night<br>
+                            <strong>Dorsett Twin Room</strong><br>SGD$80/night<br>
                             <small>Stylish twin beds, compact yet chic</small>
                         </div>
                         <div class="room">
-                            <strong>Dorsett King</strong><br>SGD$200/night<br>
+                            <strong>Dorsett King Room</strong><br>SGD$85/night<br>
                             <small>King bed, modern interiors</small>
                         </div>
                     </div>
@@ -251,12 +239,12 @@
                         <p><strong>Phone:</strong> +65 6577 8883</p>
                         <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
                     </div>
-                    <button class="book-now-btn" onclick="openBookingModal('Dorsett Singapore', 180)">BOOK NOW</button>
+                    <button class="book-now-btn" onclick="openBookingModal('Dorsett Singapore', 80)">BOOK NOW</button>
                 </div>
             </div>
 
             <!-- Hotel 5: Hotel 1900 Express @ Chinatown -->
-            <div class="hotel-booking-card" data-price="94" data-location="Chinatown" data-amenities="Near Park,Near Supermarket,Washing Machine,Swimming Pool">
+            <div class="hotel-booking-card" data-price="63" data-location="Chinatown" data-amenities="Near Park,Near Supermarket,Washing Machine,Swimming Pool">
                 <div class="hotel-booking-header">
                     <h3>Hotel 1900 Express @ Chinatown</h3>
                     <span class="location-tag">📍 Chinatown</span>
@@ -265,10 +253,10 @@
                     <p class="hotel-address">Mosque St, #46, Singapore, 059525</p>
                     <div class="room-options">
                         <div class="room">
-                            <strong>Express Standard Queen Room</strong><br>SGD$94/night
+                            <strong>Express Standard Queen Room</strong><br>SGD$63/night
                         </div>
                         <div class="room">
-                            <strong>Express Deluxe Queen Room</strong><br>SGD$108/night
+                            <strong>Express Deluxe Queen Room</strong><br>SGD$68/night
                         </div>
                     </div>
                     <div class="amenities-list">
@@ -281,12 +269,12 @@
                         <p><strong>Phone:</strong> +65 6577 8884</p>
                         <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
                     </div>
-                    <button class="book-now-btn" onclick="openBookingModal('Hotel 1900 Express @ Chinatown', 94)">BOOK NOW</button>
+                    <button class="book-now-btn" onclick="openBookingModal('Hotel 1900 Express @ Chinatown', 63)">BOOK NOW</button>
                 </div>
             </div>
 
             <!-- Hotel 6: Value Hotel Nice -->
-            <div class="hotel-booking-card" data-price="70" data-location="Novena" data-amenities="Near Bus Station,Near Subway,Swimming Pool,Air Conditioner">
+            <div class="hotel-booking-card" data-price="50" data-location="Novena" data-amenities="Near Bus Station,Near Subway,Swimming Pool,Air Conditioner">
                 <div class="hotel-booking-header">
                     <h3>Value Hotel Nice</h3>
                     <span class="location-tag">📍 Novena</span>
@@ -295,11 +283,11 @@
                     <p class="hotel-address">302 Balestier Rd, #01-02, Singapore, 329738</p>
                     <div class="room-options">
                         <div class="room">
-                            <strong>Standard Twin</strong><br>SGD$70/night<br>
+                            <strong>Standard Twin Room</strong><br>SGD$50/night<br>
                             <small>Two single beds, simple and compact</small>
                         </div>
                         <div class="room">
-                            <strong>Superior Queen</strong><br>SGD$80/night<br>
+                            <strong>Superior Queen Room</strong><br>SGD$53/night<br>
                             <small>Larger bed, slightly more space</small>
                         </div>
                     </div>
@@ -313,12 +301,12 @@
                         <p><strong>Phone:</strong> +65 6577 8885</p>
                         <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
                     </div>
-                    <button class="book-now-btn" onclick="openBookingModal('Value Hotel Nice', 70)">BOOK NOW</button>
+                    <button class="book-now-btn" onclick="openBookingModal('Value Hotel Nice', 50)">BOOK NOW</button>
                 </div>
             </div>
 
             <!-- Hotel 7: Fragrance Hotel – Kovan -->
-            <div class="hotel-booking-card" data-price="89" data-location="Kovan" data-amenities="Near Subway,Near Shopping Centre,Gym,Swimming Pool,Washing Machine">
+            <div class="hotel-booking-card" data-price="60" data-location="Kovan" data-amenities="Near Subway,Near Shopping Centre,Gym,Swimming Pool,Washing Machine">
                 <div class="hotel-booking-header">
                     <h3>Fragrance Hotel – Kovan</h3>
                     <span class="location-tag">📍 Kovan</span>
@@ -327,11 +315,11 @@
                     <p class="hotel-address">760 Upper Serangoon Road, Singapore, 534629</p>
                     <div class="room-options">
                         <div class="room">
-                            <strong>Standard Room</strong><br>SGD$89/night<br>
+                            <strong>Standard Room</strong><br>SGD$60/night<br>
                             <small>Basic amenities, clean and functional</small>
                         </div>
                         <div class="room">
-                            <strong>Superior Plus Double</strong><br>SGD$96/night<br>
+                            <strong>Superior Plus Double</strong><br>SGD$65/night<br>
                             <small>Slightly larger, with added comfort features</small>
                         </div>
                     </div>
@@ -346,7 +334,7 @@
                         <p><strong>Phone:</strong> +65 6577 8886</p>
                         <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
                     </div>
-                    <button class="book-now-btn" onclick="openBookingModal('Fragrance Hotel – Kovan', 89)">BOOK NOW</button>
+                    <button class="book-now-btn" onclick="openBookingModal('Fragrance Hotel – Kovan', 60)">BOOK NOW</button>
                 </div>
             </div>
         </div>
