@@ -3522,4 +3522,96 @@ body {
     .next-btn, .done-btn, .prev-btn {
         width: 100%;
     }
+
+    .chatbot-icon {
+        width: 60px !important;
+        height: 60px !important;
+    }
+}
+
+/* ===== CUSTOM CHATBOT ICON STYLING ===== */
+.chatbot-icon-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 4px 20px rgba(180, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.chatbot-icon-btn:hover {
+    background: linear-gradient(135deg, #8B0000 0%, #700000 100%);
+    box-shadow: 0 6px 30px rgba(180, 0, 0, 0.6);
+    transform: scale(1.1);
+}
+
+.chatbot-icon-btn:active {
+    transform: scale(0.95);
+}
+
+.chatbot-icon-btn::before {
+    content: '💬';
+    position: absolute;
+}
+
+/* Pulse animation for new messages or attention */
+@keyframes pulse-chatbot {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(180, 0, 0, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 30px rgba(180, 0, 0, 0.8);
+    }
+}
+
+.chatbot-icon-btn.pulse {
+    animation: pulse-chatbot 1.5s ease-in-out infinite;
+}
+
+/* Tooltip for the chatbot icon */
+.chatbot-tooltip {
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.chatbot-icon-btn:hover .chatbot-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chatbot-icon-btn {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 28px;
+    }
+
+    .chatbot-tooltip {
+        bottom: 80px;
+        font-size: 12px;
+    }
 }
