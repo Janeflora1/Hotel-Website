@@ -12,6 +12,13 @@
         <div class="nav-container">
             <div class="logo">
                 <svg class="logo-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#B40000;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="50" r="38" fill="url(#logoGradient)" />
                     <text x="60" y="45" font-size="50" text-anchor="middle" dominant-baseline="middle">✈️</text>
                     <text x="60" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#486220" text-anchor="middle" dominant-baseline="middle">TravelMate</text>
                 </svg>
@@ -858,32 +865,32 @@
             // Define rooms for each hotel
             const hotelRooms = {
                 'Jen Singapore Orchardgateway by Shangri-La': [
-                    { name: 'Club Twin', price: 226, description: 'Premium bedding, access to club lounge benefits' },
-                    { name: 'Club King', price: 226, description: 'Premium bedding, access to club lounge benefits' }
+                    { name: 'Club Twin', price: 96, description: 'Premium bedding, access to club lounge benefits' },
+                    { name: 'Club King', price: 96, description: 'Premium bedding, access to club lounge benefits' }
                 ],
                 'Genting Hotel Jurong': [
-                    { name: 'Superior Twin', price: 165, description: 'Two single beds, contemporary style' },
-                    { name: 'Deluxe Twin', price: 181, description: 'More space, upgraded décor' }
+                    { name: 'Superior Twin Guest Room', price: 70, description: 'Two single beds, contemporary style' },
+                    { name: 'Deluxe Twin Guest Room', price: 75, description: 'More space, upgraded décor' }
                 ],
                 'Sheraton Towers Singapore': [
-                    { name: 'Deluxe King', price: 207, description: 'Luxurious king bed, elegant furnishings' },
-                    { name: 'Deluxe Twin', price: 230, description: 'Two single beds, spacious layout' }
+                    { name: 'Deluxe King Guest Room', price: 90, description: 'Luxurious king bed, elegant furnishings' },
+                    { name: 'Deluxe Twin Guest Room', price: 93, description: 'Two single beds, spacious layout' }
                 ],
                 'Dorsett Singapore': [
-                    { name: 'Dorsett Twin', price: 180, description: 'Stylish twin beds, compact yet chic' },
-                    { name: 'Dorsett King', price: 200, description: 'King bed, modern interiors' }
+                    { name: 'Dorsett Twin Room', price: 80, description: 'Stylish twin beds, compact yet chic' },
+                    { name: 'Dorsett King Room', price: 85, description: 'King bed, modern interiors' }
                 ],
                 'Hotel 1900 Express @ Chinatown': [
-                    { name: 'Express Standard Queen', price: 94, description: 'Cozy queen bed, modern design' },
-                    { name: 'Express Deluxe Queen', price: 108, description: 'More spacious, upgraded furnishings' }
+                    { name: 'Express Standard Queen Room', price: 63, description: 'Cozy queen bed, modern design' },
+                    { name: 'Express Deluxe Queen Room', price: 68, description: 'More spacious, upgraded furnishings' }
                 ],
                 'Value Hotel Nice': [
-                    { name: 'Standard Twin', price: 70, description: 'Two single beds, simple and compact' },
-                    { name: 'Superior Queen', price: 80, description: 'Larger bed, slightly more space' }
+                    { name: 'Standard Twin Room', price: 50, description: 'Two single beds, simple and compact' },
+                    { name: 'Superior Queen Room', price: 53, description: 'Larger bed, slightly more space' }
                 ],
                 'Fragrance Hotel – Kovan': [
-                    { name: 'Standard Room', price: 89, description: 'Basic amenities, clean and functional' },
-                    { name: 'Superior Plus Double', price: 96, description: 'Slightly larger, with added comfort features' }
+                    { name: 'Standard Room', price: 60, description: 'Basic amenities, clean and functional' },
+                    { name: 'Superior Plus Double', price: 65, description: 'Slightly larger, with added comfort features' }
                 ]
             };
             
