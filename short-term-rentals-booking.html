@@ -343,7 +343,7 @@
                 
                 <div class="booking-step">
                     <h3>Step 1: Enter Details</h3>
-                    <p>Enter your name, Phone Number, Email Address, Number of Occupants and Duration of Stay (months).</p>
+                    <p>Enter your name, Phone Number, Email Address, Number of Occupants, and select your Start Date and End Date. The duration will be calculated automatically.</p>
                 </div>
 
                 <div class="booking-step">
@@ -394,8 +394,16 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="stayDuration">Duration of Stay (months) *</label>
-                        <input type="number" id="stayDuration" name="stayDuration" min="1" max="24" placeholder="e.g., 12" required>
+                        <label for="startDate">Start Date *</label>
+                        <input type="date" id="startDate" name="startDate" required onchange="calculateCoveDuration()">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date *</label>
+                        <input type="date" id="endDate" name="endDate" required onchange="calculateCoveDuration()">
+                    </div>
+                    <div class="form-group">
+                        <label for="stayDuration">Duration of Stay (Months)</label>
+                        <input type="number" id="stayDuration" name="stayDuration" readonly placeholder="Calculated automatically" disabled>
                     </div>
                 </form>
                 <div class="booking-modal-buttons">
@@ -552,6 +560,38 @@
             }
             
             goToCoveStep(stepNumber);
+        }
+
+        function calculateCoveDuration() {
+            const startDateInput = document.getElementById('startDate').value;
+            const endDateInput = document.getElementById('endDate').value;
+            
+            if (!startDateInput || !endDateInput) {
+                document.getElementById('stayDuration').value = '';
+                return;
+            }
+            
+            const startDate = new Date(startDateInput);
+            const endDate = new Date(endDateInput);
+            
+            if (startDate >= endDate) {
+                alert('End Date must be after Start Date');
+                document.getElementById('stayDuration').value = '';
+                return;
+            }
+            
+            // Calculate difference in months
+            let months = (endDate.getFullYear() - startDate.getFullYear()) * 12;
+            months += endDate.getMonth() - startDate.getMonth();
+            
+            // Round up to include partial months
+            const daysDifference = endDate.getDate() - startDate.getDate();
+            if (daysDifference > 0 || (daysDifference === 0 && months > 0)) {
+                months += 1;
+            }
+            
+            const finalMonths = Math.max(1, Math.ceil(months));
+            document.getElementById('stayDuration').value = finalMonths;
         }
 
         function calculateCovePaymentAmount() {
