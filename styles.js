@@ -11,47 +11,25 @@ function initChatbotIcon() {
         chatbotBtn.setAttribute('aria-label', 'Open chatbot');
         document.body.appendChild(chatbotBtn);
 
-        // Add click event listener
+        // Add click event listener to open chatbot
         chatbotBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            toggleChatbot();
+            openChatbot();
         });
     }
 }
 
-// Function to toggle chatbot visibility
-function toggleChatbot() {
-    const iframeContainer = document.querySelector('iframe[src*="botpress"]');
-    
-    if (iframeContainer) {
-        const parent = iframeContainer.parentElement;
-        if (parent.style.display === 'none' || parent.style.display === '') {
-            parent.style.display = 'block';
-            console.log('Chatbot opened');
-        } else {
-            parent.style.display = 'none';
-            console.log('Chatbot closed');
-        }
-    }
+// Function to open chatbot in new window
+function openChatbot() {
+    const chatbotUrl = 'https://cdn.botpress.cloud/webchat/v3.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/11/17/06/20251117063831-2TFLV737.json';
+    window.open(chatbotUrl, 'BotpressChat', 'width=500,height=700,left=100,top=100');
 }
 
 // Initialize chatbot icon when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait a moment for Botpress to load
+    // Wait a moment for page to fully load
     setTimeout(function() {
         initChatbotIcon();
-    }, 1000);
+    }, 500);
 });
 
-// Handle Botpress script loading
-if (window.location.pathname) {
-    // When Botpress iframe is loaded, hide it initially
-    window.addEventListener('load', function() {
-        const iframeContainer = document.querySelector('iframe[src*="botpress"]');
-        if (iframeContainer) {
-            const parent = iframeContainer.parentElement;
-            parent.style.display = 'none';
-            parent.style.zIndex = '1000';
-        }
-    });
-}
