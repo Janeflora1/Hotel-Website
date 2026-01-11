@@ -3684,6 +3684,31 @@ body {
     font-size: 1.1rem;
 }
 
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #ddd;
+    color: var(--color-dark-gray);
+}
+
+.summary-line.total-line {
+    border-bottom: 2px solid var(--color-red);
+    border-top: 2px solid var(--color-red);
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+#discountLine {
+    background-color: #e8f5e9;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    border-left: 3px solid var(--color-green);
+}
+
 .summary-item {
     display: flex;
     justify-content: space-between;

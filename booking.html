@@ -231,7 +231,7 @@
                                 <p>📧 contact@uhomes.com</p>
                                 <p>📱 +65 9123 4567</p>
                             </div>
-                            <button onclick="openBookingModal(1100)" class="book-now-btn">Book Now</button>
+                            <button onclick="openBookingModal(1100, 'Rosewood Condo')" class="book-now-btn">Book Now</button>
                         </div>
                     </div>
                 </div>
@@ -242,26 +242,62 @@
                         <h3>The Warren</h3>
                         <div class="property-location">📍 Choa Chu Kang</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">37 Choa Chu Kang Loop, Singapore 689675</p>
-                        <p class="property-price">SGD$1,050 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">🏋️ Gym</span>
-                                <span class="feature-badge">🏊 Swimming Pool</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'warren-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'warren-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'warren-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="warren-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$30 discount</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4568</p>
+                    <!-- Photos Tab -->
+                    <div id="warren-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01JH0HGV9HBJ080VZQTMWBNR8G_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1381/01JH0HGV9HBJ080VZQTMWBNR8G_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1389/01JFSY3EGSD8E2M8NAZPBP66V1_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1389/01JFSY3EGSD8E2M8NAZPBP66V1_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(1050)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="warren-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">37 Choa Chu Kang Loop, Singapore 689675</p>
+                            <p class="property-price">SGD$1,050 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                    <span class="feature-badge">🏊 Swimming Pool</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4568</p>
+                            </div>
+                            <button onclick="openBookingModal(1050, 'The Warren')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -271,26 +307,82 @@
                         <h3>Maysprings</h3>
                         <div class="property-location">📍 Clementi</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">2 Petir Road, Singapore 678265</p>
-                        <p class="property-price">SGD$700 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🏋️ Gym</span>
-                                <span class="feature-badge">🧺 Laundry</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'maysprings-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'maysprings-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'maysprings-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="maysprings-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time free laundry voucher</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4569</p>
+                    <!-- Photos Tab -->
+                    <div id="maysprings-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1395/01K0CBCEYF7HM8D6DFR4J5FYRG_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1395/01K0CBCEYF7HM8D6DFR4J5FYRG_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1397/01K22DQKBV49PJM35FCX1M6TQA_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1397/01K22DQKBV49PJM35FCX1M6TQA_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01K22DKYZ6TPHH637F5YHCJBCA_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1385/01K22DKYZ6TPHH637F5YHCJBCA_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1391/01K0CB2Y17P93FVR9HY0Y4TY1X_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1391/01K0CB2Y17P93FVR9HY0Y4TY1X_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1393/01K09RRAT68JMHMEMQPFRDF5J7_z.webp', 'Common Room 4')">
+                                <img src="https://media.uhzcdn.com/image/1393/01K09RRAT68JMHMEMQPFRDF5J7_z.webp" alt="Common Room 4">
+                                <p>Common Room 4</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01K0PN30G0C5KSNSQCMCKKH4WR_z.webp', 'Common Room 5')">
+                                <img src="https://media.uhzcdn.com/image/1381/01K0PN30G0C5KSNSQCMCKKH4WR_z.webp" alt="Common Room 5">
+                                <p>Common Room 5</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01K18P3EYY76JN6ED3WEG0VM10_z.webp', 'Common Room 6')">
+                                <img src="https://media.uhzcdn.com/image/1381/01K18P3EYY76JN6ED3WEG0VM10_z.webp" alt="Common Room 6">
+                                <p>Common Room 6</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(700)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="maysprings-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">2 Petir Road, Singapore 678265</p>
+                            <p class="property-price">SGD$700 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                    <span class="feature-badge">🧺 Laundry</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4569</p>
+                            </div>
+                            <button onclick="openBookingModal(700, 'Maysprings')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -300,26 +392,62 @@
                         <h3>The Madeira</h3>
                         <div class="property-location">📍 Joo Chiat</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">321 Joo Chiat Place, Singapore 427717</p>
-                        <p class="property-price">SGD$1,280 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🏊 Swimming Pool</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🛍️ Shopping</span>
-                                <span class="feature-badge">🔒 Security</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'madeira-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'madeira-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'madeira-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="madeira-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time complimentary airport pickup</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4570</p>
+                    <!-- Photos Tab -->
+                    <div id="madeira-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1389/01JMA3H1B6NEX38BRHVA6YZY43_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1389/01JMA3H1B6NEX38BRHVA6YZY43_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1391/01K3RG04Q3GXBFRMHRGJFPATAJ_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1391/01K3RG04Q3GXBFRMHRGJFPATAJ_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(1280)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="madeira-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">321 Joo Chiat Place, Singapore 427717</p>
+                            <p class="property-price">SGD$1,280 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🏊 Swimming Pool</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🛍️ Shopping</span>
+                                    <span class="feature-badge">🔒 Security</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4570</p>
+                            </div>
+                            <button onclick="openBookingModal(1280, 'The Madeira')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -329,26 +457,66 @@
                         <h3>Bishan Park Condominium</h3>
                         <div class="property-location">📍 Bishan</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">654 Bright Hill Road, Singapore 574117</p>
-                        <p class="property-price">SGD$800 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🏊 Swimming Pool</span>
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🏋️ Gym</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'bishan-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'bishan-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'bishan-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="bishan-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$50 discount</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4571</p>
+                    <!-- Photos Tab -->
+                    <div id="bishan-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01K8TWY29NCFRKX9JF70TDB673_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1385/01K8TWY29NCFRKX9JF70TDB673_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1395/01K8TW94PCHX800HD6ST5MS2RJ_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1395/01K8TW94PCHX800HD6ST5MS2RJ_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01K92EAQPB08DDJP43DW36TXSM_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1385/01K92EAQPB08DDJP43DW36TXSM_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(800)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="bishan-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">654 Bright Hill Road, Singapore 574117</p>
+                            <p class="property-price">SGD$800 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🏊 Swimming Pool</span>
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4571</p>
+                            </div>
+                            <button onclick="openBookingModal(800, 'Bishan Park Condominium')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -358,26 +526,98 @@
                         <h3>Ivory Heights</h3>
                         <div class="property-location">📍 Novena</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">987 Novena Drive, Singapore 307506</p>
-                        <p class="property-price">SGD$1,040 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🛍️ Shopping</span>
-                                <span class="feature-badge">🏋️ Gym</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'ivory-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'ivory-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'ivory-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="ivory-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time free cleaning service voucher</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4572</p>
+                    <!-- Photos Tab -->
+                    <div id="ivory-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01JZ0J9FXKN5515Z9Y1C7BXEER_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1385/01JZ0J9FXKN5515Z9Y1C7BXEER_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1389/01K076KHAW6A8AHXWTS08TG9TN_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1389/01K076KHAW6A8AHXWTS08TG9TN_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01J7KBYMXA1BWMBTQ446KKQYJ5_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1381/01J7KBYMXA1BWMBTQ446KKQYJ5_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01J7PCANS3QZWQZDV7ZSBCE5AP_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1385/01J7PCANS3QZWQZDV7ZSBCE5AP_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01J7P0ZFMMVYNTTC23YC2MC5XN_z.webp', 'Common Room 4')">
+                                <img src="https://media.uhzcdn.com/image/1385/01J7P0ZFMMVYNTTC23YC2MC5XN_z.webp" alt="Common Room 4">
+                                <p>Common Room 4</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01J7KJPNXHPZE143J1JZKNTSY8_z.webp', 'Common Room 5')">
+                                <img src="https://media.uhzcdn.com/image/1381/01J7KJPNXHPZE143J1JZKNTSY8_z.webp" alt="Common Room 5">
+                                <p>Common Room 5</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01J7PAA5AM2379ZMSXM7GSWC1D_z.webp', 'Common Room 6')">
+                                <img src="https://media.uhzcdn.com/image/1381/01J7PAA5AM2379ZMSXM7GSWC1D_z.webp" alt="Common Room 6">
+                                <p>Common Room 6</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01JZJKEZ1K36C59QAS26RVPPPC_z.webp', 'Common Room 7')">
+                                <img src="https://media.uhzcdn.com/image/1399/01JZJKEZ1K36C59QAS26RVPPPC_z.webp" alt="Common Room 7">
+                                <p>Common Room 7</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01K1TPDZ92B326RP3AKPTDNABN_z.webp', 'Common Room 8')">
+                                <img src="https://media.uhzcdn.com/image/1399/01K1TPDZ92B326RP3AKPTDNABN_z.webp" alt="Common Room 8">
+                                <p>Common Room 8</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1389/01J7P6ERJFCXZ8P1T9XSP1JPZ6_z.webp', 'Common Room 9')">
+                                <img src="https://media.uhzcdn.com/image/1389/01J7P6ERJFCXZ8P1T9XSP1JPZ6_z.webp" alt="Common Room 9">
+                                <p>Common Room 9</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1393/01JZ357DB87MNW4BMWH1XNJ66Q_z.webp', 'Common Room 10')">
+                                <img src="https://media.uhzcdn.com/image/1393/01JZ357DB87MNW4BMWH1XNJ66Q_z.webp" alt="Common Room 10">
+                                <p>Common Room 10</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(1040)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="ivory-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">987 Novena Drive, Singapore 307506</p>
+                            <p class="property-price">SGD$1,040 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🛍️ Shopping</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4572</p>
+                            </div>
+                            <button onclick="openBookingModal(1040, 'Ivory Heights')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -387,26 +627,66 @@
                         <h3>Cashew Heights</h3>
                         <div class="property-location">📍 Cashew</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">147 Cashew Road, Singapore 679024</p>
-                        <p class="property-price">SGD$690 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🧺 Laundry</span>
-                                <span class="feature-badge">🔒 Security</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'cashew-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'cashew-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'cashew-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="cashew-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$40 rent rebate</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4573</p>
+                    <!-- Photos Tab -->
+                    <div id="cashew-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01KBFP6G0FWRS6Y6C7RBN2QPQC_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1399/01KBFP6G0FWRS6Y6C7RBN2QPQC_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1397/01K59DVWNN1Z5DRG4JXSA7TR8E_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1397/01K59DVWNN1Z5DRG4JXSA7TR8E_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01K8R608N0NDFZ7MXT3QPF9QYQ_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1399/01K8R608N0NDFZ7MXT3QPF9QYQ_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(690)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="cashew-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">147 Cashew Road, Singapore 679024</p>
+                            <p class="property-price">SGD$690 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🧺 Laundry</span>
+                                    <span class="feature-badge">🔒 Security</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4573</p>
+                            </div>
+                            <button onclick="openBookingModal(690, 'Cashew Heights')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -416,26 +696,78 @@
                         <h3>Lagoon View</h3>
                         <div class="property-location">📍 Siglap</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">258 Siglap Road, Singapore 456123</p>
-                        <p class="property-price">SGD$850 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🏊 Swimming Pool</span>
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🏋️ Gym</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'lagoon-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'lagoon-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'lagoon-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="lagoon-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time free laundry service + balcony access</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4574</p>
+                    <!-- Photos Tab -->
+                    <div id="lagoon-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01HWGBY55GNTBCF6J9AV24Q27Z_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1387/01HWGBY55GNTBCF6J9AV24Q27Z_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01JTR3EKT4Y5DGRA6032ECY5ZZ_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1385/01JTR3EKT4Y5DGRA6032ECY5ZZ_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01J7PBB8GHV096CJT9S4S8W2M6_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1387/01J7PBB8GHV096CJT9S4S8W2M6_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1397/01HWGBY982FC8KR36GCS9DQA5H_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1397/01HWGBY982FC8KR36GCS9DQA5H_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01HWGBYFMYTKCCKMA1H5SB54HP_z.webp', 'Common Room 4')">
+                                <img src="https://media.uhzcdn.com/image/1387/01HWGBYFMYTKCCKMA1H5SB54HP_z.webp" alt="Common Room 4">
+                                <p>Common Room 4</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1397/01HWGBYK7VQGJJPHE7094VX7V6_z.webp', 'Common Room 5')">
+                                <img src="https://media.uhzcdn.com/image/1397/01HWGBYK7VQGJJPHE7094VX7V6_z.webp" alt="Common Room 5">
+                                <p>Common Room 5</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(850)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="lagoon-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">258 Siglap Road, Singapore 456123</p>
+                            <p class="property-price">SGD$850 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🏊 Swimming Pool</span>
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4574</p>
+                            </div>
+                            <button onclick="openBookingModal(850, 'Lagoon View')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -445,26 +777,94 @@
                         <h3>Eastpoint Green</h3>
                         <div class="property-location">📍 Bedok</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">369 Bedok Road, Singapore 469411</p>
-                        <p class="property-price">SGD$890 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🛍️ Shopping</span>
-                                <span class="feature-badge">🧺 Laundry</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'eastpoint-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'eastpoint-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'eastpoint-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="eastpoint-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time free gym pass upgrade</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4575</p>
+                    <!-- Photos Tab -->
+                    <div id="eastpoint-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01JFFMJH9EBF4RSF3W6BXE7SR2_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1381/01JFFMJH9EBF4RSF3W6BXE7SR2_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1391/01JFFM2YQBHQ67EC82J5Y3WY65_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1391/01JFFM2YQBHQ67EC82J5Y3WY65_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1383/01JFFN2Z1XNEYYQVGNJ9XB1R6X_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1383/01JFFN2Z1XNEYYQVGNJ9XB1R6X_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1383/01JFFMNJ4S84NAJMWE0CHK6Q0G_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1383/01JFFMNJ4S84NAJMWE0CHK6Q0G_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01JFFMJBK89P6FXY1156PRSQHG_z.webp', 'Common Room 4')">
+                                <img src="https://media.uhzcdn.com/image/1385/01JFFMJBK89P6FXY1156PRSQHG_z.webp" alt="Common Room 4">
+                                <p>Common Room 4</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01KBZ4HBCW0MZX8C33HEDASQHZ_z.webp', 'Common Room 5')">
+                                <img src="https://media.uhzcdn.com/image/1381/01KBZ4HBCW0MZX8C33HEDASQHZ_z.webp" alt="Common Room 5">
+                                <p>Common Room 5</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01JFFM3MKKXVJV4ZTT3S431P3M_z.webp', 'Common Room 6')">
+                                <img src="https://media.uhzcdn.com/image/1385/01JFFM3MKKXVJV4ZTT3S431P3M_z.webp" alt="Common Room 6">
+                                <p>Common Room 6</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1393/01KC6WAMNV4W3KXW46XQME6TP5_z.webp', 'Common Room 7')">
+                                <img src="https://media.uhzcdn.com/image/1393/01KC6WAMNV4W3KXW46XQME6TP5_z.webp" alt="Common Room 7">
+                                <p>Common Room 7</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1389/01KD5S0Q61ANNJ07ED37P7DAWS_z.webp', 'Common Room 8')">
+                                <img src="https://media.uhzcdn.com/image/1389/01KD5S0Q61ANNJ07ED37P7DAWS_z.webp" alt="Common Room 8">
+                                <p>Common Room 8</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1389/01KD5RC0HZ5586HSVJ7N11MRA3_z.webp', 'Common Room 9')">
+                                <img src="https://media.uhzcdn.com/image/1389/01KD5RC0HZ5586HSVJ7N11MRA3_z.webp" alt="Common Room 9">
+                                <p>Common Room 9</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(890)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="eastpoint-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">369 Bedok Road, Singapore 469411</p>
+                            <p class="property-price">SGD$890 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🛍️ Shopping</span>
+                                    <span class="feature-badge">🧺 Laundry</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4575</p>
+                            </div>
+                            <button onclick="openBookingModal(890, 'Eastpoint Green')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -474,26 +874,70 @@
                         <h3>Aquarius by the Park</h3>
                         <div class="property-location">📍 Parkway Parade</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">475 East Coast Terrace, Singapore 428987</p>
-                        <p class="property-price">SGD$1,280 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🏊 Swimming Pool</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🛍️ Shopping</span>
-                                <span class="feature-badge">🔒 Security</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'aquarius-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'aquarius-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'aquarius-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="aquarius-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time free lounge access</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4576</p>
+                    <!-- Photos Tab -->
+                    <div id="aquarius-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01JNRF1Z719R4GKVSRK0CPF09G_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1385/01JNRF1Z719R4GKVSRK0CPF09G_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01JFFKZFC18BPM2NKB6VC6G3M9_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1385/01JFFKZFC18BPM2NKB6VC6G3M9_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01JFFMNA54K2QHQP85KQERX2KD_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1385/01JFFMNA54K2QHQP85KQERX2KD_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01JFFKMQETN5A6YFBFQYKEHENJ_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1385/01JFFKMQETN5A6YFBFQYKEHENJ_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(1280)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="aquarius-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">475 East Coast Terrace, Singapore 428987</p>
+                            <p class="property-price">SGD$1,280 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🛍️ Shopping</span>
+                                    <span class="feature-badge">🧺 Laundry</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4576</p>
+                            </div>
+                            <button onclick="openBookingModal(1280, 'Aquarius by the Park')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -503,26 +947,78 @@
                         <h3>The Meyer Place</h3>
                         <div class="property-location">📍 Jurong East</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">582 Jurong East Street 32, Singapore 600582</p>
-                        <p class="property-price">SGD$1,000 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🛍️ Shopping</span>
-                                <span class="feature-badge">🏋️ Gym</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'meyer-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'meyer-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'meyer-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="meyer-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$40 transport card top-up</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4577</p>
+                    <!-- Photos Tab -->
+                    <div id="meyer-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1397/01J7P30A17CFFAZBB08DCXMYJS_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1397/01J7P30A17CFFAZBB08DCXMYJS_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01J7RDG3NSJVZ869DW03BGDA0C_z.webp', 'Master Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1387/01J7RDG3NSJVZ869DW03BGDA0C_z.webp" alt="Master Room 1">
+                                <p>Master Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01J7KDRQMGBFBG82FCM1VQJZT8_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1381/01J7KDRQMGBFBG82FCM1VQJZT8_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1389/01J7KF6ZK76EJYT84NS23P1ZVW_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1389/01J7KF6ZK76EJYT84NS23P1ZVW_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1397/01JNRERABKAYJR5XBQ9N1JP60G_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1397/01JNRERABKAYJR5XBQ9N1JP60G_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01J7NZ46K4X5DBCG2Y6NBMHHC4_z.webp', 'Common Room 4')">
+                                <img src="https://media.uhzcdn.com/image/1385/01J7NZ46K4X5DBCG2Y6NBMHHC4_z.webp" alt="Common Room 4">
+                                <p>Common Room 4</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(1000)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="meyer-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">582 Jurong East Street 32, Singapore 600582</p>
+                            <p class="property-price">SGD$1,000 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🛍️ Shopping</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4577</p>
+                            </div>
+                            <button onclick="openBookingModal(1000, 'The Meyer Place')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -532,26 +1028,58 @@
                         <h3>Elias Green</h3>
                         <div class="property-location">📍 Ang Mo Kio</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">695 Ang Mo Kio Avenue 8, Singapore 569843</p>
-                        <p class="property-price">SGD$980 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🏋️ Gym</span>
-                                <span class="feature-badge">🔒 Security</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'elias-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'elias-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'elias-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="elias-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$25 dining credit at nearby outlets</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4578</p>
+                    <!-- Photos Tab -->
+                    <div id="elias-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01JFWG88FCPJHKHV6NV45TGT43_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1399/01JFWG88FCPJHKHV6NV45TGT43_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(980)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="elias-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">695 Ang Mo Kio Avenue 8, Singapore 569843</p>
+                            <p class="property-price">SGD$980 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                    <span class="feature-badge">🔒 Security</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4578</p>
+                            </div>
+                            <button onclick="openBookingModal(980, 'Elias Green')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -561,26 +1089,70 @@
                         <h3>334 Ubi Ave 1</h3>
                         <div class="property-location">📍 Ubi</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">334 Ubi Avenue 1, Singapore 408623</p>
-                        <p class="property-price">SGD$690 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🧺 Laundry</span>
-                                <span class="feature-badge">🔒 Security</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'ubi-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'ubi-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'ubi-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="ubi-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time free MRT card top-up worth SG$20</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4579</p>
+                    <!-- Photos Tab -->
+                    <div id="ubi-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01J7PA4PAZ5N3JDF794PFZC4ZD_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1387/01J7PA4PAZ5N3JDF794PFZC4ZD_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1393/01J7KRBRJRG921W8FGRM89K9QK_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1393/01J7KRBRJRG921W8FGRM89K9QK_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01J7NXQFFYK40PEH5MZ2ND82ST_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1399/01J7NXQFFYK40PEH5MZ2ND82ST_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01J7KADR829PPQVN5HJV1JX1DR_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1399/01J7KADR829PPQVN5HJV1JX1DR_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(690)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="ubi-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">334 Ubi Avenue 1, Singapore 408623</p>
+                            <p class="property-price">SGD$690 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🧺 Laundry</span>
+                                    <span class="feature-badge">🔒 Security</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4579</p>
+                            </div>
+                            <button onclick="openBookingModal(690, '334 Ubi Ave 1')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -590,26 +1162,66 @@
                         <h3>TRE Residences</h3>
                         <div class="property-location">📍 Tampines</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">803 Chai Chee Lane, Singapore 469034</p>
-                        <p class="property-price">SGD$1,280 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🏊 Swimming Pool</span>
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🛍️ Shopping</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'tre-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'tre-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'tre-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="tre-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$50 dining credit + free laundry voucher</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4580</p>
+                    <!-- Photos Tab -->
+                    <div id="tre-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1391/01JFSXS9VYZCKZHJ7HS86PWRVK_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1391/01JFSXS9VYZCKZHJ7HS86PWRVK_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1381/01JFSY4PV4JX25K9EQJDCR93Q6_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1381/01JFSY4PV4JX25K9EQJDCR93Q6_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1393/01JFSYCAM9RBMFHERBEWAMM8T0_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1393/01JFSYCAM9RBMFHERBEWAMM8T0_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(1280)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="tre-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">803 Chai Chee Lane, Singapore 469034</p>
+                            <p class="property-price">SGD$1,280 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🏊 Swimming Pool</span>
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🛍️ Shopping</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4580</p>
+                            </div>
+                            <button onclick="openBookingModal(1280, 'TRE Residences')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -619,26 +1231,70 @@
                         <h3>Principal Garden</h3>
                         <div class="property-location">📍 Marine Parade</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">924 East Coast Road, Singapore 459106</p>
-                        <p class="property-price">SGD$1,100 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🏊 Swimming Pool</span>
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🏋️ Gym</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'principal-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'principal-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'principal-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="principal-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time free rooftop pool access</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4581</p>
+                    <!-- Photos Tab -->
+                    <div id="principal-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01K4WHSJGZGTTBFMB63PK63HSG_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1387/01K4WHSJGZGTTBFMB63PK63HSG_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01K4WHRDB9F91RH1TXSJ1N6MK2_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1387/01K4WHRDB9F91RH1TXSJ1N6MK2_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1393/01K4Z3ZEPMFJWWGWZ38PT6WMG9_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1393/01K4Z3ZEPMFJWWGWZ38PT6WMG9_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1383/01K56V2MAN9BY9GJFWXYC8WNSH_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1383/01K56V2MAN9BY9GJFWXYC8WNSH_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(1100)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="principal-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">924 East Coast Road, Singapore 459106</p>
+                            <p class="property-price">SGD$1,100 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🏊 Swimming Pool</span>
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4581</p>
+                            </div>
+                            <button onclick="openBookingModal(1100, 'Principal Garden')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -648,26 +1304,66 @@
                         <h3>Horizon Towers</h3>
                         <div class="property-location">📍 Toa Payoh</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">1036 Lorong 6 Toa Payoh, Singapore 310036</p>
-                        <p class="property-price">SGD$1,250 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🏊 Swimming Pool</span>
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🔒 Security</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'horizon-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'horizon-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'horizon-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="horizon-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$60 rent rebate</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4582</p>
+                    <!-- Photos Tab -->
+                    <div id="horizon-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01JZ8A1Z40WY4D8FX9JR35789B_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1399/01JZ8A1Z40WY4D8FX9JR35789B_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01JZAW6F0MKAC2T304YDF7N5C3_z.webp', 'Master Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1385/01JZAW6F0MKAC2T304YDF7N5C3_z.webp" alt="Master Room 2">
+                                <p>Master Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01JZ8A8N6R3R1GHET2BVSGNPVD_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1399/01JZ8A8N6R3R1GHET2BVSGNPVD_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(1250)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="horizon-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">1036 Lorong 6 Toa Payoh, Singapore 310036</p>
+                            <p class="property-price">SGD$1,250 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🏊 Swimming Pool</span>
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🔒 Security</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4582</p>
+                            </div>
+                            <button onclick="openBookingModal(1250, 'Horizon Towers')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -677,26 +1373,90 @@
                         <h3>The Clement Canopy</h3>
                         <div class="property-location">📍 Clementi</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">1147 Clementi Avenue 3, Singapore 129959</p>
-                        <p class="property-price">SGD$990 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🏋️ Gym</span>
-                                <span class="feature-badge">🧺 Laundry</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'clement-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'clement-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'clement-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="clement-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$60 rent rebate</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4583</p>
+                    <!-- Photos Tab -->
+                    <div id="clement-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1391/01J7P58KEY6NCDYP839E93P54Q_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1391/01J7P58KEY6NCDYP839E93P54Q_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01KC6WENHVFKA2CD24F3ND8K9P_z.webp', 'Master Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1385/01KC6WENHVFKA2CD24F3ND8K9P_z.webp" alt="Master Room 2">
+                                <p>Master Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1397/01KCVEWAB26QB9T1YG7VBE93C9_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1397/01KCVEWAB26QB9T1YG7VBE93C9_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1383/01JHQPTPTNZ04PNFKRQVMHMYPJ_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1383/01JHQPTPTNZ04PNFKRQVMHMYPJ_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01K04M0N0071ZRHXSZVH9HP7MC_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1385/01K04M0N0071ZRHXSZVH9HP7MC_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1395/01JJ7586GTGE2TRX852HBBEMW9_z.webp', 'Common Room 4')">
+                                <img src="https://media.uhzcdn.com/image/1395/01JJ7586GTGE2TRX852HBBEMW9_z.webp" alt="Common Room 4">
+                                <p>Common Room 4</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1395/01JJ9QK52S84DK2DWY5T3TXDYM_z.webp', 'Common Room 5')">
+                                <img src="https://media.uhzcdn.com/image/1395/01JJ9QK52S84DK2DWY5T3TXDYM_z.webp" alt="Common Room 5">
+                                <p>Common Room 5</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1393/01J7P4TFJ2ZN91Y97XY25YBWNR_z.webp', 'Common Room 6')">
+                                <img src="https://media.uhzcdn.com/image/1393/01J7P4TFJ2ZN91Y97XY25YBWNR_z.webp" alt="Common Room 6">
+                                <p>Common Room 6</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01K5C0CK5ZMZV3AR6SS1KN5DEE_z.webp', 'Common Room 7')">
+                                <img src="https://media.uhzcdn.com/image/1399/01K5C0CK5ZMZV3AR6SS1KN5DEE_z.webp" alt="Common Room 7">
+                                <p>Common Room 7</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(990)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="clement-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">1147 Clementi Avenue 3, Singapore 129959</p>
+                            <p class="property-price">SGD$990 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                    <span class="feature-badge">🧺 Laundry</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4583</p>
+                            </div>
+                            <button onclick="openBookingModal(990, 'The Clement Canopy')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -706,26 +1466,62 @@
                         <h3>25 Woodleigh Close</h3>
                         <div class="property-location">📍 Serangoon</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">25 Woodleigh Close, Singapore 357840</p>
-                        <p class="property-price">SGD$1,278 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🏊 Swimming Pool</span>
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🛍️ Shopping</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'woodleigh-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'woodleigh-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'woodleigh-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="woodleigh-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$60 rent rebate and free housekeeping service</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4584</p>
+                    <!-- Photos Tab -->
+                    <div id="woodleigh-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01J8SWQ161YJPFJSNSQKPFDYHG_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1387/01J8SWQ161YJPFJSNSQKPFDYHG_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1391/01JA5NHHBQPZSGFHQRW0PE5KBC_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1391/01JA5NHHBQPZSGFHQRW0PE5KBC_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(1278)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="woodleigh-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">25 Woodleigh Close, Singapore 357840</p>
+                            <p class="property-price">SGD$1,278 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🏊 Swimming Pool</span>
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🛍️ Shopping</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4584</p>
+                            </div>
+                            <button onclick="openBookingModal(1278, '25 Woodleigh Close')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -735,26 +1531,74 @@
                         <h3>Summerdale</h3>
                         <div class="property-location">📍 Katong</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">1258 Mountbatten Road, Singapore 437744</p>
-                        <p class="property-price">SGD$890 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🛍️ Shopping</span>
-                                <span class="feature-badge">🔒 Security</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'summerdale-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'summerdale-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'summerdale-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="summerdale-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$35 rent rebate</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4585</p>
+                    <!-- Photos Tab -->
+                    <div id="summerdale-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01JFJ64BMPYC3W1Y272NNKD8YH_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1387/01JFJ64BMPYC3W1Y272NNKD8YH_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1391/01JH0HKS217T36P9D86E783F0V_z.webp', 'Common Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1391/01JH0HKS217T36P9D86E783F0V_z.webp" alt="Common Room 1">
+                                <p>Common Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01JFJ6GR28RZ0ZPAXF8D1DS5F8_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1399/01JFJ6GR28RZ0ZPAXF8D1DS5F8_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1397/01KB080KV7R1RFZKNH0CXST6JX_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1397/01KB080KV7R1RFZKNH0CXST6JX_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1391/01KB07ST33M4WV5WMD1X55ZF6Z_z.webp', 'Common Room 4')">
+                                <img src="https://media.uhzcdn.com/image/1391/01KB07ST33M4WV5WMD1X55ZF6Z_z.webp" alt="Common Room 4">
+                                <p>Common Room 4</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(890)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="summerdale-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">1258 Mountbatten Road, Singapore 437744</p>
+                            <p class="property-price">SGD$890 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🛍️ Shopping</span>
+                                    <span class="feature-badge">🔒 Security</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4585</p>
+                            </div>
+                            <button onclick="openBookingModal(890, 'Summerdale')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
 
@@ -764,26 +1608,86 @@
                         <h3>Caspian</h3>
                         <div class="property-location">📍 Bukit Merah</div>
                     </div>
-                    <div class="property-details">
-                        <p class="property-address">1369 Bukit Merah View, Singapore 150369</p>
-                        <p class="property-price">SGD$700 <span class="per-month">per month</span></p>
-                        
-                        <div class="features-section">
-                            <h4>Key Features:</h4>
-                            <div class="features-list">
-                                <span class="feature-badge">🚇 Near Subway</span>
-                                <span class="feature-badge">❄️ Air Conditioner</span>
-                                <span class="feature-badge">🏋️ Gym</span>
-                                <span class="feature-badge">🧺 Laundry</span>
+                    
+                    <!-- Property Tabs -->
+                    <div class="property-tabs">
+                        <button class="property-tab-btn active" onclick="switchTab(event, 'caspian-offer')">✨ Offer</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'caspian-photos')">📸 Photos</button>
+                        <button class="property-tab-btn" onclick="switchTab(event, 'caspian-details')">📋 Details</button>
+                    </div>
+
+                    <!-- Offer Tab -->
+                    <div id="caspian-offer" class="property-tab-content active">
+                        <div class="offer-banner">
+                            <div class="offer-icon">🎉</div>
+                            <div class="offer-text">
+                                <h4>Special Offer</h4>
+                                <p>One-time SG$30 grocery voucher</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="contact-section">
-                            <p><strong>Contact:</strong></p>
-                            <p>📧 contact@uhomes.com</p>
-                            <p>📱 +65 9123 4586</p>
+                    <!-- Photos Tab -->
+                    <div id="caspian-photos" class="property-tab-content">
+                        <div class="property-photos-grid">
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1395/01K68AC7GMFMJMYGXY6ZY5G5X2_z.webp', 'Master Room')">
+                                <img src="https://media.uhzcdn.com/image/1395/01K68AC7GMFMJMYGXY6ZY5G5X2_z.webp" alt="Master Room">
+                                <p>Master Room</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1389/01J7KMJZBYC8JW7A1N5RP4YT6B_z.webp', 'Master Room 1')">
+                                <img src="https://media.uhzcdn.com/image/1389/01J7KMJZBYC8JW7A1N5RP4YT6B_z.webp" alt="Master Room 1">
+                                <p>Master Room 1</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1383/01JWRF2D5CR4CTJNDSRQ07CCK4_z.webp', 'Common Room 2')">
+                                <img src="https://media.uhzcdn.com/image/1383/01JWRF2D5CR4CTJNDSRQ07CCK4_z.webp" alt="Common Room 2">
+                                <p>Common Room 2</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1395/01K68AHTEQ6GDA3CW544C77QNK_z.webp', 'Common Room 3')">
+                                <img src="https://media.uhzcdn.com/image/1395/01K68AHTEQ6GDA3CW544C77QNK_z.webp" alt="Common Room 3">
+                                <p>Common Room 3</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1399/01K0PMZA33GG6HDWCXWQSVJ6XB_z.webp', 'Common Room 4')">
+                                <img src="https://media.uhzcdn.com/image/1399/01K0PMZA33GG6HDWCXWQSVJ6XB_z.webp" alt="Common Room 4">
+                                <p>Common Room 4</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1393/01J7KE2Z18XRVZW0S1K4C8R9R3_z.webp', 'Common Room 5')">
+                                <img src="https://media.uhzcdn.com/image/1393/01J7KE2Z18XRVZW0S1K4C8R9R3_z.webp" alt="Common Room 5">
+                                <p>Common Room 5</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1385/01KA922A3NWZZ1D81JQW8C5CFK_z.webp', 'Common Room 6')">
+                                <img src="https://media.uhzcdn.com/image/1385/01KA922A3NWZZ1D81JQW8C5CFK_z.webp" alt="Common Room 6">
+                                <p>Common Room 6</p>
+                            </div>
+                            <div class="photo-item" onclick="openPhotoModal('https://media.uhzcdn.com/image/1387/01K0EY9KAKDB2P5VV1VW3ZNJQ7_z.webp', 'Common Room 8')">
+                                <img src="https://media.uhzcdn.com/image/1387/01K0EY9KAKDB2P5VV1VW3ZNJQ7_z.webp" alt="Common Room 8">
+                                <p>Common Room 8</p>
+                            </div>
                         </div>
-                        <button onclick="openBookingModal(700)" class="book-now-btn">Book Now</button>
+                    </div>
+
+                    <!-- Details Tab -->
+                    <div id="caspian-details" class="property-tab-content active">
+                        <div class="property-details">
+                            <p class="property-address">1369 Bukit Merah View, Singapore 150369</p>
+                            <p class="property-price">SGD$700 <span class="per-month">per month</span></p>
+                            
+                            <div class="features-section">
+                                <h4>Key Features:</h4>
+                                <div class="features-list">
+                                    <span class="feature-badge">🚇 Near Subway</span>
+                                    <span class="feature-badge">❄️ Air Conditioner</span>
+                                    <span class="feature-badge">🏋️ Gym</span>
+                                    <span class="feature-badge">🧺 Laundry</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-section">
+                                <p><strong>Contact:</strong></p>
+                                <p>📧 contact@uhomes.com</p>
+                                <p>📱 +65 9123 4586</p>
+                            </div>
+                            <button onclick="openBookingModal(700, 'Caspian')" class="book-now-btn">Book Now</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -899,7 +1803,28 @@
                 <h2>Payment</h2>
                 <div class="payment-section">
                     <h3>Select Payment Method</h3>
-                    <p class="payment-info">Total Amount: <strong id="totalAmount">SGD$1,100</strong></p>
+                    <div class="payment-summary">
+                        <div class="summary-line">
+                            <span>Base Price (per month):</span>
+                            <strong id="basePrice">SGD$1,100</strong>
+                        </div>
+                        <div class="summary-line">
+                            <span>Duration (months):</span>
+                            <strong id="summaryDuration">1</strong>
+                        </div>
+                        <div class="summary-line">
+                            <span>Subtotal:</span>
+                            <strong id="subtotal">SGD$1,100</strong>
+                        </div>
+                        <div class="summary-line" id="discountLine" style="display:none;">
+                            <span>🎉 Special Discount:</span>
+                            <strong id="discountAmount" style="color: var(--color-green);">-SGD$60</strong>
+                        </div>
+                        <div class="summary-line total-line">
+                            <span>Total Amount:</span>
+                            <strong id="totalAmount">SGD$1,100</strong>
+                        </div>
+                    </div>
                     
                     <div class="payment-methods">
                         <label class="payment-option">
@@ -998,6 +1923,7 @@
         }
 
         let currentPropertyPrice = 1100;
+        let currentPropertyName = 'Property';
 
         // Toggle filter panel
         function toggleFilterPanel() {
@@ -1014,8 +1940,9 @@
             }
         });
 
-        function openBookingModal(price) {
+        function openBookingModal(price, propertyName) {
             currentPropertyPrice = price || 1100;
+            currentPropertyName = propertyName || 'Property';
             document.getElementById('bookingModal').classList.add('active');
             document.body.style.overflow = 'hidden';
             goToStep(1);
@@ -1100,9 +2027,69 @@
 
         function calculatePaymentAmount() {
             const stayDuration = parseInt(document.getElementById('stayDuration').value) || 1;
-            const totalAmount = currentPropertyPrice * stayDuration;
+            const subtotal = currentPropertyPrice * stayDuration;
             
+            // Determine discount based on property
+            let discountAmount = 0;
+            switch(currentPropertyName) {
+                case 'Rosewood Condo':
+                    discountAmount = 60;
+                    break;
+                case 'The Warren':
+                    discountAmount = 30;
+                    break;
+                case 'Bishan Park Condominium':
+                    discountAmount = 50;
+                    break;
+                case 'Cashew Heights':
+                    discountAmount = 40;
+                    break;
+                case 'Horizon Towers':
+                    discountAmount = 60;
+                    break;
+                case 'The Clement Canopy':
+                    discountAmount = 60;
+                    break;
+                case '25 Woodleigh Close':
+                    discountAmount = 60;
+                    break;
+                case 'Summerdale':
+                    discountAmount = 35;
+                    break;
+                case 'Maysprings':
+                case 'The Madeira':
+                case 'Ivory Heights':
+                case 'Lagoon View':
+                case 'Eastpoint Green':
+                case 'Aquarius by the Park':
+                case 'Elias Green':
+                case 'The Meyer Place':
+                case '334 Ubi Ave 1':
+                case 'TRE Residences':
+                case 'Principal Garden':
+                case 'Caspian':
+                    discountAmount = 0; // Free vouchers/services (displayed as benefits, not numeric discounts)
+                    break;
+                default:
+                    discountAmount = 0;
+            }
+            
+            const totalAmount = subtotal - discountAmount;
+            
+            // Update payment summary
+            document.getElementById('basePrice').textContent = 'SGD$' + currentPropertyPrice.toLocaleString();
+            document.getElementById('summaryDuration').textContent = stayDuration;
+            document.getElementById('subtotal').textContent = 'SGD$' + subtotal.toLocaleString();
             document.getElementById('totalAmount').textContent = 'SGD$' + totalAmount.toLocaleString();
+            
+            // Show or hide discount line
+            const discountLine = document.getElementById('discountLine');
+            if (discountAmount > 0) {
+                discountLine.style.display = 'block';
+                document.getElementById('discountAmount').textContent = '-SGD$' + discountAmount;
+            } else {
+                discountLine.style.display = 'none';
+            }
         }
 
         function completeBooking() {
