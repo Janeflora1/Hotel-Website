@@ -943,18 +943,21 @@
             const roomPrice = bookingData.roomPrice || 0;
             const nights = bookingData.nights || 0;
             const subtotal = roomPrice * nights;
-            const tax = subtotal * 0.10; // 10% GST & Service Tax
-            let total = subtotal + tax;
             
             // Check if offer checkbox is checked
             const applyOffer = document.getElementById('applyOfferCheckbox').checked;
             let discount = 0;
+            let discountedSubtotal = subtotal;
             
             if (applyOffer) {
                 // Apply 10% discount on the subtotal
                 discount = subtotal * 0.10;
-                total = (subtotal - discount) + tax;
+                discountedSubtotal = subtotal - discount;
             }
+            
+            // Tax is calculated on the discounted amount
+            const tax = discountedSubtotal * 0.10; // 10% GST & Service Tax
+            const total = discountedSubtotal + tax;
             
             // Update display
             document.getElementById('summarySubtotal').textContent = 'SGD $' + subtotal.toFixed(2);
