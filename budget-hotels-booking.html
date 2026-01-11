@@ -127,7 +127,11 @@
                     <h3>Jen Singapore Orchardgateway by Shangri-La</h3>
                     <span class="location-tag">📍 Somerset (Orchard Road)</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'jen-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'jen-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="jen-details">
                     <p class="hotel-address">277 Orchard Rd, Singapore, 238858</p>
                     <div class="room-options">
                         <div class="room">
@@ -151,6 +155,9 @@
                     </div>
                     <button class="book-now-btn" onclick="openBookingModal('Jen Singapore Orchardgateway by Shangri-La', 96)">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="jen-photos">
+                    <div class="hotel-photos-grid" id="jen-photos-grid"></div>
+                </div>
             </div>
 
             <!-- Hotel 2: Genting Hotel Jurong -->
@@ -159,7 +166,11 @@
                     <h3>Genting Hotel Jurong</h3>
                     <span class="location-tag">📍 Jurong East</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'genting-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'genting-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="genting-details">
                     <p class="hotel-address">2 Town Hall Link, Singapore, 608516</p>
                     <div class="room-options">
                         <div class="room">
@@ -184,6 +195,9 @@
                     </div>
                     <button class="book-now-btn" onclick="openBookingModal('Genting Hotel Jurong', 70)">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="genting-photos">
+                    <div class="hotel-photos-grid" id="genting-photos-grid"></div>
+                </div>
             </div>
 
             <!-- Hotel 3: Sheraton Towers Singapore -->
@@ -192,7 +206,11 @@
                     <h3>Sheraton Towers Singapore</h3>
                     <span class="location-tag">📍 Newton</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'sheraton-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'sheraton-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="sheraton-details">
                     <p class="hotel-address">39 Scotts Rd, Singapore, 228230</p>
                     <div class="room-options">
                         <div class="room">
@@ -215,6 +233,9 @@
                     </div>
                     <button class="book-now-btn" onclick="openBookingModal('Sheraton Towers Singapore', 90)">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="sheraton-photos">
+                    <div class="hotel-photos-grid" id="sheraton-photos-grid"></div>
+                </div>
             </div>
 
             <!-- Hotel 4: Dorsett Singapore -->
@@ -223,7 +244,11 @@
                     <h3>Dorsett Singapore (Newly Refurbished)</h3>
                     <span class="location-tag">📍 Outram Park</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'dorsett-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'dorsett-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="dorsett-details">
                     <p class="hotel-address">333 New Bridge Rd, Singapore, 088765</p>
                     <div class="room-options">
                         <div class="room">
@@ -248,6 +273,9 @@
                     </div>
                     <button class="book-now-btn" onclick="openBookingModal('Dorsett Singapore', 80)">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="dorsett-photos">
+                    <div class="hotel-photos-grid" id="dorsett-photos-grid"></div>
+                </div>
             </div>
 
             <!-- Hotel 5: Hotel 1900 Express @ Chinatown -->
@@ -256,7 +284,11 @@
                     <h3>Hotel 1900 Express @ Chinatown</h3>
                     <span class="location-tag">📍 Chinatown</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'hotel1900-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'hotel1900-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="hotel1900-details">
                     <p class="hotel-address">Mosque St, #46, Singapore, 059525</p>
                     <div class="room-options">
                         <div class="room">
@@ -278,6 +310,9 @@
                     </div>
                     <button class="book-now-btn" onclick="openBookingModal('Hotel 1900 Express @ Chinatown', 63)">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="hotel1900-photos">
+                    <div class="hotel-photos-grid" id="hotel1900-photos-grid"></div>
+                </div>
             </div>
 
             <!-- Hotel 6: Value Hotel Nice -->
@@ -286,7 +321,11 @@
                     <h3>Value Hotel Nice</h3>
                     <span class="location-tag">📍 Novena</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'valuehotel-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'valuehotel-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="valuehotel-details">
                     <p class="hotel-address">302 Balestier Rd, #01-02, Singapore, 329738</p>
                     <div class="room-options">
                         <div class="room">
@@ -310,6 +349,9 @@
                     </div>
                     <button class="book-now-btn" onclick="openBookingModal('Value Hotel Nice', 50)">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="valuehotel-photos">
+                    <div class="hotel-photos-grid" id="valuehotel-photos-grid"></div>
+                </div>
             </div>
 
             <!-- Hotel 7: Fragrance Hotel – Kovan -->
@@ -318,7 +360,11 @@
                     <h3>Fragrance Hotel – Kovan</h3>
                     <span class="location-tag">📍 Kovan</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'fragrance-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'fragrance-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="fragrance-details">
                     <p class="hotel-address">760 Upper Serangoon Road, Singapore, 534629</p>
                     <div class="room-options">
                         <div class="room">
@@ -342,6 +388,9 @@
                         <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
                     </div>
                     <button class="book-now-btn" onclick="openBookingModal('Fragrance Hotel – Kovan', 60)">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="fragrance-photos">
+                    <div class="hotel-photos-grid" id="fragrance-photos-grid"></div>
                 </div>
             </div>
         </div>
@@ -733,6 +782,102 @@
                 email: 'reservations.singapore@hoteljen.com'
             }
         };
+
+        // Hotel Photos Database
+        const hotelPhotos = {
+            'Jen Singapore Orchardgateway by Shangri-La': [
+                { room: 'Club Twin', url: 'https://ak-d.tripcdn.com/images/0205d12000818it21ACCE_W_1280_853_R5.webp', label: 'Club Twin - Room 1' },
+                { room: 'Club Twin', url: 'https://ak-d.tripcdn.com/images/0201t12000816x6ui2F2F_W_1280_853_R5.webp', label: 'Club Twin - Room 2' },
+                { room: 'Club Twin', url: 'https://ak-d.tripcdn.com/images/0206912000816vs5kFF76_W_1280_853_R5.webp', label: 'Club Twin - Room 3' },
+                { room: 'Club King', url: 'https://ak-d.tripcdn.com/images/0200112000816x1qj6E19_R_600_400_R5.webp', label: 'Club King - Room 1' },
+                { room: 'Club King', url: 'https://ak-d.tripcdn.com/images/1mc3n12000m668p3n00FB_R_600_400_R5.webp', label: 'Club King - Room 2' },
+                { room: 'Club King', url: 'https://ak-d.tripcdn.com/images/1mc2g12000m64dixw787A_R_600_400_R5.webp', label: 'Club King - Room 3' },
+                { room: 'Club King', url: 'https://ak-d.tripcdn.com/images/1mc2d12000h5zvx764A08_R_600_400_R5.webp', label: 'Club King - Room 4' }
+            ],
+            'Genting Hotel Jurong': [
+                { room: 'Superior Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/1mc3212000egud6js4EF1_R_600_400_R5.webp', label: 'Superior Twin - Room 1' },
+                { room: 'Superior Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0585q12000cui0gb5F37C_R_600_400_R5.webp', label: 'Superior Twin - Room 2' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0220e12000peoji532E28_R_600_400_R5.webp', label: 'Deluxe Twin - Room 1' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0223v12000peojlruD2D4_R_600_400_R5.webp', label: 'Deluxe Twin - Room 2' }
+            ],
+            'Sheraton Towers Singapore': [
+                { room: 'Deluxe King Guest Room', url: 'https://ak-d.tripcdn.com/images/1mc3612000jijtvipF944_R_600_400_R5.webp', label: 'Deluxe King - Room 1' },
+                { room: 'Deluxe King Guest Room', url: 'https://ak-d.tripcdn.com/images/0206q12000953rbta2217_R_600_400_R5.webp', label: 'Deluxe King - Room 2' },
+                { room: 'Deluxe King Guest Room', url: 'https://ak-d.tripcdn.com/images/0202e1200095o2igoABBA_R_600_400_R5.webp', label: 'Deluxe King - Room 3' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0223p12000a29pgqeD61C_R_600_400_R5.webp', label: 'Deluxe Twin - Room 1' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0202z120009eycusaA037_R_600_400_R5.webp', label: 'Deluxe Twin - Room 2' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0223i12000aawc62kFC0C_R_600_400_R5.webp', label: 'Deluxe Twin - Room 3' }
+            ],
+            'Dorsett Singapore': [
+                { room: 'Dorsett Twin Room', url: 'https://ak-d.tripcdn.com/images/1mc0312000n8qio891C94_R_600_400_R5.webp', label: 'Dorsett Twin - Room 1' },
+                { room: 'Dorsett Twin Room', url: 'https://ak-d.tripcdn.com/images/1mc3m12000n6lkgep3D46_R_600_400_R5.webp', label: 'Dorsett Twin - Room 2' },
+                { room: 'Dorsett Twin Room', url: 'https://ak-d.tripcdn.com/images/1mc4u12000nhj7vmeA7E6_R_600_400_R5.webp', label: 'Dorsett Twin - Room 3' },
+                { room: 'Dorsett King Room', url: 'https://ak-d.tripcdn.com/images/1mc0f12000n6kpsvhEF8F_R_600_400_R5.webp', label: 'Dorsett King - Room 1' },
+                { room: 'Dorsett King Room', url: 'https://ak-d.tripcdn.com/images/1mc4u12000nhj7vmeA7E6_R_600_400_R5.webp', label: 'Dorsett King - Room 2' }
+            ],
+            'Hotel 1900 Express @ Chinatown': [
+                { room: 'Express Standard Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc2u12000c1puw6sB198_R_600_400_R5.webp', label: 'Standard Queen - Room 1' },
+                { room: 'Express Standard Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc6s12000c1pw3in3D73_R_600_400_R5.webp', label: 'Standard Queen - Room 2' },
+                { room: 'Express Deluxe Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc3c12000don8wy4AD45_R_600_400_R5.webp', label: 'Deluxe Queen - Room 1' },
+                { room: 'Express Deluxe Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc6f12000don8mfz3103_R_600_400_R5.webp', label: 'Deluxe Queen - Room 2' },
+                { room: 'Express Deluxe Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc7012000c1p8bk18BC9_R_600_400_R5.webp', label: 'Deluxe Queen - Room 3' }
+            ],
+            'Value Hotel Nice': [
+                { room: 'Standard Twin Room', url: 'https://ak-d.tripcdn.com/images/0206g12000aas2c6y6DD2_R_600_400_R5.webp', label: 'Standard Twin - Room 1' },
+                { room: 'Standard Twin Room', url: 'https://ak-d.tripcdn.com/images/1mc2812000dpn4cxh4AA1_R_600_400_R5.webp', label: 'Standard Twin - Room 2' },
+                { room: 'Superior Queen Room', url: 'https://ak-d.tripcdn.com/images/020011200082opjq4DD32_R_600_400_R5.webp', label: 'Superior Queen - Room 1' },
+                { room: 'Superior Queen Room', url: 'https://ak-d.tripcdn.com/images/0204h1200082opov412BF_R_600_400_R5.webp', label: 'Superior Queen - Room 2' }
+            ],
+            'Fragrance Hotel – Kovan': [
+                { room: 'Standard Room', url: 'https://ak-d.tripcdn.com/images/20030n000000e337993B8_R_600_400_R5.webp', label: 'Standard Room - Room 1' },
+                { room: 'Standard Room', url: 'https://ak-d.tripcdn.com/images/220u0y000000lrog6524C_R_600_400_R5.webp', label: 'Standard Room - Room 2' },
+                { room: 'Standard Room', url: 'https://ak-d.tripcdn.com/images/0583m12000csp8bib70A1_R_600_400_R5.webp', label: 'Standard Room - Room 3' },
+                { room: 'Standard Room', url: 'https://ak-d.tripcdn.com/images/0580v12000csrw63s3493_R_600_400_R5.webp', label: 'Standard Room - Room 4' },
+                { room: 'Superior Plus Double', url: 'https://ak-d.tripcdn.com/images/02024120009dbi6fjE579_R_600_400_R5.webp', label: 'Superior Plus Double - Room 1' },
+                { room: 'Superior Plus Double', url: 'https://ak-d.tripcdn.com/images/0204n120009dbjb080828_R_600_400_R5.webp', label: 'Superior Plus Double - Room 2' },
+                { room: 'Superior Plus Double', url: 'https://ak-d.tripcdn.com/images/0580812000csrwk1d8A31_R_600_400_R5.webp', label: 'Superior Plus Double - Room 3' }
+            ]
+        };
+
+        // Tab Switching Function
+        function switchHotelTab(event, tabName) {
+            event.preventDefault();
+            const buttons = event.target.parentElement.querySelectorAll('.hotel-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const details = event.target.parentElement.parentElement.querySelector('.hotel-booking-details');
+            const photos = event.target.parentElement.parentElement.querySelector('.hotel-booking-photos');
+
+            if (tabName === 'details' || tabName.includes('-details')) {
+                details.classList.add('active');
+                if (photos) photos.classList.remove('active');
+            } else if (tabName === 'photos' || tabName.includes('-photos')) {
+                details.classList.remove('active');
+                if (photos) photos.classList.add('active');
+                // Load photos when tab is opened
+                loadHotelPhotos();
+            }
+        }
+
+        // Load Hotel Photos
+        function loadHotelPhotos() {
+            const hotelCards = document.querySelectorAll('.hotel-booking-card');
+            hotelCards.forEach(card => {
+                const hotelName = card.querySelector('.hotel-booking-header h3').textContent.trim().replace(' (Newly Refurbished)', '');
+                const photosGrid = card.querySelector('.hotel-photos-grid');
+                
+                if (photosGrid && photosGrid.innerHTML === '') {
+                    const photos = hotelPhotos[hotelName] || [];
+                    photosGrid.innerHTML = photos.map(photo => `
+                        <div class="hotel-photo-item">
+                            <img src="${photo.url}" alt="${photo.label}" loading="lazy">
+                            <div class="hotel-photo-label">${photo.label}</div>
+                        </div>
+                    `).join('');
+                }
+            });
+        }
 
         function openBookingModal(hotelName, price) {
             const modal = document.getElementById('bookingModal');

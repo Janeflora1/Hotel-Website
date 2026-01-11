@@ -130,10 +130,15 @@
             <!-- Property 1: Cove 193 -->
             <div class="hotel-booking-card" data-price="850" data-location="Mayflower" data-amenities="Near Subway,Near Supermarket,Gym,Swimming Pool,Air Conditioner">
                 <div class="hotel-booking-header">
-                    <h3>Standard Room Cove 193</h3>
+                    <h3>Standard Room Cove 193 @ 27 Casuarina Road</h3>
                     <span class="location-tag">📍 Mayflower</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove1')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove1')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove1')">Floorplan/VR</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove1">
                     <p class="hotel-address">27 Casuarina Road, Singapore, 579415</p>
                     <p class="price-highlight"><strong>SGD$850 per month</strong></p>
                     <div class="amenities-list">
@@ -149,15 +154,26 @@
                     </div>
                     <button class="book-now-btn" onclick="openCoveBookingModal(850, 'Standard Room Cove 193')">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="photos-cove1">
+                    <div class="hotel-photos-grid" id="photo-grid-cove1"></div>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove1">
+                    <div class="floorplan-container"></div>
+                </div>
             </div>
 
             <!-- Property 2: Cove 320 -->
             <div class="hotel-booking-card" data-price="1150" data-location="Paya Lebar" data-amenities="Near Subway,Near Shopping Centre,Near Bus Station,Elevator">
                 <div class="hotel-booking-header">
-                    <h3>Standard Room Cove 320</h3>
+                    <h3>Standard Room Cove 320 @ Esta Ruby</h3>
                     <span class="location-tag">📍 Paya Lebar</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove2')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove2')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove2')">Floorplan/VR</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove2">
                     <p class="hotel-address">500 Guillemard Rd, Singapore, 399839</p>
                     <p class="price-highlight"><strong>SGD$1,150 per month</strong></p>
                     <div class="amenities-list">
@@ -172,16 +188,27 @@
                     </div>
                     <button class="book-now-btn" onclick="openCoveBookingModal(1150, 'Standard Room Cove 320')">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="photos-cove2">
+                    <div class="hotel-photos-grid" id="photo-grid-cove2"></div>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove2">
+                    <div class="floorplan-container"></div>
+                </div>
             </div>
 
             <!-- Property 3: Cove 271 -->
             <div class="hotel-booking-card" data-price="1250" data-location="Kembangan" data-amenities="Near Subway,Near Supermarket,Gym,Swimming Pool,Balcony">
                 <div class="hotel-booking-header">
-                    <h3>Standard Room Cove 271</h3>
+                    <h3>Standard Room within a Landed House (Cove 271)</h3>
                     <span class="location-tag">📍 Kembangan</span>
                 </div>
-                <div class="hotel-booking-details">
-                    <p class="hotel-address">22A Jalan Selamat, Singapore, 418545 (Landed House)</p>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove3')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove3')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove3')">Floorplan/VR</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove3">
+                    <p class="hotel-address">22A Jalan Selamat, Singapore, 418545</p>
                     <p class="price-highlight"><strong>SGD$1,250 per month</strong></p>
                     <div class="amenities-list">
                         <span class="amenity-badge">🚇 Near Subway</span>
@@ -196,15 +223,26 @@
                     </div>
                     <button class="book-now-btn" onclick="openCoveBookingModal(1250, 'Standard Room Cove 271')">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="photos-cove3">
+                    <div class="hotel-photos-grid" id="photo-grid-cove3"></div>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove3">
+                    <div class="floorplan-container"></div>
+                </div>
             </div>
 
             <!-- Property 4: Cove 491 -->
             <div class="hotel-booking-card" data-price="1200" data-location="Havelock" data-amenities="Near Subway,Air Conditioner,Free Parking,Kitchen Cleaning">
                 <div class="hotel-booking-header">
-                    <h3>Pocket Room Cove 491</h3>
+                    <h3>Pocket Room Cove 491 @ Emerald Park</h3>
                     <span class="location-tag">📍 Havelock</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove4')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove4')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove4')">Floorplan/VR</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove4">
                     <p class="hotel-address">Emerald Park, #02-08, 2 Indus Road, Singapore, 169586</p>
                     <p class="price-highlight"><strong>SGD$1,200 per month</strong></p>
                     <div class="amenities-list">
@@ -219,15 +257,26 @@
                     </div>
                     <button class="book-now-btn" onclick="openCoveBookingModal(1200, 'Pocket Room Cove 491')">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="photos-cove4">
+                    <div class="hotel-photos-grid" id="photo-grid-cove4"></div>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove4">
+                    <div class="floorplan-container"></div>
+                </div>
             </div>
 
             <!-- Property 5: Cove 144 -->
             <div class="hotel-booking-card" data-price="1200" data-location="Potong Pasir" data-amenities="Near Subway,Near Bus Station,Near Park,Gym,Swimming Pool">
                 <div class="hotel-booking-header">
-                    <h3>Standard Room Cove 144</h3>
+                    <h3>Standard Room Cove 144 @ 19A Tai Thong Crescent</h3>
                     <span class="location-tag">📍 Potong Pasir</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove5')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove5')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove5')">Floorplan/VR</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove5">
                     <p class="hotel-address">19A Tai Thong Crescent, Singapore, 347853</p>
                     <p class="price-highlight"><strong>SGD$1,200 per month</strong></p>
                     <div class="amenities-list">
@@ -243,15 +292,26 @@
                     </div>
                     <button class="book-now-btn" onclick="openCoveBookingModal(1200, 'Standard Room Cove 144')">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="photos-cove5">
+                    <div class="hotel-photos-grid" id="photo-grid-cove5"></div>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove5">
+                    <div class="floorplan-container"></div>
+                </div>
             </div>
 
             <!-- Property 6: Cove 238 -->
             <div class="hotel-booking-card" data-price="1200" data-location="Ang Mo Kio" data-amenities="Near Subway,Near Shopping Centre,Washing Machine,24 Hour Security">
                 <div class="hotel-booking-header">
-                    <h3>Standard Room Cove 238</h3>
+                    <h3>Standard Room Cove 238 @ Nuovo</h3>
                     <span class="location-tag">📍 Ang Mo Kio</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove6')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove6')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove6')">Floorplan/VR</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove6">
                     <p class="hotel-address">23 Ang Mo Kio Avenue 9, Singapore, 569787</p>
                     <p class="price-highlight"><strong>SGD$1,200 per month</strong></p>
                     <div class="amenities-list">
@@ -266,15 +326,26 @@
                     </div>
                     <button class="book-now-btn" onclick="openCoveBookingModal(1200, 'Standard Room Cove 238')">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="photos-cove6">
+                    <div class="hotel-photos-grid" id="photo-grid-cove6"></div>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove6">
+                    <div class="floorplan-container"></div>
+                </div>
             </div>
 
             <!-- Property 7: Cove 195 -->
             <div class="hotel-booking-card" data-price="950" data-location="Kovan" data-amenities="Near Subway,Near School Bus,Free Parking,Kitchen Cleaning">
                 <div class="hotel-booking-header">
-                    <h3>Standard Room Cove 195</h3>
+                    <h3>Standard Room Cove 195 @ 18A Valley Road</h3>
                     <span class="location-tag">📍 Kovan</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove7')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove7')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove7')">Floorplan/VR</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove7">
                     <p class="hotel-address">18A Valley Road, Singapore, 534475</p>
                     <p class="price-highlight"><strong>SGD$950 per month</strong></p>
                     <div class="amenities-list">
@@ -289,15 +360,26 @@
                     </div>
                     <button class="book-now-btn" onclick="openCoveBookingModal(950, 'Standard Room Cove 195')">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="photos-cove7">
+                    <div class="hotel-photos-grid" id="photo-grid-cove7"></div>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove7">
+                    <div class="floorplan-container"></div>
+                </div>
             </div>
 
             <!-- Property 8: Cove 433 -->
             <div class="hotel-booking-card" data-price="1000" data-location="Dakota" data-amenities="Near Shopping Centre,Near Park,Swimming Pool,Air Conditioner">
                 <div class="hotel-booking-header">
-                    <h3>Pocket Room Cove 433</h3>
+                    <h3>Pocket Room Cove 433 @ Cassia View</h3>
                     <span class="location-tag">📍 Dakota</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove8')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove8')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove8')">Floorplan/VR</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove8">
                     <p class="hotel-address">Cassia View, #16-02, 320 Guillemard Rd, Singapore, 399746</p>
                     <p class="price-highlight"><strong>SGD$1,000 per month</strong></p>
                     <div class="amenities-list">
@@ -312,15 +394,26 @@
                     </div>
                     <button class="book-now-btn" onclick="openCoveBookingModal(1000, 'Pocket Room Cove 433')">BOOK NOW</button>
                 </div>
+                <div class="hotel-booking-photos" id="photos-cove8">
+                    <div class="hotel-photos-grid" id="photo-grid-cove8"></div>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove8">
+                    <div class="floorplan-container"></div>
+                </div>
             </div>
 
             <!-- Property 9: Cove 89 -->
             <div class="hotel-booking-card" data-price="1250" data-location="Tiong Bahru" data-amenities="Near Bus Station,Near Supermarket,Free Regular Cleaning,Washing Machine,Gym">
                 <div class="hotel-booking-header">
-                    <h3>Standard Room Cove 89</h3>
+                    <h3>Standard Room Cove 89 @ Havelock Road</h3>
                     <span class="location-tag">📍 Tiong Bahru</span>
                 </div>
-                <div class="hotel-booking-details">
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove9')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove9')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove9')">Floorplan/VR</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove9">
                     <p class="hotel-address">743b Havelock Road, Singapore, 169656</p>
                     <p class="price-highlight"><strong>SGD$1,250 per month</strong></p>
                     <div class="amenities-list">
@@ -335,6 +428,12 @@
                         <p><strong>📱 Phone:</strong> +65 9234 4869</p>
                     </div>
                     <button class="book-now-btn" onclick="openCoveBookingModal(1250, 'Standard Room Cove 89')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove9">
+                    <div class="hotel-photos-grid" id="photo-grid-cove9"></div>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove9">
+                    <div class="floorplan-container"></div>
                 </div>
             </div>
         </div>
@@ -715,6 +814,232 @@
             cards.forEach(card => {
                 card.style.display = 'flex';
             });
+        }
+
+        // Tab switching for photos and floorplans
+        function switchCoveTab(button, tabId) {
+            const card = button.closest('.hotel-booking-card');
+            
+            // Remove active class from all buttons and tabs in this card
+            card.querySelectorAll('.hotel-tab-btn').forEach(btn => btn.classList.remove('active'));
+            card.querySelectorAll('[id^="details-"], [id^="photos-"], [id^="floorplan-"]').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to clicked button and corresponding tab
+            button.classList.add('active');
+            const tabElement = card.querySelector('#' + tabId);
+            if (tabElement) {
+                tabElement.classList.add('active');
+                
+                // Load photos if switching to photos tab
+                if (tabId.startsWith('photos-')) {
+                    loadCovePhotos(tabId);
+                }
+                
+                // Load floorplans if switching to floorplans tab
+                if (tabId.startsWith('floorplan-')) {
+                    loadCoveFloorplans(tabId);
+                }
+            }
+        }
+
+        // Cove property photos and floorplans data
+        const covePhotosData = {
+            'cove1': {
+                name: 'Standard Room Cove 193 @ 27 Casuarina Road',
+                photos: [
+                    { url: 'https://media.coveliving.io/81809/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Red-2-large.jpg', label: 'Room View 1' },
+                    { url: 'https://media.coveliving.io/81808/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Red-3-large.jpg', label: 'Room View 2' },
+                    { url: 'https://media.coveliving.io/81811/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Living-1-large.jpg', label: 'Living Area 1' },
+                    { url: 'https://media.coveliving.io/81812/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Living-2-large.jpg', label: 'Living Area 2' },
+                    { url: 'https://media.coveliving.io/81816/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Living-4-large.jpg', label: 'Living Area 3' },
+                    { url: 'https://media.coveliving.io/81815/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Living-7-large.jpg', label: 'Living Area 4' },
+                    { url: 'https://media.coveliving.io/81818/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Balcony-1-large.jpg', label: 'Balcony 1' },
+                    { url: 'https://media.coveliving.io/81819/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Balcony-3-large.jpg', label: 'Balcony 2' },
+                    { url: 'https://media.coveliving.io/81821/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Kitchen-1-large.jpg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/81824/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Toilet-1-large.jpg', label: 'Bathroom' }
+                ],
+                floorplan: 'https://media.coveliving.io/80699/conversions/Cove-193---27-Casuarina_Red-large.png',
+                vr: 'https://my.matterport.com/show/?m=vxoZLyXxbq4'
+            },
+            'cove2': {
+                name: 'Standard Room Cove 320 @ Esta Ruby',
+                photos: [
+                    { url: 'https://media.coveliving.io/43684/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Yellow-Room-1-large.jpg', label: 'Room View 1' },
+                    { url: 'https://media.coveliving.io/43682/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Yellow-Room-2-large.jpg', label: 'Room View 2' },
+                    { url: 'https://media.coveliving.io/43687/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Living-1-large.jpg', label: 'Living Area 1' },
+                    { url: 'https://media.coveliving.io/43689/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Living-2-large.jpg', label: 'Living Area 2' },
+                    { url: 'https://media.coveliving.io/43688/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Living-3-large.jpg', label: 'Living Area 3' },
+                    { url: 'https://media.coveliving.io/43695/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Kitchen-1-large.jpg', label: 'Kitchen 1' },
+                    { url: 'https://media.coveliving.io/43696/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Kitchen-2-large.jpg', label: 'Kitchen 2' },
+                    { url: 'https://media.coveliving.io/43697/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Common-Toilet-large.jpg', label: 'Common Toilet' },
+                    { url: 'https://media.coveliving.io/43698/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-BBQ-Pit-large.jpg', label: 'BBQ Area' }
+                ],
+                floorplan: 'https://media.coveliving.io/43624/conversions/Cove-320---Esta-Ruby-03-04_Yellow-small.png',
+                vr: null
+            },
+            'cove3': {
+                name: 'Standard Room within a Landed House (Cove 271)',
+                photos: [
+                    { url: 'https://media.coveliving.io/22355/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Black-Room-1-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/22356/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Black-Room-Detached-Toilet-large.jpg', label: 'Attached Toilet' },
+                    { url: 'https://media.coveliving.io/22441/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Living-3-large.jpg', label: 'Living Area 1' },
+                    { url: 'https://media.coveliving.io/22442/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Living-2-large.jpg', label: 'Living Area 2' },
+                    { url: 'https://media.coveliving.io/22443/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Lounge-large.jpg', label: 'Lounge' },
+                    { url: 'https://media.coveliving.io/22437/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---L2-Staircase-2-large.jpg', label: 'Staircase' },
+                    { url: 'https://media.coveliving.io/22434/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Kitchen-1-large.jpg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/22436/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Front-Porch-2-large.jpg', label: 'Front Porch' }
+                ],
+                floorplan: 'https://media.coveliving.io/42443/conversions/Cove-271---22A-Jalan-Selamat_Black-large.png',
+                vr: null
+            },
+            'cove4': {
+                name: 'Pocket Room Cove 491 @ Emerald Park',
+                photos: [
+                    { url: 'https://media.coveliving.io/94184/conversions/pictures-Piccola-2-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/96143/conversions/pictures-DSC06238-large.jpg', label: 'Room View 2' },
+                    { url: 'https://media.coveliving.io/96138/conversions/pictures-Kitchen-large.jpg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/96133/conversions/pictures-Dining-area-large.jpg', label: 'Dining Area' },
+                    { url: 'https://media.coveliving.io/94183/conversions/pictures-Piccola-bathroom-large.jpg', label: 'Bathroom' }
+                ],
+                floorplan: null,
+                vr: 'https://my.matterport.com/show/?m=BVUf3EzHjfc'
+            },
+            'cove5': {
+                name: 'Standard Room Cove 144 @ 19A Tai Thong Crescent',
+                photos: [
+                    { url: 'https://media.coveliving.io/90944/conversions/C144-19A-Tai-Thong-Crescent-Potong-Pasir-MRT-Purple-1-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/90945/conversions/C144-19A-Tai-Thong-Crescent-Potong-Pasir-MRT-Living-large.jpg', label: 'Living Area' },
+                    { url: 'https://media.coveliving.io/86523/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-common-area-1-large.jpeg', label: 'Common Area 1' },
+                    { url: 'https://media.coveliving.io/86519/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-common-area-3-large.jpeg', label: 'Common Area 2' },
+                    { url: 'https://media.coveliving.io/86521/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-kitchen-2-large.jpeg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/86524/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-balcony-1-large.jpeg', label: 'Balcony' },
+                    { url: 'https://media.coveliving.io/86527/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-shared-bathroom-2-large.jpeg', label: 'Bathroom' }
+                ],
+                floorplan: 'https://media.coveliving.io/86577/conversions/Cove-144-19A-Tai-Thong-Cres_Purple-large.png',
+                vr: 'https://my.matterport.com/show/?m=QuNc6N4QXmS'
+            },
+            'cove6': {
+                name: 'Standard Room Cove 238 @ Nuovo',
+                photos: [
+                    { url: 'https://media.coveliving.io/25383/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Kitchen-large.jpg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/24899/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Yellow-Room-2-large.jpg', label: 'Room View 1' },
+                    { url: 'https://media.coveliving.io/24896/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Yellow-Room-4-large.jpg', label: 'Room View 2' },
+                    { url: 'https://media.coveliving.io/24901/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Common-Toilet-large.jpg', label: 'Common Toilet' },
+                    { url: 'https://media.coveliving.io/24905/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Common-Area-large.jpg', label: 'Common Area' },
+                    { url: 'https://media.coveliving.io/24906/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Stoe-large.jpg', label: 'Store Area' }
+                ],
+                floorplan: 'https://media.coveliving.io/25384/conversions/Cove-238---Nuovo--02-09_Yellow-large.png',
+                vr: 'https://my.matterport.com/show/?m=qWajdqgQyee'
+            },
+            'cove7': {
+                name: 'Standard Room Cove 195 @ 18A Valley Road',
+                photos: [
+                    { url: 'https://media.coveliving.io/81642/conversions/C195-18A-Valley-Road-Kovan-MRT-Red-1-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/81645/conversions/C195-18A-Valley-Road-Kovan-MRT-Living-1-large.jpg', label: 'Living Area 1' },
+                    { url: 'https://media.coveliving.io/81649/conversions/C195-18A-Valley-Road-Kovan-MRT-Living-5-large.jpg', label: 'Living Area 2' },
+                    { url: 'https://media.coveliving.io/71094/conversions/C195---18A-Valley-Road---Kitchen---3-large.jpeg', label: 'Kitchen 1' },
+                    { url: 'https://media.coveliving.io/71096/conversions/C195---18A-Valley-Road---Kitchen-large.jpeg', label: 'Kitchen 2' },
+                    { url: 'https://media.coveliving.io/71102/conversions/C195---18A-Valley-Road---2nd-Level-Toilet-large.jpeg', label: 'Toilet' },
+                    { url: 'https://media.coveliving.io/71104/conversions/C195---18A-Valley-Road---Laundry-large.jpg', label: 'Laundry Area' },
+                    { url: 'https://media.coveliving.io/71106/conversions/C195---18A-Valley-Road---Balcony-1-large.jpeg', label: 'Balcony' }
+                ],
+                floorplan: 'https://media.coveliving.io/75497/conversions/Cove-195---18A-Valley-Road_Red-(1)-large.png',
+                vr: null
+            },
+            'cove8': {
+                name: 'Pocket Room Cove 433 @ Cassia View',
+                photos: [
+                    { url: 'https://media.coveliving.io/93548/conversions/pictures-fb9713ef-0617-4d04-8d45-5f5e4ee01aeaPiccola-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/94910/conversions/pictures-6b5c3d81-4e40-4771-8217-cbef72cdb264Living-room-large.jpg', label: 'Living Room' },
+                    { url: 'https://media.coveliving.io/94915/conversions/pictures-be1cf11c-0978-408f-8a8f-98d8346a74c8TV-area-large.jpg', label: 'TV Area' },
+                    { url: 'https://media.coveliving.io/94920/conversions/pictures-471cc6e5-a29d-4373-af84-819d3aab3365Kitchen-large.jpg', label: 'Kitchen' }
+                ],
+                floorplan: null,
+                vr: 'https://my.matterport.com/show/?m=io7L7zTXTF3'
+            },
+            'cove9': {
+                name: 'Standard Room Cove 89 @ Havelock Road',
+                photos: [
+                    { url: 'https://media.coveliving.io/37879/conversions/C89-743B-Havelock-Road-Tiong-Bahru-MRT-Yellow-Room-1-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/32353/conversions/01.-Cove-89-743B-Havelock-Road-Tiong-Bahru-MRT-Living-room-1-large.jpg', label: 'Living Room' },
+                    { url: 'https://media.coveliving.io/32361/conversions/09.-Cove-89-743B-Havelock-Road-Tiong-Bahru-MRT-dry-kitchen-1-large.jpg', label: 'Dry Kitchen 1' },
+                    { url: 'https://media.coveliving.io/32362/conversions/10.-Cove-89-743B-Havelock-Road-Tiong-Bahru-MRT-dry-kitchen-2-large.jpg', label: 'Dry Kitchen 2' },
+                    { url: 'https://media.coveliving.io/32364/conversions/12.-Cove-87-89-743-Havelock-Road-Tiong-Bahru-MRT-wet-kitchen-2-large.jpg', label: 'Wet Kitchen' },
+                    { url: 'https://media.coveliving.io/34077/conversions/15.-Cove-89-743B-Havelock-Road-Tiong-Bahru-MRT-shared-bathroom-1-large.jpg', label: 'Bathroom' }
+                ],
+                floorplan: 'https://media.coveliving.io/37226/conversions/Cove-87-89---Havelock-Road_Yellow-large.png',
+                vr: null
+            }
+        };
+
+        // Load Cove photos
+        function loadCovePhotos(tabId) {
+            const propertyId = tabId.replace('photos-', '');
+            const photoGrid = document.getElementById('photo-grid-' + propertyId);
+            
+            if (!photoGrid || photoGrid.innerHTML) {
+                return; // Already loaded
+            }
+            
+            const propertyData = covePhotosData[propertyId];
+            if (!propertyData || !propertyData.photos) {
+                return;
+            }
+            
+            propertyData.photos.forEach(photo => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'hotel-photo-item';
+                photoItem.innerHTML = `
+                    <img src="${photo.url}" alt="${photo.label}" loading="lazy">
+                    <div class="hotel-photo-label">${photo.label}</div>
+                `;
+                photoGrid.appendChild(photoItem);
+            });
+        }
+
+        // Load Cove floorplans
+        function loadCoveFloorplans(tabId) {
+            const propertyId = tabId.replace('floorplan-', '');
+            const floorplanContainer = document.querySelector('#' + tabId + ' .floorplan-container');
+            
+            if (!floorplanContainer || floorplanContainer.innerHTML) {
+                return; // Already loaded
+            }
+            
+            const propertyData = covePhotosData[propertyId];
+            if (!propertyData) {
+                return;
+            }
+            
+            // Add floorplan if available
+            if (propertyData.floorplan) {
+                const floorplanItem = document.createElement('div');
+                floorplanItem.className = 'floorplan-item';
+                floorplanItem.innerHTML = `
+                    <h4>📐 Floor Plan</h4>
+                    <img src="${propertyData.floorplan}" alt="Floor Plan" class="floorplan-image" loading="lazy">
+                `;
+                floorplanContainer.appendChild(floorplanItem);
+            }
+            
+            // Add VR if available
+            if (propertyData.vr) {
+                const vrItem = document.createElement('div');
+                vrItem.className = 'floorplan-item';
+                vrItem.innerHTML = `
+                    <h4>🥽 Virtual Tour (VR)</h4>
+                    <a href="${propertyData.vr}" target="_blank" class="vr-link">View Virtual Tour</a>
+                    <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Click to explore the property in 360°</p>
+                `;
+                floorplanContainer.appendChild(vrItem);
+            }
+            
+            // Show message if neither floorplan nor VR available
+            if (!propertyData.floorplan && !propertyData.vr) {
+                floorplanContainer.innerHTML = '<p style="text-align: center; color: #999; padding: 2rem;">Floor plan and VR tour coming soon</p>';
+            }
         }
 
         window.onclick = function(event) {
