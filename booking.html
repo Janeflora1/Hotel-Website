@@ -634,6 +634,25 @@
                             <input type="checkbox" class="feature-filter" value="24 Hour Security" onchange="applyFilters()"> 🔒 24 Hour Security
                         </label>
                     </div>
+
+                    <div class="filter-category">
+                        <h4>🎁 Special Offers</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="Rent Rebate" onchange="applyFilters()"> 💰 Rent Rebate
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="free cleaning" onchange="applyFilters()"> 🧹 Free Cleaning Services
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="shopping voucher" onchange="applyFilters()"> 🛍️ Shopping Voucher
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="transport card" onchange="applyFilters()"> 🚌 Transport Card Top-up
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="dining credit" onchange="applyFilters()"> 🍽️ Dining Credit
+                        </label>
+                    </div>
                 </div>
                 <div class="filter-panel-footer">
                     <button onclick="resetFilters()" class="btn-reset-filters">Reset Filters</button>
@@ -1166,6 +1185,7 @@
             const priceFilters = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => cb.value);
             const locationFilters = Array.from(document.querySelectorAll('.location-filter:checked')).map(cb => cb.value);
             const featureFilters = Array.from(document.querySelectorAll('.feature-filter:checked')).map(cb => cb.value);
+            const offerFilters = Array.from(document.querySelectorAll('.offer-filter:checked')).map(cb => cb.value);
 
             const cards = document.querySelectorAll('.property-card');
             
@@ -1173,10 +1193,12 @@
                 const priceRange = card.getAttribute('data-price-range');
                 const location = card.getAttribute('data-location');
                 const features = card.getAttribute('data-features').split(',').map(f => f.trim());
+                const offer = card.getAttribute('data-offer');
 
                 let priceMatch = priceFilters.length === 0;
                 let locationMatch = locationFilters.length === 0;
                 let featureMatch = featureFilters.length === 0;
+                let offerMatch = offerFilters.length === 0;
 
                 // Price range matching
                 if (priceFilters.length > 0) {
@@ -1193,8 +1215,13 @@
                     featureMatch = featureFilters.every(filter => features.includes(filter));
                 }
 
+                // Offer matching - ANY selected offer must be present
+                if (offerFilters.length > 0) {
+                    offerMatch = offerFilters.some(filter => offer.toLowerCase().includes(filter.toLowerCase()));
+                }
+
                 // Show card only if all conditions are met
-                card.style.display = (priceMatch && locationMatch && featureMatch) ? '' : 'none';
+                card.style.display = (priceMatch && locationMatch && featureMatch && offerMatch) ? '' : 'none';
             });
         }
 
@@ -1203,6 +1230,7 @@
             document.querySelectorAll('.price-filter').forEach(cb => cb.checked = false);
             document.querySelectorAll('.location-filter').forEach(cb => cb.checked = false);
             document.querySelectorAll('.feature-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.offer-filter').forEach(cb => cb.checked = false);
             
             const cards = document.querySelectorAll('.property-card');
             cards.forEach(card => {
@@ -1230,7 +1258,7 @@
                 const featureString = prop.features.map(f => f.replace(/^[^\s]+ /, '')).join(',');
                 
                 return `
-                <div class="property-card" data-price="${prop.price}" data-price-range="${getPriceRange(prop.price)}" data-location="${locationRegion}" data-features="${featureString}">
+                <div class="property-card" data-price="${prop.price}" data-price-range="${getPriceRange(prop.price)}" data-location="${locationRegion}" data-features="${featureString}" data-offer="${prop.offer}">
                     <img src="${prop.photos[0].url}" alt="${prop.name}" class="property-image">
                     <div class="property-info">
                         <div class="property-name">${prop.name}</div>
