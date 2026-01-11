@@ -918,13 +918,20 @@
                 const roomLabel = document.createElement('label');
                 roomLabel.className = 'room-option';
                 roomLabel.innerHTML = `
-                    <input type="radio" name="roomOption" value="${room.name}" data-price="${room.price}" onchange="bookingData.room = '${room.name}'; bookingData.roomPrice = ${room.price};">
+                    <input type="radio" name="roomOption" value="${room.name}" data-price="${room.price}" data-index="${index}">
                     <div class="room-option-content">
                         <strong>${room.name}</strong>
                         <p>SGD $${room.price}/night</p>
                         <small>${room.description}</small>
                     </div>
                 `;
+                // Add event listener to properly set the price
+                const radioBtn = roomLabel.querySelector('input[type="radio"]');
+                radioBtn.addEventListener('change', function() {
+                    bookingData.room = this.value;
+                    bookingData.roomPrice = parseFloat(this.dataset.price);
+                    console.log('Room selected:', bookingData.room, 'Price:', bookingData.roomPrice);
+                });
                 container.appendChild(roomLabel);
             });
         }
@@ -935,13 +942,26 @@
             document.getElementById('summaryCheckIn').textContent = bookingData.checkIn || '';
             document.getElementById('summaryCheckOut').textContent = bookingData.checkOut || '';
             document.getElementById('summaryNights').textContent = bookingData.nights || '0';
-            document.getElementById('summaryPrice').textContent = 'SGD $' + (bookingData.roomPrice || 0) + '/night';
+            
+            // Ensure roomPrice is a number
+            const roomPrice = parseFloat(bookingData.roomPrice) || 0;
+            document.getElementById('summaryPrice').textContent = 'SGD $' + roomPrice.toFixed(2) + '/night';
+            
             updatePaymentSummary();
         }
 
         function updatePaymentSummary() {
-            const roomPrice = bookingData.roomPrice || 0;
-            const nights = bookingData.nights || 0;
+            const roomPrice = parseFloat(bookingData.roomPrice) || 0;
+            const nights = parseInt(bookingData.nights) || 0;
+            
+            // Ensure we have valid values
+            if (roomPrice <= 0 || nights <= 0) {
+                document.getElementById('summarySubtotal').textContent = 'SGD $0.00';
+                document.getElementById('summaryTax').textContent = 'SGD $0.00';
+                document.getElementById('summaryTotal').textContent = 'SGD $0.00';
+                return;
+            }
+            
             const subtotal = roomPrice * nights;
             
             // Check if offer checkbox is checked
