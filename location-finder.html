@@ -1208,62 +1208,69 @@
 
         // Apply all filters
         function applyAllFilters() {
-            if (!currentUserLocation) {
-                alert('Please find your location first to filter by distance');
-                return;
-            }
-
             const selectedTypes = Array.from(document.querySelectorAll('.type-filter:checked')).map(cb => cb.value);
             const selectedPrices = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => cb.value);
             const selectedDistances = Array.from(document.querySelectorAll('.distance-filter:checked')).map(cb => cb.value);
             const selectedRegions = Array.from(document.querySelectorAll('.region-filter:checked')).map(cb => cb.value);
 
-            let filtered = allAccommodations;
-
-            // Filter by type
-            if (selectedTypes.length > 0) {
-                filtered = filtered.filter(acc => selectedTypes.includes(acc.type));
-            }
-
-            // Filter by price
-            if (selectedPrices.length > 0) {
-                filtered = filtered.filter(acc => {
-                    for (let range of selectedPrices) {
-                        if (range === '0-100' && acc.price >= 0 && acc.price <= 100) return true;
-                        if (range === '100-500' && acc.price > 100 && acc.price <= 500) return true;
-                        if (range === '500-1000' && acc.price > 500 && acc.price <= 1000) return true;
-                        if (range === '1000-2000' && acc.price > 1000 && acc.price <= 2000) return true;
-                        if (range === '2000+' && acc.price > 2000) return true;
-                    }
+            // Helper function to check if price falls within selected range
+            function matchesPrice(price, ranges) {
+                return ranges.some(range => {
+                    if (range === '0-100' && price >= 0 && price <= 100) return true;
+                    if (range === '100-500' && price > 100 && price <= 500) return true;
+                    if (range === '500-1000' && price > 500 && price <= 1000) return true;
+                    if (range === '1000-2000' && price > 1000 && price <= 2000) return true;
+                    if (range === '2000+' && price > 2000) return true;
                     return false;
                 });
             }
 
-            // Filter by region
-            if (selectedRegions.length > 0) {
-                filtered = filtered.filter(acc => selectedRegions.includes(acc.region));
+            // Helper function to check if distance falls within selected range
+            function matchesDistance(distance, ranges) {
+                return ranges.some(range => {
+                    if (range === '0-5' && distance >= 0 && distance <= 5) return true;
+                    if (range === '5-10' && distance > 5 && distance <= 10) return true;
+                    if (range === '10-20' && distance > 10 && distance <= 20) return true;
+                    if (range === '20+' && distance > 20) return true;
+                    return false;
+                });
             }
 
-            // Filter by distance
-            if (selectedDistances.length > 0) {
-                filtered = filtered.map(acc => ({
-                    ...acc,
-                    distance: calculateDistance(currentUserLocation.lat, currentUserLocation.lon, acc.latitude, acc.longitude)
-                })).filter(acc => {
-                    for (let range of selectedDistances) {
-                        if (range === '0-5' && acc.distance >= 0 && acc.distance <= 5) return true;
-                        if (range === '5-10' && acc.distance > 5 && acc.distance <= 10) return true;
-                        if (range === '10-20' && acc.distance > 10 && acc.distance <= 20) return true;
-                        if (range === '20+' && acc.distance > 20) return true;
-                    }
+            // Filter accommodations based on ALL selected criteria
+            let filtered = allAccommodations.filter(acc => {
+                // Check type filter (if any selected, must match)
+                if (selectedTypes.length > 0 && !selectedTypes.includes(acc.type)) {
                     return false;
-                }).sort((a, b) => a.distance - b.distance);
-            } else {
-                // If no distance filter, just add distance property
+                }
+
+                // Check price filter (if any selected, must match)
+                if (selectedPrices.length > 0 && !matchesPrice(acc.price, selectedPrices)) {
+                    return false;
+                }
+
+                // Check region filter (if any selected, must match)
+                if (selectedRegions.length > 0 && !selectedRegions.includes(acc.region)) {
+                    return false;
+                }
+
+                // All selected filters matched
+                return true;
+            });
+
+            // Add distance calculation for sorting and distance filtering
+            if (currentUserLocation) {
                 filtered = filtered.map(acc => ({
                     ...acc,
                     distance: calculateDistance(currentUserLocation.lat, currentUserLocation.lon, acc.latitude, acc.longitude)
-                })).sort((a, b) => a.distance - b.distance);
+                }));
+
+                // Apply distance filter if any selected
+                if (selectedDistances.length > 0) {
+                    filtered = filtered.filter(acc => matchesDistance(acc.distance, selectedDistances));
+                }
+
+                // Sort by distance
+                filtered.sort((a, b) => a.distance - b.distance);
             }
 
             displayResults(filtered);
@@ -1295,7 +1302,18 @@
                 return;
             }
 
-            resultsList.innerHTML = accommodations.map(acc => `
+            resultsList.innerHTML = accommodations.map(acc => {
+                // Determine booking link based on accommodation type
+                let bookingLink = '';
+                if (acc.type === 'Student Housing') {
+                    bookingLink = 'http://127.0.0.1:5500/booking.html';
+                } else if (acc.type === 'Hotel/Budget Hotel') {
+                    bookingLink = 'http://127.0.0.1:5500/budget-hotels-booking.html';
+                } else if (acc.type === 'Short-Term Rental') {
+                    bookingLink = 'http://127.0.0.1:5500/short-term-rentals-booking.html';
+                }
+
+                return `
                 <div class="accommodation-card">
                     <div class="accommodation-type">${acc.type}</div>
                     <div class="accommodation-name">${acc.name}</div>
@@ -1315,13 +1333,18 @@
                             <span class="detail-label">Contact:</span>
                             <span class="detail-value">${acc.contact}</span>
                         </div>
+                        ${bookingLink ? `<div class="detail-row">
+                            <span class="detail-label">Booking Link:</span>
+                            <span class="detail-value"><a href="${bookingLink}" target="_blank" style="color: #B40000; text-decoration: underline; cursor: pointer;">Book Now</a></span>
+                        </div>` : ''}
                     </div>
                     
                     <button class="directions-btn" onclick="openDirections(${acc.latitude}, ${acc.longitude}, '${acc.name}')">
                         🗺️ Get Directions
                     </button>
                 </div>
-            `).join('');
+            `;
+            }).join('');
 
             resultsSection.style.display = 'block';
             // Show the filter button only when there are results
