@@ -19,7 +19,7 @@
         }
 
         .navbar {
-            background: #0056b3;
+            background: white;
             padding: 1rem 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
@@ -35,7 +35,7 @@
         }
 
         .logo {
-            color: #B40000;
+            color: #000;
             font-size: 1.5rem;
             font-weight: bold;
         }
@@ -47,7 +47,7 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #000;
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -76,6 +76,148 @@
             color: #666;
             margin-bottom: 2rem;
             font-size: 1.1rem;
+        }
+
+        .filter-toggle-btn {
+            display: none;
+            margin: 1rem auto;
+            padding: 0.8rem 1.5rem;
+            background: #486220;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-toggle-btn.show {
+            display: block;
+        }
+
+        .filter-toggle-btn:hover {
+            background: #3d5018;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(72,98,32,0.3);
+        }
+
+        .filter-panel {
+            background: #f5f5f5;
+            border: 2px solid #486220;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .filter-panel.show {
+            display: block;
+        }
+
+        .filter-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #486220;
+            padding-bottom: 1rem;
+        }
+
+        .filter-panel-header h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .filter-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .filter-close-btn:hover {
+            color: #B40000;
+        }
+
+        .filter-panel-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-category {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .filter-category h4 {
+            color: #B40000;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #B40000;
+            padding-bottom: 0.5rem;
+        }
+
+        .filter-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .filter-checkbox-label:hover {
+            color: #B40000;
+        }
+
+        .filter-checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .filter-panel-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-apply-filters,
+        .btn-reset-filters {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-apply-filters {
+            background: #B40000;
+            color: white;
+        }
+
+        .btn-apply-filters:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset-filters {
+            background: #ddd;
+            color: #333;
+        }
+
+        .btn-reset-filters:hover {
+            background: #ccc;
         }
 
         .location-input-section {
@@ -382,6 +524,110 @@
 
         <!-- Results Section -->
         <div id="resultsSection" class="results-section" style="display: none;">
+            <!-- Filter Button (shown only after search) -->
+            <button class="filter-toggle-btn" id="filterToggleBtn" onclick="toggleFilterPanel()">🔍 Filter Results</button>
+
+            <!-- Filter Panel -->
+            <div id="filterPanel" class="filter-panel">
+                <div class="filter-panel-header">
+                    <h3>Filter Options</h3>
+                    <button class="filter-close-btn" onclick="toggleFilterPanel()">✕</button>
+                </div>
+                
+                <div class="filter-panel-content">
+                    <!-- Accommodation Type Filter -->
+                    <div class="filter-category">
+                        <h4>🏠 Accommodation Type</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="type-filter" value="Student Housing"> Student Housing
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="type-filter" value="Hotel/Budget Hotel"> Hotel/Budget Hotel
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="type-filter" value="Short-Term Rental"> Short-Term Rental
+                        </label>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="filter-category">
+                        <h4>💰 Price Range</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="0-100"> Below SGD$100
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="100-500"> SGD$100 - SGD$500
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="500-1000"> SGD$500 - SGD$1000
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="1000-2000"> SGD$1000 - SGD$2000
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="2000+"> SGD$2000+
+                        </label>
+                    </div>
+
+                    <!-- Distance Filter -->
+                    <div class="filter-category">
+                        <h4>📏 Distance from You</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="distance-filter" value="0-5"> Within 5 km
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="distance-filter" value="5-10"> 5 - 10 km
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="distance-filter" value="10-20"> 10 - 20 km
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="distance-filter" value="20+"> 20+ km
+                        </label>
+                    </div>
+
+                    <!-- Region Filter -->
+                    <div class="filter-category">
+                        <h4>🗺️ Region</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Woodlands"> Woodlands
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Choa Chu Kang"> Choa Chu Kang
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Bukit Panjang"> Bukit Panjang
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Bright Hill"> Bright Hill
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Chinese Garden"> Chinese Garden
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Cashew"> Cashew
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Somerset"> Somerset
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Newton"> Newton
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Outram Park"> Outram Park
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Chinatown"> Chinatown
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-panel-footer">
+                    <button class="btn-apply-filters" onclick="applyAllFilters()">Apply Filters</button>
+                    <button class="btn-reset-filters" onclick="resetAllFilters()">Reset All</button>
+                </div>
+            </div>
+
             <div class="results-header">Nearby Accommodations</div>
             <div id="resultsList"></div>
         </div>
@@ -393,13 +639,13 @@
     <script>
         // Accommodation data from all three categories
         const allAccommodations = [
-            // Student Housing
+            // Student Housing (20 properties)
             {
                 type: 'Student Housing',
-                name: 'Rosewood Condo',
-                location: '10 Woodlands Street 13, Singapore 737853',
+                name: 'Rosewood Condo, Singapore',
+                location: '15 Rosewood Drive, Singapore, Central Singapore 737939 (Woodlands)',
                 region: 'Woodlands',
-                price: 750,
+                price: 1100,
                 priceUnit: '/month',
                 latitude: 1.4368,
                 longitude: 103.8378,
@@ -407,10 +653,10 @@
             },
             {
                 type: 'Student Housing',
-                name: 'The Warren',
-                location: '20 Choa Chu Kang Road, Singapore 689578',
+                name: 'The Warren, Singapore',
+                location: '37 Choa Chu Kang Loop, Singapore, Central Singapore 689675 (Choa Chu Kang)',
                 region: 'Choa Chu Kang',
-                price: 900,
+                price: 1050,
                 priceUnit: '/month',
                 latitude: 1.3867,
                 longitude: 103.7450,
@@ -418,10 +664,10 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Maysprings',
-                location: '18 Bukit Panjang Road, Singapore 679842',
+                name: 'Maysprings, Singapore',
+                location: '2 Petir Road, Singapore, Central Singapore 678265 (Bukit Panjang)',
                 region: 'Bukit Panjang',
-                price: 1050,
+                price: 700,
                 priceUnit: '/month',
                 latitude: 1.3758,
                 longitude: 103.7755,
@@ -429,8 +675,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'The Madeira',
-                location: '56 Bukit Batok Street 31, Singapore 659445',
+                name: 'The Madeira, Singapore',
+                location: '56 Bukit Batok Street 31, Singapore, Central Singapore 659445 (Bukit Gombak)',
                 region: 'Bukit Gombak',
                 price: 1280,
                 priceUnit: '/month',
@@ -440,8 +686,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Bishan Park Condominium',
-                location: '24 Sin Ming Walk, Singapore 575572',
+                name: 'Bishan Park Condominium, Singapore',
+                location: '24 Sin Ming Walk, Singapore, Central Singapore 575572 (Bright Hill)',
                 region: 'Bright Hill',
                 price: 800,
                 priceUnit: '/month',
@@ -451,8 +697,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Ivory Heights - BESPOKE',
-                location: '117 Jurong East Street 13, Singapore 600117',
+                name: 'Ivory Heights - BESPOKE, Singapore',
+                location: '117 Jurong East Street 13, Singapore, Central Singapore 600117 (Chinese Garden)',
                 region: 'Chinese Garden',
                 price: 1040,
                 priceUnit: '/month',
@@ -462,8 +708,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Cashew Heights - AP',
-                location: '97 Cashew Road, Singapore 679668',
+                name: 'Cashew Heights - AP, Singapore',
+                location: '97 Cashew Road, Singapore, Central Singapore 679668 (Cashew)',
                 region: 'Cashew',
                 price: 690,
                 priceUnit: '/month',
@@ -473,8 +719,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Lagoon View - X1',
-                location: '5000K Marine Parade Road, Singapore 449295',
+                name: 'Lagoon View - X1, Singapore',
+                location: '5000K Marine Parade Road, Singapore, Central Singapore 449295 (Siglap)',
                 region: 'Siglap',
                 price: 850,
                 priceUnit: '/month',
@@ -484,8 +730,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Eastpoint Green',
-                location: '7 Simei Street 3, Singapore 529893',
+                name: 'Eastpoint Green, Singapore',
+                location: '7 Simei Street 3, Singapore, Central Singapore 529893 (Simei)',
                 region: 'Simei',
                 price: 890,
                 priceUnit: '/month',
@@ -495,8 +741,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Aquarius by the Park',
-                location: '5 Bedok Reservoir View, Singapore 478928',
+                name: 'Aquarius by the Park, Singapore',
+                location: '5 Bedok Reservoir View, Singapore, Central Singapore 478928 (Bedok Reservoir)',
                 region: 'Bedok Reservoir',
                 price: 1280,
                 priceUnit: '/month',
@@ -506,8 +752,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'The Meyer Place',
-                location: '2 Meyer Place, Singapore 437989',
+                name: 'The Meyer Place, Singapore',
+                location: '2 Meyer Place, Singapore, Central Singapore 437989 (Katong Park)',
                 region: 'Katong Park',
                 price: 1000,
                 priceUnit: '/month',
@@ -517,8 +763,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Elias Green',
-                location: '1 Elias Green, Singapore 519959',
+                name: 'Elias Green, Singapore',
+                location: '1 Elias Green, Singapore, Central Singapore 519959 (Pasir Ris)',
                 region: 'Pasir Ris',
                 price: 980,
                 priceUnit: '/month',
@@ -528,8 +774,8 @@
             },
             {
                 type: 'Student Housing',
-                name: '334 Ubi Ave 1',
-                location: '334 Ubi Avenue 1, Singapore 400334',
+                name: '334 Ubi Ave 1, Singapore',
+                location: '334 Ubi Avenue 1, Singapore, Central Singapore 400334 (Ubi)',
                 region: 'Ubi',
                 price: 690,
                 priceUnit: '/month',
@@ -539,8 +785,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'TRE Residences - HC',
-                location: '9 Geylang East Avenue 1, Singapore 389783',
+                name: 'TRE Residences - HC, Singapore',
+                location: '9 Geylang East Avenue 1, Singapore, Central Singapore 389783 (Aljunied)',
                 region: 'Aljunied',
                 price: 1280,
                 priceUnit: '/month',
@@ -550,8 +796,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Principal Garden',
-                location: '99 Prince Charles Crescent, Singapore 159029',
+                name: 'Principal Garden, Singapore',
+                location: '99 Prince Charles Crescent, Singapore, Central Singapore 159029 (Redhill)',
                 region: 'Redhill',
                 price: 1100,
                 priceUnit: '/month',
@@ -561,8 +807,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Horizon Towers',
-                location: '29 Leonie Hill, Singapore 239228',
+                name: 'Horizon Towers, Singapore',
+                location: '29 Leonie Hill, Singapore, Central Singapore 239228 (Great World)',
                 region: 'Great World',
                 price: 1250,
                 priceUnit: '/month',
@@ -572,8 +818,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'The Clement Canopy - Z',
-                location: '16 Clementi Avenue 1, Singapore 129960',
+                name: 'The Clement Canopy - Z, Singapore',
+                location: '16 Clementi Avenue 1, Singapore, Central Singapore 129960 (Clementi)',
                 region: 'Clementi',
                 price: 990,
                 priceUnit: '/month',
@@ -583,8 +829,8 @@
             },
             {
                 type: 'Student Housing',
-                name: '25 Woodleigh Close',
-                location: '25 Woodleigh Close, Singapore 357920',
+                name: '25 Woodleigh Close, Singapore',
+                location: '25 Woodleigh Close, Singapore, Central Singapore 357920 (Woodleigh)',
                 region: 'Woodleigh',
                 price: 1278,
                 priceUnit: '/month',
@@ -594,8 +840,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Summerdale - HC',
-                location: '10 Boon Lay Drive, Singapore 649929',
+                name: 'Summerdale - HC, Singapore',
+                location: '10 Boon Lay Drive, Singapore, Central Singapore 649929 (Boon Lay)',
                 region: 'Boon Lay',
                 price: 890,
                 priceUnit: '/month',
@@ -605,8 +851,8 @@
             },
             {
                 type: 'Student Housing',
-                name: 'Caspian - BESPOKE',
-                location: '54 Lakeside Drive, Singapore 648317',
+                name: 'Caspian - BESPOKE, Singapore',
+                location: '54 Lakeside Drive, Singapore, Central Singapore 648317 (Lakeside)',
                 region: 'Lakeside',
                 price: 700,
                 priceUnit: '/month',
@@ -614,183 +860,183 @@
                 longitude: 103.7258,
                 contact: 'contact@uhomes.com | +65 9123 4586'
             },
-            // Budget Hotels
+            // Budget Hotels (7 properties)
             {
-                type: 'Budget Hotels',
-                name: 'Budget Inn Marina',
-                location: 'Marina Bay, Singapore',
-                region: 'Marina Bay',
-                price: 65,
-                priceUnit: '/night',
-                latitude: 1.2833,
-                longitude: 103.8617,
-                contact: 'reservations.singapore@hoteljen.com | +65 6708 8880'
-            },
-            {
-                type: 'Budget Hotels',
-                name: 'Orchard Suites',
-                location: 'Orchard Road, Singapore',
-                region: 'Orchard',
-                price: 75,
+                type: 'Hotel/Budget Hotel',
+                name: 'Jen Singapore Orchardgateway by Shangri-La',
+                location: '277 Orchard Rd, Singapore, 238858 (Somerset)',
+                region: 'Somerset',
+                price: 96,
                 priceUnit: '/night',
                 latitude: 1.3022,
                 longitude: 103.8343,
-                contact: 'reservations.singapore@hoteljen.com | +65 6708 8881'
+                contact: '+65 6708 8880 | reservations.singapore@hoteljen.com'
             },
             {
-                type: 'Budget Hotels',
-                name: 'Newton Plaza Hotel',
-                location: 'Newton, Singapore',
-                region: 'Newton',
-                price: 70,
-                priceUnit: '/night',
-                latitude: 1.3145,
-                longitude: 103.8386,
-                contact: 'reservations.singapore@hoteljen.com | +65 6708 8882'
-            },
-            {
-                type: 'Budget Hotels',
-                name: 'Tiong Bahru Rooms',
-                location: 'Tiong Bahru, Singapore',
-                region: 'Tiong Bahru',
-                price: 68,
-                priceUnit: '/night',
-                latitude: 1.2878,
-                longitude: 103.8090,
-                contact: 'reservations.singapore@hoteljen.com | +65 6708 8883'
-            },
-            {
-                type: 'Budget Hotels',
-                name: 'East Coast Inn',
-                location: 'East Coast, Singapore',
-                region: 'East Coast',
-                price: 60,
-                priceUnit: '/night',
-                latitude: 1.3011,
-                longitude: 103.9167,
-                contact: 'reservations.singapore@hoteljen.com | +65 6708 8884'
-            },
-            {
-                type: 'Budget Hotels',
-                name: 'Jurong Comfort Hotel',
-                location: 'Jurong East, Singapore',
+                type: 'Hotel/Budget Hotel',
+                name: 'Genting Hotel Jurong',
+                location: '2 Town Hall Link, Singapore, 608516 (Jurong East)',
                 region: 'Jurong East',
-                price: 50,
+                price: 70,
                 priceUnit: '/night',
                 latitude: 1.3341,
                 longitude: 103.7429,
-                contact: 'reservations.singapore@hoteljen.com | +65 6708 8885'
+                contact: '+65 6577 8881 | reservations.singapore@hoteljen.com'
             },
             {
-                type: 'Budget Hotels',
-                name: 'Bedok Beach Hostel',
-                location: 'Bedok, Singapore',
-                region: 'Bedok',
-                price: 55,
+                type: 'Hotel/Budget Hotel',
+                name: 'Sheraton Towers Singapore',
+                location: '39 Scotts Rd, Singapore, 228230 (Newton)',
+                region: 'Newton',
+                price: 90,
                 priceUnit: '/night',
-                latitude: 1.3245,
-                longitude: 103.9276,
-                contact: 'reservations.singapore@hoteljen.com | +65 6708 8886'
-            },
-            // Short-Term Rentals
-            {
-                type: 'Short-Term Rentals',
-                name: 'Cove Studio - Central',
-                location: 'Central Singapore',
-                region: 'Central',
-                price: 2200,
-                priceUnit: '/month (3 days min)',
-                latitude: 1.2902,
-                longitude: 103.8519,
-                contact: 'hello@covenow.sg | +65 9123 5000'
+                latitude: 1.3145,
+                longitude: 103.8386,
+                contact: '+65 6577 8882 | reservations.singapore@hoteljen.com'
             },
             {
-                type: 'Short-Term Rentals',
-                name: 'Cove Studio - East',
-                location: 'East Singapore',
-                region: 'East',
-                price: 1800,
-                priceUnit: '/month (3 days min)',
-                latitude: 1.3298,
-                longitude: 103.8900,
-                contact: 'hello@covenow.sg | +65 9123 5001'
+                type: 'Hotel/Budget Hotel',
+                name: 'Dorsett Singapore (Newly Refurbished)',
+                location: '333 New Bridge Rd, Singapore, 088765 (Outram Park)',
+                region: 'Outram Park',
+                price: 180,
+                priceUnit: '/night',
+                latitude: 1.2878,
+                longitude: 103.8090,
+                contact: '+65 6577 8883 | reservations.singapore@hoteljen.com'
             },
             {
-                type: 'Short-Term Rentals',
-                name: 'Cove Studio - West',
-                location: 'West Singapore',
-                region: 'West',
-                price: 1600,
-                priceUnit: '/month (3 days min)',
-                latitude: 1.3409,
-                longitude: 103.7640,
-                contact: 'hello@covenow.sg | +65 9123 5002'
+                type: 'Hotel/Budget Hotel',
+                name: 'Hotel 1900 Express @ Chinatown',
+                location: 'Mosque St, #46, Singapore, 059525 (Chinatown)',
+                region: 'Chinatown',
+                price: 63,
+                priceUnit: '/night',
+                latitude: 1.2836,
+                longitude: 103.8436,
+                contact: '+65 6577 8884 | reservations.singapore@hoteljen.com'
             },
             {
-                type: 'Short-Term Rentals',
-                name: 'Cove Studio - North',
-                location: 'North Singapore',
-                region: 'North',
-                price: 1400,
-                priceUnit: '/month (3 days min)',
-                latitude: 1.4265,
-                longitude: 103.8308,
-                contact: 'hello@covenow.sg | +65 9123 5003'
+                type: 'Hotel/Budget Hotel',
+                name: 'Value Hotel Nice',
+                location: '302 Balestier Rd, #01-02, Singapore, 329738 (Novena)',
+                region: 'Novena',
+                price: 50,
+                priceUnit: '/night',
+                latitude: 1.3236,
+                longitude: 103.8436,
+                contact: '+65 6577 8885 | reservations.singapore@hoteljen.com'
             },
             {
-                type: 'Short-Term Rentals',
-                name: 'Cove Studio - Northeast',
-                location: 'Northeast Singapore',
-                region: 'Northeast',
-                price: 1500,
-                priceUnit: '/month (3 days min)',
+                type: 'Hotel/Budget Hotel',
+                name: 'Fragrance Hotel – Kovan',
+                location: '760 Upper Serangoon Road, Singapore, 534629 (Kovan)',
+                region: 'Kovan',
+                price: 60,
+                priceUnit: '/night',
                 latitude: 1.3750,
-                longitude: 103.9350,
-                contact: 'hello@covenow.sg | +65 9123 5004'
+                longitude: 103.8650,
+                contact: '+65 6577 8886 | reservations.singapore@hoteljen.com'
+            },
+            // Short-Term Rentals (9 properties)
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 193 @ 27 Casuarina Road',
+                location: '27 Casuarina Road, Singapore, 579415 (Mayflower)',
+                region: 'Mayflower',
+                price: 850,
+                priceUnit: '/month',
+                latitude: 1.3956,
+                longitude: 103.8150,
+                contact: 'bookings@cove.sg | +65 9234 4860'
             },
             {
-                type: 'Short-Term Rentals',
-                name: 'Cove Studio - Southeast',
-                location: 'Southeast Singapore',
-                region: 'Southeast',
-                price: 1700,
-                priceUnit: '/month (3 days min)',
-                latitude: 1.2980,
-                longitude: 103.8950,
-                contact: 'hello@covenow.sg | +65 9123 5005'
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 320 @ Esta Ruby',
+                location: '500 Guillemard Rd, Singapore 399839 (Paya Lebar)',
+                region: 'Paya Lebar',
+                price: 1150,
+                priceUnit: '/month',
+                latitude: 1.3345,
+                longitude: 103.8933,
+                contact: 'bookings@cove.sg | +65 9234 4861'
             },
             {
-                type: 'Short-Term Rentals',
-                name: 'Cove Studio - Southwest',
-                location: 'Southwest Singapore',
-                region: 'Southwest',
-                price: 1550,
-                priceUnit: '/month (3 days min)',
-                latitude: 1.3200,
-                longitude: 103.7400,
-                contact: 'hello@covenow.sg | +65 9123 5006'
+                type: 'Short-Term Rental',
+                name: 'Standard Room within a Landed House (Cove 271)',
+                location: '22A Jalan Selamat, Singapore, 418545 (Kembangan)',
+                region: 'Kembangan',
+                price: 1250,
+                priceUnit: '/month',
+                latitude: 1.3486,
+                longitude: 103.8947,
+                contact: 'bookings@cove.sg | +65 9234 4862'
             },
             {
-                type: 'Short-Term Rentals',
-                name: 'Cove Studio - Northwest',
-                location: 'Northwest Singapore',
-                region: 'Northwest',
-                price: 1450,
-                priceUnit: '/month (3 days min)',
-                latitude: 1.3800,
-                longitude: 103.7700,
-                contact: 'hello@covenow.sg | +65 9123 5007'
+                type: 'Short-Term Rental',
+                name: 'Pocket Room Cove 491 @ Emerald Park',
+                location: 'Emerald Park, #02-08, 2 Indus Road, Singapore, 169586 (Havelock)',
+                region: 'Havelock',
+                price: 1200,
+                priceUnit: '/month',
+                latitude: 1.2885,
+                longitude: 103.8269,
+                contact: 'bookings@cove.sg | +65 9234 4863'
             },
             {
-                type: 'Short-Term Rentals',
-                name: 'Cove Studio - Downtown',
-                location: 'Downtown Singapore',
-                region: 'Downtown',
-                price: 2400,
-                priceUnit: '/month (3 days min)',
-                latitude: 1.2802,
-                longitude: 103.8509,
-                contact: 'hello@covenow.sg | +65 9123 5008'
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 144 @ 19A Tai Thong Crescent',
+                location: '19A Tai Thong Crescent, Singapore, 347853 (Potong Pasir)',
+                region: 'Potong Pasir',
+                price: 1200,
+                priceUnit: '/month',
+                latitude: 1.3369,
+                longitude: 103.8684,
+                contact: 'bookings@cove.sg | +65 9234 4865'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 238 @ Nuovo',
+                location: '23 Ang Mo Kio Avenue 9, Singapore, 569787 (Ang Mo Kio)',
+                region: 'Ang Mo Kio',
+                price: 1200,
+                priceUnit: '/month',
+                latitude: 1.3693,
+                longitude: 103.8453,
+                contact: 'bookings@cove.sg | +65 9234 4866'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 195 @ 18A Valley Road',
+                location: '18A Valley Road, Singapore, 534475 (Kovan)',
+                region: 'Kovan',
+                price: 950,
+                priceUnit: '/month',
+                latitude: 1.3750,
+                longitude: 103.8620,
+                contact: 'bookings@cove.sg | +65 9234 4867'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Pocket Room Cove 433 @ Cassia View',
+                location: 'Cassia View, #16-02, 320 Guillemard Rd, Singapore, 399746 (Dakota)',
+                region: 'Dakota',
+                price: 1000,
+                priceUnit: '/month',
+                latitude: 1.3290,
+                longitude: 103.8900,
+                contact: 'bookings@cove.sg | +65 9234 4868'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 89 @ Havelock Road',
+                location: '743b Havelock Road, 169656 (Tiong Bahru)',
+                region: 'Tiong Bahru',
+                price: 1250,
+                priceUnit: '/month',
+                latitude: 1.2878,
+                longitude: 103.8240,
+                contact: 'bookings@cove.sg | +65 9234 4869'
             }
         ];
 
@@ -873,14 +1119,107 @@
             displayResults(nearby);
         }
 
+        // Toggle filter panel
+        function toggleFilterPanel() {
+            const filterPanel = document.getElementById('filterPanel');
+            filterPanel.classList.toggle('show');
+        }
+
+        // Close filter panel when clicking outside
+        document.addEventListener('click', function(event) {
+            const filterPanel = document.getElementById('filterPanel');
+            const filterBtn = document.querySelector('.filter-toggle-btn');
+            if (filterPanel && !filterPanel.contains(event.target) && !filterBtn.contains(event.target)) {
+                filterPanel.classList.remove('show');
+            }
+        });
+
+        // Apply all filters
+        function applyAllFilters() {
+            if (!currentUserLocation) {
+                alert('Please find your location first to filter by distance');
+                return;
+            }
+
+            const selectedTypes = Array.from(document.querySelectorAll('.type-filter:checked')).map(cb => cb.value);
+            const selectedPrices = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => cb.value);
+            const selectedDistances = Array.from(document.querySelectorAll('.distance-filter:checked')).map(cb => cb.value);
+            const selectedRegions = Array.from(document.querySelectorAll('.region-filter:checked')).map(cb => cb.value);
+
+            let filtered = allAccommodations;
+
+            // Filter by type
+            if (selectedTypes.length > 0) {
+                filtered = filtered.filter(acc => selectedTypes.includes(acc.type));
+            }
+
+            // Filter by price
+            if (selectedPrices.length > 0) {
+                filtered = filtered.filter(acc => {
+                    for (let range of selectedPrices) {
+                        if (range === '0-100' && acc.price >= 0 && acc.price <= 100) return true;
+                        if (range === '100-500' && acc.price > 100 && acc.price <= 500) return true;
+                        if (range === '500-1000' && acc.price > 500 && acc.price <= 1000) return true;
+                        if (range === '1000-2000' && acc.price > 1000 && acc.price <= 2000) return true;
+                        if (range === '2000+' && acc.price > 2000) return true;
+                    }
+                    return false;
+                });
+            }
+
+            // Filter by region
+            if (selectedRegions.length > 0) {
+                filtered = filtered.filter(acc => selectedRegions.includes(acc.region));
+            }
+
+            // Filter by distance
+            if (selectedDistances.length > 0) {
+                filtered = filtered.map(acc => ({
+                    ...acc,
+                    distance: calculateDistance(currentUserLocation.lat, currentUserLocation.lon, acc.latitude, acc.longitude)
+                })).filter(acc => {
+                    for (let range of selectedDistances) {
+                        if (range === '0-5' && acc.distance >= 0 && acc.distance <= 5) return true;
+                        if (range === '5-10' && acc.distance > 5 && acc.distance <= 10) return true;
+                        if (range === '10-20' && acc.distance > 10 && acc.distance <= 20) return true;
+                        if (range === '20+' && acc.distance > 20) return true;
+                    }
+                    return false;
+                }).sort((a, b) => a.distance - b.distance);
+            } else {
+                // If no distance filter, just add distance property
+                filtered = filtered.map(acc => ({
+                    ...acc,
+                    distance: calculateDistance(currentUserLocation.lat, currentUserLocation.lon, acc.latitude, acc.longitude)
+                })).sort((a, b) => a.distance - b.distance);
+            }
+
+            displayResults(filtered);
+            toggleFilterPanel();
+
+            if (filtered.length === 0) {
+                document.getElementById('resultsList').innerHTML = '<div class="no-results">No accommodations match your filters. Try adjusting your criteria.</div>';
+            }
+        }
+
+        // Reset all filters
+        function resetAllFilters() {
+            document.querySelectorAll('.type-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.price-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.distance-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.region-filter').forEach(cb => cb.checked = false);
+        }
+
         // Display results
         function displayResults(accommodations) {
             const resultsSection = document.getElementById('resultsSection');
             const resultsList = document.getElementById('resultsList');
+            const filterToggleBtn = document.getElementById('filterToggleBtn');
 
             if (accommodations.length === 0) {
                 resultsList.innerHTML = '<div class="no-results">No accommodations found.</div>';
                 resultsSection.style.display = 'block';
+                filterToggleBtn.classList.remove('show');
                 return;
             }
 
@@ -913,6 +1252,8 @@
             `).join('');
 
             resultsSection.style.display = 'block';
+            // Show the filter button only when there are results
+            filterToggleBtn.classList.add('show');
         }
 
         // Open directions in Google Maps
@@ -926,6 +1267,8 @@
             document.getElementById('resultsSection').style.display = 'none';
             document.getElementById('locationSearch').value = '';
             document.getElementById('currentLocationStatus').innerHTML = '';
+            document.getElementById('filterToggleBtn').classList.remove('show');
+            document.getElementById('filterPanel').classList.remove('show');
             currentUserLocation = null;
         }
 
