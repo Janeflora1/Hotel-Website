@@ -688,19 +688,9 @@
                             <span>GST & Service Tax (10%):</span>
                             <span id="summaryTax"></span>
                         </div>
-                        <div id="discountLineItem" class="summary-item" style="display:none; color:#27ae60;">
-                            <span>Promotional Discount:</span>
-                            <span id="summaryDiscount"></span>
-                        </div>
                         <div class="summary-item total">
                             <span>Total Amount:</span>
                             <span id="summaryTotal"></span>
-                        </div>
-                        <div class="offer-checkbox-section">
-                            <label class="offer-checkbox">
-                                <input type="checkbox" id="applyOfferCheckbox" onchange="updatePaymentSummary()">
-                                <span>Apply promotional offers/discounts (10% off)</span>
-                            </label>
                         </div>
                     </div>
                     <div class="payment-methods">
@@ -1110,34 +1100,14 @@
             
             const subtotal = roomPrice * nights;
             
-            // Check if offer checkbox is checked
-            const applyOffer = document.getElementById('applyOfferCheckbox').checked;
-            let discount = 0;
-            let discountedSubtotal = subtotal;
-            
-            if (applyOffer) {
-                // Apply 10% discount on the subtotal
-                discount = subtotal * 0.10;
-                discountedSubtotal = subtotal - discount;
-            }
-            
-            // Tax is calculated on the discounted amount
-            const tax = discountedSubtotal * 0.10; // 10% GST & Service Tax
-            const total = discountedSubtotal + tax;
+            // Tax is calculated on subtotal
+            const tax = subtotal * 0.10; // 10% GST & Service Tax
+            const total = subtotal + tax;
             
             // Update display
             document.getElementById('summarySubtotal').textContent = 'SGD $' + subtotal.toFixed(2);
             document.getElementById('summaryTax').textContent = 'SGD $' + tax.toFixed(2);
             document.getElementById('summaryTotal').textContent = 'SGD $' + total.toFixed(2);
-            
-            // Show/hide discount line
-            const discountLine = document.getElementById('discountLineItem');
-            if (discount > 0) {
-                discountLine.style.display = 'block';
-                document.getElementById('summaryDiscount').textContent = '-SGD $' + discount.toFixed(2);
-            } else {
-                discountLine.style.display = 'none';
-            }
         }
 
         function completeBooking() {
