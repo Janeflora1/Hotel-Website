@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Budget Hotels - TravelMate Singapore</title>
+    <link rel="stylesheet" href="hotel-styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-content">
+                    <svg class="logo-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#B40000;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="60" cy="45" r="35" fill="url(#logoGradient)" />
+                        <text x="60" y="50" font-size="50" text-anchor="middle" dominant-baseline="middle">✈️</text>
+                    </svg><span>TravelMate</span>
+                </div>
+                <div class="logo-tagline">Your Student Staycation Partner</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="hotel-index.html">Home</a></li>
+                <li><a href="hotel-student-housing.html">Student Housing</a></li>
+                <li><a href="hotel-budget-hotels.html">Budget Hotels</a></li>
+                <li><a href="hotel-short-term-stays.html">Short-Term Rentals (Cove)</a></li>
+                <li><a href="hotel-location-finder.html">🗺️ Location Finder</a></li>
+                <li><a href="hotel-index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="budget-hotels-hero">
+        <div class="hero-content">
+            <h1>Book Budget Hotels in Singapore</h1>
+            <p>Find and reserve your perfect budget-friendly accommodation</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filter-section" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <button class="filter-toggle-btn" onclick="toggleFilterPanel()">🔍 Filter Budget Hotels</button>
+            <div id="filterPanel" class="filter-panel hidden">
+                <div class="filter-panel-header">
+                    <h3>Filter by:</h3>
+                    <button class="filter-close-btn" onclick="toggleFilterPanel()">✕</button>
+                </div>
+                <div class="filter-panel-content">
+                    <div class="filter-category">
+                        <h4>💰 Price Range (SGD)</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="50-100" onchange="applyHotelFilters()"> $50 - $100
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="100-150" onchange="applyHotelFilters()"> $100 - $150
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="150-200" onchange="applyHotelFilters()"> $150 - $200
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="200-300" onchange="applyHotelFilters()"> $200 - $300
+                        </label>
+                    </div>
+
+                    <div class="filter-category">
+                        <h4>📍 Location</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Somerset" onchange="applyHotelFilters()"> Somerset (Orchard Road)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Jurong East" onchange="applyHotelFilters()"> Jurong East
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Newton" onchange="applyHotelFilters()"> Newton
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Outram Park" onchange="applyHotelFilters()"> Outram Park
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Chinatown" onchange="applyHotelFilters()"> Chinatown
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Novena" onchange="applyHotelFilters()"> Novena
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Kovan" onchange="applyHotelFilters()"> Kovan
+                        </label>
+                    </div>
+
+                    <div class="filter-category">
+                        <h4>✨ Amenities</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Swimming Pool" onchange="applyHotelFilters()"> 🏊 Swimming Pool
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Gym" onchange="applyHotelFilters()"> 💪 Gym
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Air Conditioner" onchange="applyHotelFilters()"> ❄️ Air Conditioner
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Near Subway" onchange="applyHotelFilters()"> 🚇 Near Subway
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Washing Machine" onchange="applyHotelFilters()"> 🧺 Washing Machine
+                        </label>
+                    </div>
+                </div>
+                <div class="filter-panel-footer">
+                    <button onclick="resetHotelFilters()" class="btn-reset-filters">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hotels Grid -->
+        <div class="hotels-booking-grid">
+            <!-- Hotel 1: Jen Singapore Orchardgateway -->
+            <div class="hotel-booking-card" data-price="96" data-location="Somerset" data-amenities="Near Subway,Swimming Pool,Air Conditioner,Gym">
+                <div class="hotel-booking-header">
+                    <h3>Jen Singapore Orchardgateway by Shangri-La</h3>
+                    <span class="location-tag">📍 Somerset (Orchard Road)</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'jen-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'jen-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="jen-details">
+                    <p class="hotel-address">277 Orchard Rd, Singapore, 238858</p>
+                    <div class="room-options">
+                        <div class="room">
+                            <strong>Club Twin</strong><br>SGD$96/night<br>
+                            <small>Premium bedding, access to club lounge benefits</small>
+                        </div>
+                        <div class="room">
+                            <strong>Club King</strong><br>SGD$96/night<br>
+                            <small>Premium bedding, access to club lounge benefits</small>
+                        </div>
+                    </div>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🏊 Swimming Pool</span>
+                        <span class="amenity-badge">❄️ Air Conditioner</span>
+                        <span class="amenity-badge">💪 Gym</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>Phone:</strong> +65 6708 8880</p>
+                        <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openBookingModal('Jen Singapore Orchardgateway by Shangri-La', 96)">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="jen-photos">
+                    <div class="hotel-photos-grid" id="jen-photos-grid"></div>
+                </div>
+            </div>
+
+            <!-- Hotel 2: Genting Hotel Jurong -->
+            <div class="hotel-booking-card" data-price="70" data-location="Jurong East" data-amenities="Swimming Pool,Air Conditioner">
+                <div class="hotel-booking-header">
+                    <h3>Genting Hotel Jurong</h3>
+                    <span class="location-tag">📍 Jurong East</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'genting-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'genting-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="genting-details">
+                    <p class="hotel-address">2 Town Hall Link, Singapore, 608516</p>
+                    <div class="room-options">
+                        <div class="room">
+                            <strong>Superior Twin Guest Room</strong><br>SGD$70/night<br>
+                            <small>Two single beds, contemporary style</small>
+                        </div>
+                        <div class="room">
+                            <strong>Deluxe Twin Guest Room</strong><br>SGD$75/night<br>
+                            <small>More space, upgraded décor</small>
+                        </div>
+                    </div>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🛒 Near Shopping Center</span>
+                        <span class="amenity-badge">🏬 Near Supermarket</span>
+                        <span class="amenity-badge">🏖️ Balcony</span>
+                        <span class="amenity-badge">🏊 Swimming Pool</span>
+                        <span class="amenity-badge">❄️ Air Conditioner</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>Phone:</strong> +65 6577 8881</p>
+                        <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openBookingModal('Genting Hotel Jurong', 70)">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="genting-photos">
+                    <div class="hotel-photos-grid" id="genting-photos-grid"></div>
+                </div>
+            </div>
+
+            <!-- Hotel 3: Sheraton Towers Singapore -->
+            <div class="hotel-booking-card" data-price="90" data-location="Newton" data-amenities="Near Subway,Gym">
+                <div class="hotel-booking-header">
+                    <h3>Sheraton Towers Singapore</h3>
+                    <span class="location-tag">📍 Newton</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'sheraton-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'sheraton-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="sheraton-details">
+                    <p class="hotel-address">39 Scotts Rd, Singapore, 228230</p>
+                    <div class="room-options">
+                        <div class="room">
+                            <strong>Deluxe King Guest Room</strong><br>SGD$90/night<br>
+                            <small>Luxurious king bed, elegant furnishings</small>
+                        </div>
+                        <div class="room">
+                            <strong>Deluxe Twin Guest Room</strong><br>SGD$93/night<br>
+                            <small>Two single beds, spacious layout</small>
+                        </div>
+                    </div>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🛗 Elevator</span>
+                        <span class="amenity-badge">💪 Gym</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>Phone:</strong> +65 6577 8882</p>
+                        <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openBookingModal('Sheraton Towers Singapore', 90)">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="sheraton-photos">
+                    <div class="hotel-photos-grid" id="sheraton-photos-grid"></div>
+                </div>
+            </div>
+
+            <!-- Hotel 4: Dorsett Singapore -->
+            <div class="hotel-booking-card" data-price="80" data-location="Outram Park" data-amenities="Near Subway,Gym,Air Conditioner">
+                <div class="hotel-booking-header">
+                    <h3>Dorsett Singapore (Newly Refurbished)</h3>
+                    <span class="location-tag">📍 Outram Park</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'dorsett-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'dorsett-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="dorsett-details">
+                    <p class="hotel-address">333 New Bridge Rd, Singapore, 088765</p>
+                    <div class="room-options">
+                        <div class="room">
+                            <strong>Dorsett Twin Room</strong><br>SGD$80/night<br>
+                            <small>Stylish twin beds, compact yet chic</small>
+                        </div>
+                        <div class="room">
+                            <strong>Dorsett King Room</strong><br>SGD$85/night<br>
+                            <small>King bed, modern interiors</small>
+                        </div>
+                    </div>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🚌 Near Bus Station</span>
+                        <span class="amenity-badge">🛒 Near Shopping Center</span>
+                        <span class="amenity-badge">💪 Gym</span>
+                        <span class="amenity-badge">❄️ Air Conditioner</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>Phone:</strong> +65 6577 8883</p>
+                        <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openBookingModal('Dorsett Singapore', 80)">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="dorsett-photos">
+                    <div class="hotel-photos-grid" id="dorsett-photos-grid"></div>
+                </div>
+            </div>
+
+            <!-- Hotel 5: Hotel 1900 Express @ Chinatown -->
+            <div class="hotel-booking-card" data-price="63" data-location="Chinatown" data-amenities="Washing Machine,Swimming Pool">
+                <div class="hotel-booking-header">
+                    <h3>Hotel 1900 Express @ Chinatown</h3>
+                    <span class="location-tag">📍 Chinatown</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'hotel1900-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'hotel1900-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="hotel1900-details">
+                    <p class="hotel-address">Mosque St, #46, Singapore, 059525</p>
+                    <div class="room-options">
+                        <div class="room">
+                            <strong>Express Standard Queen Room</strong><br>SGD$63/night
+                        </div>
+                        <div class="room">
+                            <strong>Express Deluxe Queen Room</strong><br>SGD$68/night
+                        </div>
+                    </div>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🌳 Near Park</span>
+                        <span class="amenity-badge">🏬 Near Supermarket</span>
+                        <span class="amenity-badge">🧺 Washing Machine</span>
+                        <span class="amenity-badge">🏊 Swimming Pool</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>Phone:</strong> +65 6577 8884</p>
+                        <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openBookingModal('Hotel 1900 Express @ Chinatown', 63)">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="hotel1900-photos">
+                    <div class="hotel-photos-grid" id="hotel1900-photos-grid"></div>
+                </div>
+            </div>
+
+            <!-- Hotel 6: Value Hotel Nice -->
+            <div class="hotel-booking-card" data-price="50" data-location="Novena" data-amenities="Near Subway,Swimming Pool,Air Conditioner">
+                <div class="hotel-booking-header">
+                    <h3>Value Hotel Nice</h3>
+                    <span class="location-tag">📍 Novena</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'valuehotel-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'valuehotel-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="valuehotel-details">
+                    <p class="hotel-address">302 Balestier Rd, #01-02, Singapore, 329738</p>
+                    <div class="room-options">
+                        <div class="room">
+                            <strong>Standard Twin Room</strong><br>SGD$50/night<br>
+                            <small>Two single beds, simple and compact</small>
+                        </div>
+                        <div class="room">
+                            <strong>Superior Queen Room</strong><br>SGD$53/night<br>
+                            <small>Larger bed, slightly more space</small>
+                        </div>
+                    </div>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚌 Near Bus Station</span>
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🏊 Swimming Pool</span>
+                        <span class="amenity-badge">❄️ Air Conditioner</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>Phone:</strong> +65 6577 8885</p>
+                        <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openBookingModal('Value Hotel Nice', 50)">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="valuehotel-photos">
+                    <div class="hotel-photos-grid" id="valuehotel-photos-grid"></div>
+                </div>
+            </div>
+
+            <!-- Hotel 7: Fragrance Hotel – Kovan -->
+            <div class="hotel-booking-card" data-price="60" data-location="Kovan" data-amenities="Near Subway,Gym,Swimming Pool,Washing Machine">
+                <div class="hotel-booking-header">
+                    <h3>Fragrance Hotel – Kovan</h3>
+                    <span class="location-tag">📍 Kovan</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchHotelTab(event, 'fragrance-details')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchHotelTab(event, 'fragrance-photos')">Photos</button>
+                </div>
+                <div class="hotel-booking-details active" id="fragrance-details">
+                    <p class="hotel-address">760 Upper Serangoon Road, Singapore, 534629</p>
+                    <div class="room-options">
+                        <div class="room">
+                            <strong>Standard Room</strong><br>SGD$60/night<br>
+                            <small>Basic amenities, clean and functional</small>
+                        </div>
+                        <div class="room">
+                            <strong>Superior Plus Double</strong><br>SGD$65/night<br>
+                            <small>Slightly larger, with added comfort features</small>
+                        </div>
+                    </div>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🛒 Near Shopping Centre</span>
+                        <span class="amenity-badge">💪 Gym</span>
+                        <span class="amenity-badge">🏊 Swimming Pool</span>
+                        <span class="amenity-badge">🧺 Washing Machine</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>Phone:</strong> +65 6577 8886</p>
+                        <p><strong>Email:</strong> reservations.singapore@hoteljen.com</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openBookingModal('Fragrance Hotel – Kovan', 60)">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="fragrance-photos">
+                    <div class="hotel-photos-grid" id="fragrance-photos-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 TravelMate Singapore. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Image Gallery Functions
+        function changeImage(button, direction) {
+            const gallery = button.closest('.property-image-gallery');
+            const images = gallery.querySelectorAll('.gallery-image');
+            const dots = gallery.querySelectorAll('.gallery-dot');
+            let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+            let newIndex = (currentIndex + direction + images.length) % images.length;
+            
+            images[currentIndex].classList.remove('active');
+            images[newIndex].classList.add('active');
+            dots[currentIndex].classList.remove('active');
+            dots[newIndex].classList.add('active');
+            
+            gallery.querySelector('.current-image').textContent = newIndex + 1;
+        }
+
+        function selectImage(dot) {
+            const gallery = dot.closest('.property-image-gallery');
+            const images = gallery.querySelectorAll('.gallery-image');
+            const dots = gallery.querySelectorAll('.gallery-dot');
+            const newIndex = Array.from(dots).indexOf(dot);
+            
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            images[newIndex].classList.add('active');
+            dots[newIndex].classList.add('active');
+            
+            gallery.querySelector('.current-image').textContent = newIndex + 1;
+        }
+
+        // Toggle filter panel
+        function toggleFilterPanel() {
+            const filterPanel = document.getElementById('filterPanel');
+            filterPanel.classList.toggle('hidden');
+        }
+
+        // Close filter panel when clicking outside
+        document.addEventListener('click', function(event) {
+            const filterSection = document.querySelector('.filter-section');
+            if (filterSection && !filterSection.contains(event.target)) {
+                const filterPanel = document.getElementById('filterPanel');
+                filterPanel.classList.add('hidden');
+            }
+        });
+
+        // Apply filters
+        function applyHotelFilters() {
+            const priceFilters = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => cb.value);
+            const locationFilters = Array.from(document.querySelectorAll('.location-filter:checked')).map(cb => cb.value);
+            const amenityFilters = Array.from(document.querySelectorAll('.amenity-filter:checked')).map(cb => cb.value);
+
+            const cards = document.querySelectorAll('.hotel-booking-card');
+            
+            cards.forEach(card => {
+                const price = parseInt(card.getAttribute('data-price'));
+                const location = card.getAttribute('data-location');
+                const amenities = card.getAttribute('data-amenities').split(',').map(a => a.trim());
+
+                let priceMatch = priceFilters.length === 0;
+                let locationMatch = locationFilters.length === 0;
+                let amenityMatch = amenityFilters.length === 0;
+
+                // Price range matching
+                if (priceFilters.length > 0) {
+                    priceMatch = priceFilters.some(filter => {
+                        if (filter === '50-100') return price >= 50 && price < 100;
+                        if (filter === '100-150') return price >= 100 && price < 150;
+                        if (filter === '150-200') return price >= 150 && price < 200;
+                        if (filter === '200-300') return price >= 200 && price <= 300;
+                        return false;
+                    });
+                }
+
+                // Location matching
+                if (locationFilters.length > 0) {
+                    locationMatch = locationFilters.includes(location);
+                }
+
+                // Amenity matching - ALL selected amenities must be present
+                if (amenityFilters.length > 0) {
+                    amenityMatch = amenityFilters.every(filter => amenities.includes(filter));
+                }
+
+                // Show card only if all conditions are met
+                card.style.display = (priceMatch && locationMatch && amenityMatch) ? 'flex' : 'none';
+            });
+        }
+
+        // Reset filters
+        function resetHotelFilters() {
+            document.querySelectorAll('.price-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.location-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.amenity-filter').forEach(cb => cb.checked = false);
+            
+            const cards = document.querySelectorAll('.hotel-booking-card');
+            cards.forEach(card => {
+                card.style.display = 'flex';
+            });
+        }
+    </script>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="booking-modal">
+        <div class="modal-overlay" onclick="closeBookingModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalHotelName"></h2>
+                <button class="modal-close-btn" onclick="closeBookingModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="booking-steps">
+                    <div class="booking-step">
+                        <div class="step-icon">📅</div>
+                        <h3>Step 1: Enter your Details</h3>
+                        <p>Enter your name, Phone Number, Email Address, Check-in Date, Check-out Date and the Number of Guests.</p>
+                    </div>
+                    <div class="booking-step">
+                        <div class="step-icon">🏨</div>
+                        <h3>Step 2: Compare Room Types</h3>
+                        <p>View available room options and choose what suits you.</p>
+                    </div>
+                    <div class="booking-step">
+                        <div class="step-icon">💳</div>
+                        <h3>Step 3: Payment Option</h3>
+                        <p>Choose the following payment method: bank transfer, PayNow or card payment.</p>
+                    </div>
+                    <div class="booking-step">
+                        <div class="step-icon">✓</div>
+                        <h3>Step 4: Final</h3>
+                        <p>Wait for further instructions in your email and follow up accordingly.</p>
+                    </div>
+                </div>
+
+                <div class="hotel-details">
+                    <h3>📍 Hotel Information</h3>
+                    <div id="modalHotelInfo" class="info-section">
+                        <!-- Hotel info will be populated here -->
+                    </div>
+                </div>
+
+                <div class="checkin-info">
+                    <h3>🕐 Check-in & Check-out Times</h3>
+                    <div class="time-info">
+                        <div class="time-block">
+                            <strong>Standard Check-in:</strong> 2:00 PM - 3:00 PM
+                        </div>
+                        <div class="time-block">
+                            <strong>Standard Check-out:</strong> 11:00 AM - 12:00 Noon
+                        </div>
+                        <div class="time-block special">
+                            <strong>Early Check-in:</strong> Available from 7:00 AM (subject to availability, may incur additional charges)
+                        </div>
+                        <div class="time-block special">
+                            <strong>Late Check-out:</strong> Available until 5:00 PM (subject to availability, may incur additional charges)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="money-saving-tips">
+                    <h3>💰 Money-Saving Tips</h3>
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <div class="tip-icon">📞</div>
+                            <strong>Direct Call</strong>
+                            <p>Call the hotel directly to ask for exclusive rates and package deals!</p>
+                        </div>
+                        <div class="tip-card">
+                            <div class="tip-icon">📆</div>
+                            <strong>Flexible Dates</strong>
+                            <p>Traveling on off-peak dates? You might get better rates mid-week.</p>
+                        </div>
+                        <div class="tip-card">
+                            <div class="tip-icon">🎁</div>
+                            <strong>Loyalty Programs</strong>
+                            <p>Ask about loyalty rewards or frequent guest discounts for future bookings.</p>
+                        </div>
+                        <div class="tip-card">
+                            <div class="tip-icon">💳</div>
+                            <strong>Card Promos</strong>
+                            <p>Check if your credit card issuer offers special promotions or discounts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-cta">
+                    <button id="nextStepBtn" class="next-step-btn" onclick="proceedToBooking()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Multi-Step Booking Modal -->
+    <div id="bookingStepsModal" class="booking-modal">
+        <div class="modal-overlay" onclick="closeBookingStepsModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Complete Your Booking</h2>
+                <button class="modal-close-btn" onclick="closeBookingStepsModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <!-- Step 1: Guest Info -->
+                <div id="step1Content" class="booking-step-content active">
+                    <h3>Step 1: Guest Information</h3>
+                    <form id="guestInfoForm">
+                        <div class="form-group">
+                            <label>Full Name:</label>
+                            <input type="text" id="guestName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number:</label>
+                            <input type="tel" id="guestPhone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address:</label>
+                            <input type="email" id="guestEmail" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Check-in Date:</label>
+                                <input type="date" id="checkInDate" onchange="calculateNights()" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Check-out Date:</label>
+                                <input type="date" id="checkOutDate" onchange="calculateNights()" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Number of Guests:</label>
+                                <input type="number" id="numGuests" min="1" placeholder="1" value="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Number of Nights:</label>
+                                <input type="number" id="numNights" readonly placeholder="0">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Step 2: Choose Room -->
+                <div id="step2Content" class="booking-step-content">
+                    <h3>Step 2: Choose Your Room</h3>
+                    <div id="roomSelectionContainer" class="room-selection-grid">
+                        <!-- Rooms will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Step 3: Payment -->
+                <div id="step3Content" class="booking-step-content">
+                    <h3>Step 3: Payment</h3>
+                    <div class="payment-summary">
+                        <h4>Booking Summary</h4>
+                        <div class="summary-item">
+                            <span>Hotel:</span>
+                            <span id="summaryHotel"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Room:</span>
+                            <span id="summaryRoom"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Check-in:</span>
+                            <span id="summaryCheckIn"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Check-out:</span>
+                            <span id="summaryCheckOut"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Number of Nights:</span>
+                            <span id="summaryNights"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Price per Night:</span>
+                            <span id="summaryPrice"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Subtotal (excluding tax):</span>
+                            <span id="summarySubtotal"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span>GST & Service Tax (10%):</span>
+                            <span id="summaryTax"></span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Total Amount:</span>
+                            <span id="summaryTotal"></span>
+                        </div>
+                    </div>
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="bank-transfer" required>
+                            <div class="payment-option-content">
+                                <h5>💳 Bank Transfer</h5>
+                                <p>Direct bank transfer to our account</p>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="paynow" required>
+                            <div class="payment-option-content">
+                                <h5>📱 PayNow</h5>
+                                <p>Fast local transfer using PayNow (Singapore)</p>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="card" required>
+                            <div class="payment-option-content">
+                                <h5>💰 Card Payment</h5>
+                                <p>Visa, Mastercard, or American Express</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="booking-navigation">
+                    <button id="prevBtn" class="prev-btn" onclick="previousStep()" style="display:none;">Back</button>
+                    <button id="nextBtn" class="next-btn" onclick="nextStep()">Next</button>
+                    <button id="doneBtn" class="done-btn" onclick="completeBooking()" style="display:none;">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="confirmationModal" class="booking-modal">
+        <div class="modal-overlay" onclick="closeConfirmation()"></div>
+        <div class="modal-content confirmation-content">
+            <div class="confirmation-icon">✓</div>
+            <h2>Thank You for Booking!</h2>
+            <p>Your booking has been successfully submitted.</p>
+            <p>Please wait for further instructions in your email.</p>
+            <button class="close-confirmation-btn" onclick="closeConfirmation()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Hotel Contact Information Database
+        const hotelContacts = {
+            'Jen Singapore Orchardgateway by Shangri-La': {
+                phone: '+65 6708 8880',
+                email: 'reservations.singapore@hoteljen.com'
+            },
+            'Genting Hotel Jurong': {
+                phone: '+65 6577 8881',
+                email: 'reservations.singapore@hoteljen.com'
+            },
+            'Sheraton Towers Singapore': {
+                phone: '+65 6577 8882',
+                email: 'reservations.singapore@hoteljen.com'
+            },
+            'Dorsett Singapore': {
+                phone: '+65 6577 8883',
+                email: 'reservations.singapore@hoteljen.com'
+            },
+            'Hotel 1900 Express @ Chinatown': {
+                phone: '+65 6577 8884',
+                email: 'reservations.singapore@hoteljen.com'
+            },
+            'Value Hotel Nice': {
+                phone: '+65 6577 8885',
+                email: 'reservations.singapore@hoteljen.com'
+            },
+            'Fragrance Hotel – Kovan': {
+                phone: '+65 6577 8886',
+                email: 'reservations.singapore@hoteljen.com'
+            }
+        };
+
+        // Hotel Photos Database
+        const hotelPhotos = {
+            'Jen Singapore Orchardgateway by Shangri-La': [
+                { room: 'Club Twin', url: 'https://ak-d.tripcdn.com/images/0205d12000818it21ACCE_W_1280_853_R5.webp', label: 'Club Twin - Room 1' },
+                { room: 'Club Twin', url: 'https://ak-d.tripcdn.com/images/0201t12000816x6ui2F2F_W_1280_853_R5.webp', label: 'Club Twin - Room 2' },
+                { room: 'Club Twin', url: 'https://ak-d.tripcdn.com/images/0206912000816vs5kFF76_W_1280_853_R5.webp', label: 'Club Twin - Room 3' },
+                { room: 'Club King', url: 'https://ak-d.tripcdn.com/images/0200112000816x1qj6E19_R_600_400_R5.webp', label: 'Club King - Room 1' },
+                { room: 'Club King', url: 'https://ak-d.tripcdn.com/images/1mc3n12000m668p3n00FB_R_600_400_R5.webp', label: 'Club King - Room 2' },
+                { room: 'Club King', url: 'https://ak-d.tripcdn.com/images/1mc2g12000m64dixw787A_R_600_400_R5.webp', label: 'Club King - Room 3' },
+                { room: 'Club King', url: 'https://ak-d.tripcdn.com/images/1mc2d12000h5zvx764A08_R_600_400_R5.webp', label: 'Club King - Room 4' }
+            ],
+            'Genting Hotel Jurong': [
+                { room: 'Superior Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/1mc3212000egud6js4EF1_R_600_400_R5.webp', label: 'Superior Twin - Room 1' },
+                { room: 'Superior Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0585q12000cui0gb5F37C_R_600_400_R5.webp', label: 'Superior Twin - Room 2' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0220e12000peoji532E28_R_600_400_R5.webp', label: 'Deluxe Twin - Room 1' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0223v12000peojlruD2D4_R_600_400_R5.webp', label: 'Deluxe Twin - Room 2' }
+            ],
+            'Sheraton Towers Singapore': [
+                { room: 'Deluxe King Guest Room', url: 'https://ak-d.tripcdn.com/images/1mc3612000jijtvipF944_R_600_400_R5.webp', label: 'Deluxe King - Room 1' },
+                { room: 'Deluxe King Guest Room', url: 'https://ak-d.tripcdn.com/images/0206q12000953rbta2217_R_600_400_R5.webp', label: 'Deluxe King - Room 2' },
+                { room: 'Deluxe King Guest Room', url: 'https://ak-d.tripcdn.com/images/0202e1200095o2igoABBA_R_600_400_R5.webp', label: 'Deluxe King - Room 3' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0223p12000a29pgqeD61C_R_600_400_R5.webp', label: 'Deluxe Twin - Room 1' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0202z120009eycusaA037_R_600_400_R5.webp', label: 'Deluxe Twin - Room 2' },
+                { room: 'Deluxe Twin Guest Room', url: 'https://ak-d.tripcdn.com/images/0223i12000aawc62kFC0C_R_600_400_R5.webp', label: 'Deluxe Twin - Room 3' }
+            ],
+            'Dorsett Singapore': [
+                { room: 'Dorsett Twin Room', url: 'https://ak-d.tripcdn.com/images/1mc0312000n8qio891C94_R_600_400_R5.webp', label: 'Dorsett Twin - Room 1' },
+                { room: 'Dorsett Twin Room', url: 'https://ak-d.tripcdn.com/images/1mc3m12000n6lkgep3D46_R_600_400_R5.webp', label: 'Dorsett Twin - Room 2' },
+                { room: 'Dorsett Twin Room', url: 'https://ak-d.tripcdn.com/images/1mc4u12000nhj7vmeA7E6_R_600_400_R5.webp', label: 'Dorsett Twin - Room 3' },
+                { room: 'Dorsett King Room', url: 'https://ak-d.tripcdn.com/images/1mc0f12000n6kpsvhEF8F_R_600_400_R5.webp', label: 'Dorsett King - Room 1' },
+                { room: 'Dorsett King Room', url: 'https://ak-d.tripcdn.com/images/1mc4u12000nhj7vmeA7E6_R_600_400_R5.webp', label: 'Dorsett King - Room 2' }
+            ],
+            'Hotel 1900 Express @ Chinatown': [
+                { room: 'Express Standard Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc2u12000c1puw6sB198_R_600_400_R5.webp', label: 'Standard Queen - Room 1' },
+                { room: 'Express Standard Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc6s12000c1pw3in3D73_R_600_400_R5.webp', label: 'Standard Queen - Room 2' },
+                { room: 'Express Deluxe Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc3c12000don8wy4AD45_R_600_400_R5.webp', label: 'Deluxe Queen - Room 1' },
+                { room: 'Express Deluxe Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc6f12000don8mfz3103_R_600_400_R5.webp', label: 'Deluxe Queen - Room 2' },
+                { room: 'Express Deluxe Queen Room', url: 'https://ak-d.tripcdn.com/images/1mc7012000c1p8bk18BC9_R_600_400_R5.webp', label: 'Deluxe Queen - Room 3' }
+            ],
+            'Value Hotel Nice': [
+                { room: 'Standard Twin Room', url: 'https://ak-d.tripcdn.com/images/0206g12000aas2c6y6DD2_R_600_400_R5.webp', label: 'Standard Twin - Room 1' },
+                { room: 'Standard Twin Room', url: 'https://ak-d.tripcdn.com/images/1mc2812000dpn4cxh4AA1_R_600_400_R5.webp', label: 'Standard Twin - Room 2' },
+                { room: 'Superior Queen Room', url: 'https://ak-d.tripcdn.com/images/020011200082opjq4DD32_R_600_400_R5.webp', label: 'Superior Queen - Room 1' },
+                { room: 'Superior Queen Room', url: 'https://ak-d.tripcdn.com/images/0204h1200082opov412BF_R_600_400_R5.webp', label: 'Superior Queen - Room 2' }
+            ],
+            'Fragrance Hotel – Kovan': [
+                { room: 'Standard Room', url: 'https://ak-d.tripcdn.com/images/20030n000000e337993B8_R_600_400_R5.webp', label: 'Standard Room - Room 1' },
+                { room: 'Standard Room', url: 'https://ak-d.tripcdn.com/images/220u0y000000lrog6524C_R_600_400_R5.webp', label: 'Standard Room - Room 2' },
+                { room: 'Standard Room', url: 'https://ak-d.tripcdn.com/images/0583m12000csp8bib70A1_R_600_400_R5.webp', label: 'Standard Room - Room 3' },
+                { room: 'Standard Room', url: 'https://ak-d.tripcdn.com/images/0580v12000csrw63s3493_R_600_400_R5.webp', label: 'Standard Room - Room 4' },
+                { room: 'Superior Plus Double', url: 'https://ak-d.tripcdn.com/images/02024120009dbi6fjE579_R_600_400_R5.webp', label: 'Superior Plus Double - Room 1' },
+                { room: 'Superior Plus Double', url: 'https://ak-d.tripcdn.com/images/0204n120009dbjb080828_R_600_400_R5.webp', label: 'Superior Plus Double - Room 2' },
+                { room: 'Superior Plus Double', url: 'https://ak-d.tripcdn.com/images/0580812000csrwk1d8A31_R_600_400_R5.webp', label: 'Superior Plus Double - Room 3' }
+            ]
+        };
+
+        // Tab Switching Function
+        function switchHotelTab(event, tabName) {
+            event.preventDefault();
+            const buttons = event.target.parentElement.querySelectorAll('.hotel-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const details = event.target.parentElement.parentElement.querySelector('.hotel-booking-details');
+            const photos = event.target.parentElement.parentElement.querySelector('.hotel-booking-photos');
+
+            if (tabName === 'details' || tabName.includes('-details')) {
+                details.classList.add('active');
+                if (photos) photos.classList.remove('active');
+            } else if (tabName === 'photos' || tabName.includes('-photos')) {
+                details.classList.remove('active');
+                if (photos) photos.classList.add('active');
+                // Load photos when tab is opened
+                loadHotelPhotos();
+            }
+        }
+
+        // Load Hotel Photos
+        function loadHotelPhotos() {
+            const hotelCards = document.querySelectorAll('.hotel-booking-card');
+            hotelCards.forEach(card => {
+                const hotelName = card.querySelector('.hotel-booking-header h3').textContent.trim().replace(' (Newly Refurbished)', '');
+                const photosGrid = card.querySelector('.hotel-photos-grid');
+                
+                if (photosGrid && photosGrid.innerHTML === '') {
+                    const photos = hotelPhotos[hotelName] || [];
+                    photosGrid.innerHTML = photos.map(photo => `
+                        <div class="hotel-photo-item">
+                            <img src="${photo.url}" alt="${photo.label}" loading="lazy">
+                            <div class="hotel-photo-label">${photo.label}</div>
+                        </div>
+                    `).join('');
+                }
+            });
+        }
+
+        function openBookingModal(hotelName, price) {
+            const modal = document.getElementById('bookingModal');
+            const hotelNameElement = document.getElementById('modalHotelName');
+            const hotelInfoElement = document.getElementById('modalHotelInfo');
+            
+            hotelNameElement.textContent = hotelName;
+            bookingData.hotelName = hotelName;
+            bookingData.basePrice = price;
+            
+            // Get hotel contact info
+            const hotelInfo = hotelContacts[hotelName] || { phone: 'Contact for info', email: 'inquiries@hotel.com' };
+            
+            hotelInfoElement.innerHTML = `
+                <div class="contact-details">
+                    <p><strong>📱 Phone:</strong> ${hotelInfo.phone}</p>
+                    <p><strong>✉️ Email:</strong> ${hotelInfo.email}</p>
+                    <p><strong>💵 Starting Price:</strong> SGD $${price}/night</p>
+                </div>
+            `;
+            
+            // Get room data from the hotel card
+            const hotelCard = Array.from(document.querySelectorAll('.hotel-booking-card')).find(card => {
+                return card.textContent.includes(hotelName);
+            });
+            
+            if (hotelCard) {
+                const rooms = [];
+                hotelCard.querySelectorAll('.room').forEach(roomElement => {
+                    // Get the strong tag (room name) and the text after br (room price)
+                    const roomName = roomElement.querySelector('strong')?.textContent?.trim() || '';
+                    const fullText = roomElement.textContent;
+                    const priceMatch = fullText.match(/SGD\$(\d+)/);
+                    const priceValue = priceMatch ? priceMatch[1] : price;
+                    
+                    if (roomName) {
+                        rooms.push({
+                            name: roomName,
+                            price: priceValue
+                        });
+                    }
+                });
+                bookingData.rooms = rooms;
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        let currentStep = 1;
+        let bookingData = {};
+
+        function proceedToBooking() {
+            closeBookingModal();
+            document.getElementById('bookingStepsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingStepsModal() {
+            document.getElementById('bookingStepsModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentStep = 1;
+            updateStepDisplay();
+        }
+
+        function calculateNights() {
+            const checkIn = new Date(document.getElementById('checkInDate').value);
+            const checkOut = new Date(document.getElementById('checkOutDate').value);
+            if (checkIn && checkOut && checkOut > checkIn) {
+                const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+                document.getElementById('numNights').value = nights;
+            }
+        }
+
+        function nextStep() {
+            if (currentStep === 1) {
+                // Validate guest info
+                const name = document.getElementById('guestName').value;
+                const phone = document.getElementById('guestPhone').value;
+                const email = document.getElementById('guestEmail').value;
+                const checkIn = document.getElementById('checkInDate').value;
+                const checkOut = document.getElementById('checkOutDate').value;
+                const guests = document.getElementById('numGuests').value;
+                const nights = document.getElementById('numNights').value;
+
+                if (!name || !phone || !email || !checkIn || !checkOut || !guests || !nights) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+
+                // Preserve existing booking data (rooms, hotelName, etc.) and add guest info
+                bookingData.name = name;
+                bookingData.phone = phone;
+                bookingData.email = email;
+                bookingData.checkIn = checkIn;
+                bookingData.checkOut = checkOut;
+                bookingData.guests = guests;
+                bookingData.nights = nights;
+                
+                currentStep = 2;
+                populateRoomSelection();
+            } else if (currentStep === 2) {
+                const selectedRoom = document.querySelector('input[name="roomOption"]:checked');
+                if (!selectedRoom) {
+                    alert('Please select a room');
+                    return;
+                }
+                bookingData.room = selectedRoom.value;
+                bookingData.roomPrice = parseFloat(selectedRoom.dataset.price);
+                currentStep = 3;
+                populatePaymentSummary();
+            }
+            updateStepDisplay();
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        function updateStepDisplay() {
+            // Hide all step contents
+            document.getElementById('step1Content').classList.remove('active');
+            document.getElementById('step2Content').classList.remove('active');
+            document.getElementById('step3Content').classList.remove('active');
+
+            // Show current step
+            document.getElementById('step' + currentStep + 'Content').classList.add('active');
+
+            // Update button visibility
+            document.getElementById('prevBtn').style.display = currentStep > 1 ? 'block' : 'none';
+            document.getElementById('nextBtn').style.display = currentStep < 3 ? 'block' : 'none';
+            document.getElementById('doneBtn').style.display = currentStep === 3 ? 'block' : 'none';
+        }
+
+        function populateRoomSelection() {
+            const container = document.getElementById('roomSelectionContainer');
+            container.innerHTML = '';
+            
+            // Define rooms for each hotel
+            const hotelRooms = {
+                'Jen Singapore Orchardgateway by Shangri-La': [
+                    { name: 'Club Twin', price: 96, description: 'Premium bedding, access to club lounge benefits' },
+                    { name: 'Club King', price: 96, description: 'Premium bedding, access to club lounge benefits' }
+                ],
+                'Genting Hotel Jurong': [
+                    { name: 'Superior Twin Guest Room', price: 70, description: 'Two single beds, contemporary style' },
+                    { name: 'Deluxe Twin Guest Room', price: 75, description: 'More space, upgraded décor' }
+                ],
+                'Sheraton Towers Singapore': [
+                    { name: 'Deluxe King Guest Room', price: 90, description: 'Luxurious king bed, elegant furnishings' },
+                    { name: 'Deluxe Twin Guest Room', price: 93, description: 'Two single beds, spacious layout' }
+                ],
+                'Dorsett Singapore': [
+                    { name: 'Dorsett Twin Room', price: 80, description: 'Stylish twin beds, compact yet chic' },
+                    { name: 'Dorsett King Room', price: 85, description: 'King bed, modern interiors' }
+                ],
+                'Hotel 1900 Express @ Chinatown': [
+                    { name: 'Express Standard Queen Room', price: 63, description: 'Cozy queen bed, modern design' },
+                    { name: 'Express Deluxe Queen Room', price: 68, description: 'More spacious, upgraded furnishings' }
+                ],
+                'Value Hotel Nice': [
+                    { name: 'Standard Twin Room', price: 50, description: 'Two single beds, simple and compact' },
+                    { name: 'Superior Queen Room', price: 53, description: 'Larger bed, slightly more space' }
+                ],
+                'Fragrance Hotel – Kovan': [
+                    { name: 'Standard Room', price: 60, description: 'Basic amenities, clean and functional' },
+                    { name: 'Superior Plus Double', price: 65, description: 'Slightly larger, with added comfort features' }
+                ]
+            };
+            
+            const rooms = hotelRooms[bookingData.hotelName] || [];
+            
+            rooms.forEach((room, index) => {
+                const roomLabel = document.createElement('label');
+                roomLabel.className = 'room-option';
+                roomLabel.innerHTML = `
+                    <input type="radio" name="roomOption" value="${room.name}" data-price="${room.price}" data-index="${index}">
+                    <div class="room-option-content">
+                        <strong>${room.name}</strong>
+                        <p>SGD $${room.price}/night</p>
+                        <small>${room.description}</small>
+                    </div>
+                `;
+                // Add event listener to properly set the price
+                const radioBtn = roomLabel.querySelector('input[type="radio"]');
+                radioBtn.addEventListener('change', function() {
+                    bookingData.room = this.value;
+                    bookingData.roomPrice = parseFloat(this.dataset.price);
+                    console.log('Room selected:', bookingData.room, 'Price:', bookingData.roomPrice);
+                });
+                container.appendChild(roomLabel);
+            });
+        }
+
+        function populatePaymentSummary() {
+            document.getElementById('summaryHotel').textContent = bookingData.hotelName || '';
+            document.getElementById('summaryRoom').textContent = bookingData.room || '';
+            document.getElementById('summaryCheckIn').textContent = bookingData.checkIn || '';
+            document.getElementById('summaryCheckOut').textContent = bookingData.checkOut || '';
+            document.getElementById('summaryNights').textContent = bookingData.nights || '0';
+            
+            // Ensure roomPrice is a number
+            const roomPrice = parseFloat(bookingData.roomPrice) || 0;
+            document.getElementById('summaryPrice').textContent = 'SGD $' + roomPrice.toFixed(2) + '/night';
+            
+            updatePaymentSummary();
+        }
+
+        function updatePaymentSummary() {
+            const roomPrice = parseFloat(bookingData.roomPrice) || 0;
+            const nights = parseInt(bookingData.nights) || 0;
+            
+            // Ensure we have valid values
+            if (roomPrice <= 0 || nights <= 0) {
+                document.getElementById('summarySubtotal').textContent = 'SGD $0.00';
+                document.getElementById('summaryTax').textContent = 'SGD $0.00';
+                document.getElementById('summaryTotal').textContent = 'SGD $0.00';
+                return;
+            }
+            
+            const subtotal = roomPrice * nights;
+            
+            // Tax is calculated on subtotal
+            const tax = subtotal * 0.10; // 10% GST & Service Tax
+            const total = subtotal + tax;
+            
+            // Update display
+            document.getElementById('summarySubtotal').textContent = 'SGD $' + subtotal.toFixed(2);
+            document.getElementById('summaryTax').textContent = 'SGD $' + tax.toFixed(2);
+            document.getElementById('summaryTotal').textContent = 'SGD $' + total.toFixed(2);
+        }
+
+        function completeBooking() {
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!paymentMethod) {
+                alert('Please select a payment method');
+                return;
+            }
+            
+            bookingData.paymentMethod = paymentMethod.value;
+            
+            // Close booking modal and show confirmation
+            document.getElementById('bookingStepsModal').classList.remove('active');
+            document.getElementById('confirmationModal').classList.add('active');
+        }
+
+        function closeConfirmation() {
+            document.getElementById('confirmationModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            // Reset form
+            document.getElementById('guestInfoForm').reset();
+            currentStep = 1;
+        }
+
+        // Close modal when pressing Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeBookingModal();
+            }
+        });
+
+        // Book hotel
+        function bookHotel(hotelName, price) {
+            alert(`Booking: ${hotelName}\nPrice: SGD$${price}/night\n\nRedirecting to confirmation...`);
+            // In a real system, this would navigate to a booking confirmation page
+        }
+    </script>
+
+    <script src="styles.js"></script>
+
+    <script src="hotel-styles.js"></script>
+</body>
+</html>

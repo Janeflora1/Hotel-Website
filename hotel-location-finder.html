@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation Locator - TravelMate Singapore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #B40000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #B40000;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .intro-text {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .filter-toggle-btn {
+            display: none;
+            margin: 1rem auto;
+            padding: 0.8rem 1.5rem;
+            background: #486220;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-toggle-btn.show {
+            display: block;
+        }
+
+        .filter-toggle-btn:hover {
+            background: #3d5018;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(72,98,32,0.3);
+        }
+
+        .filter-panel {
+            background: #f5f5f5;
+            border: 2px solid #486220;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .filter-panel.show {
+            display: block;
+        }
+
+        .filter-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #486220;
+            padding-bottom: 1rem;
+        }
+
+        .filter-panel-header h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .filter-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .filter-close-btn:hover {
+            color: #B40000;
+        }
+
+        .filter-panel-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-category {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .filter-category h4 {
+            color: #B40000;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #B40000;
+            padding-bottom: 0.5rem;
+        }
+
+        .filter-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .filter-checkbox-label:hover {
+            color: #B40000;
+        }
+
+        .filter-checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .filter-panel-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-apply-filters,
+        .btn-reset-filters {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-apply-filters {
+            background: #B40000;
+            color: white;
+        }
+
+        .btn-apply-filters:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset-filters {
+            background: #ddd;
+            color: #333;
+        }
+
+        .btn-reset-filters:hover {
+            background: #ccc;
+        }
+
+        .location-input-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-group h3 {
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .search-input {
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #B40000;
+            box-shadow: 0 0 0 3px rgba(180,0,0,0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(180,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .loading {
+            text-align: center;
+            color: #B40000;
+            font-weight: bold;
+            margin: 2rem 0;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #B40000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .info-message {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            color: #856404;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            color: #721c24;
+        }
+
+        .success-message {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            color: #155724;
+        }
+
+        .results-section {
+            margin-top: 3rem;
+        }
+
+        .results-header {
+            color: #B40000;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #B40000;
+            padding-bottom: 0.5rem;
+        }
+
+        .accommodations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .accommodation-card {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .accommodation-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            border-color: #B40000;
+        }
+
+        .accommodation-type {
+            display: inline-block;
+            background: #B40000;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .accommodation-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .accommodation-location {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .accommodation-price {
+            font-size: 1.1rem;
+            color: #B40000;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .accommodation-details {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .detail-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #333;
+            min-width: 100px;
+        }
+
+        .detail-value {
+            color: #666;
+        }
+
+        .key-features {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .key-features-label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .features-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            background: #B40000;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .distance {
+            color: #486220;
+            font-weight: bold;
+        }
+
+        .directions-btn {
+            background: #486220;
+            color: white;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .directions-btn:hover {
+            background: #3d5018;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            padding: 2rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .location-input-section {
+                grid-template-columns: 1fr;
+            }
+
+            .accommodations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-content">
+                    <svg class="logo-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#B40000;stop-opacity:1" /><stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" /></linearGradient></defs><circle cx="60" cy="45" r="35" fill="url(#logoGradient)" /><text x="60" y="50" font-size="50" text-anchor="middle" dominant-baseline="middle">✈️</text></svg><span>TravelMate</span>
+                </div>
+                <div class="logo-tagline">Your Student Staycation Partner</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="hotel-index.html">Home</a></li>
+                <li><a href="hotel-student-housing.html">Student Housing</a></li>
+                <li><a href="hotel-budget-hotels.html">Budget Hotels</a></li>
+                <li><a href="hotel-short-term-stays.html">Short-Term Rentals (Cove)</a></li>
+                <li><a href="hotel-location-finder.html">🗺️ Location Finder</a></li>
+                <li><a href="hotel-index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>🗺️ Find Accommodation Near You</h1>
+        <p class="intro-text">Discover student housing, budget hotels, and short-term rentals near your preferred location in Singapore</p>
+
+        <!-- Location Input Section -->
+        <div class="location-input-section">
+            <!-- Current Location -->
+            <div class="input-group">
+                <h3>📍 Use Your Current Location</h3>
+                <button class="btn btn-primary" onclick="getUserLocation()">Find My Location</button>
+                <div id="currentLocationStatus"></div>
+            </div>
+
+            <!-- Search by Location -->
+            <div class="input-group">
+                <h3>🔍 Search by Location</h3>
+                <input type="text" id="locationSearch" class="search-input" placeholder="Enter location (e.g., Marina Bay, Orchard, Jurong)">
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="searchLocation()">Search</button>
+                    <button class="btn btn-secondary" onclick="clearResults()">Clear</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <!-- Filter Button (shown only after search) -->
+            <button class="filter-toggle-btn" id="filterToggleBtn" onclick="toggleFilterPanel()">🔍 Filter Results</button>
+
+            <!-- Filter Panel -->
+            <div id="filterPanel" class="filter-panel">
+                <div class="filter-panel-header">
+                    <h3>Filter Options</h3>
+                    <button class="filter-close-btn" onclick="toggleFilterPanel()">✕</button>
+                </div>
+                
+                <div class="filter-panel-content">
+                    <!-- Accommodation Type Filter -->
+                    <div class="filter-category">
+                        <h4>🏠 Accommodation Type</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="type-filter" value="Student Housing"> Student Housing
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="type-filter" value="Hotel/Budget Hotel"> Hotel/Budget Hotel
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="type-filter" value="Short-Term Rental"> Short-Term Rental
+                        </label>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="filter-category">
+                        <h4>💰 Price Range</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="0-100"> Below SGD$100
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="100-500"> SGD$100 - SGD$500
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="500-1000"> SGD$500 - SGD$1000
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="1000-2000"> SGD$1000 - SGD$2000
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="price-filter" value="2000+"> SGD$2000+
+                        </label>
+                    </div>
+
+                    <!-- Distance Filter -->
+                    <div class="filter-category">
+                        <h4>📏 Distance from You</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="distance-filter" value="0-5"> Within 5 km
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="distance-filter" value="5-10"> 5 - 10 km
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="distance-filter" value="10-20"> 10 - 20 km
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="distance-filter" value="20+"> 20+ km
+                        </label>
+                    </div>
+
+                    <!-- Region Filter -->
+                    <div class="filter-category">
+                        <h4>🗺️ Region</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Woodlands"> Woodlands
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Choa Chu Kang"> Choa Chu Kang
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Bukit Panjang"> Bukit Panjang
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Bright Hill"> Bright Hill
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Chinese Garden"> Chinese Garden
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Cashew"> Cashew
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Siglap"> Siglap
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Simei"> Simei
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Bedok Reservoir"> Bedok Reservoir
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Katong Park"> Katong Park
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Pasir Ris"> Pasir Ris
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Ubi"> Ubi
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Aljunied"> Aljunied
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Redhill"> Redhill
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Great World"> Great World
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Clementi"> Clementi
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Woodleigh"> Woodleigh
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Boon Lay"> Boon Lay
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Lakeside"> Lakeside
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Somerset"> Somerset
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Jurong East"> Jurong East
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Newton"> Newton
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Outram Park"> Outram Park
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Chinatown"> Chinatown
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Novena"> Novena
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Kovan"> Kovan
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Mayflower"> Mayflower
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Paya Lebar"> Paya Lebar
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Kembangan"> Kembangan
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Havelock"> Havelock
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Potong Pasir"> Potong Pasir
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Ang Mo Kio"> Ang Mo Kio
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Dakota"> Dakota
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="region-filter" value="Tiong Bahru"> Tiong Bahru
+                        </label>
+                    </div>
+
+                    <!-- Key Features Filter -->
+                    <div class="filter-category">
+                        <h4>✨ Key Features</h4>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Swimming Pool"> Swimming Pool
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Gym"> Gym
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Air Conditioner"> Air Conditioner
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Near Subway"> Near Subway
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Near Bus Station"> Near Bus Station
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Near Shopping Center"> Near Shopping Center
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Near Supermarket"> Near Supermarket
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Washing Machine"> Washing Machine
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Free Parking"> Free Parking
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="24 Hour Security"> 24 Hour Security
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Balcony"> Balcony
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Elevator"> Elevator
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Kitchen Cleaning"> Kitchen Cleaning
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Free Laundry"> Free Laundry
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Free Regular Cleaning"> Free Regular Cleaning
+                        </label>
+                        <label class="filter-checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Near Park"> Near Park
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-panel-footer">
+                    <button class="btn-apply-filters" onclick="applyAllFilters()">Apply Filters</button>
+                    <button class="btn-reset-filters" onclick="resetAllFilters()">Reset All</button>
+                </div>
+            </div>
+
+            <div class="results-header">Nearby Accommodations</div>
+            <div id="resultsList"></div>
+        </div>
+
+        <!-- Map Container -->
+        <div id="mapContainer" class="map-container" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Accommodation data from all three categories
+        const allAccommodations = [
+            // Student Housing (20 properties)
+            {
+                type: 'Student Housing',
+                name: 'Rosewood Condo, Singapore',
+                location: '15 Rosewood Drive, Singapore, Central Singapore 737939 (Woodlands)',
+                region: 'Woodlands',
+                price: 1100,
+                priceUnit: '/month',
+                latitude: 1.4368,
+                longitude: 103.8378,
+                contact: 'contact@uhomes.com | +65 9123 4567',
+                keyFeatures: ['Swimming Pool', 'Near Shopping Center', 'Near Subway', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/ubWjeykDgBZSUhhU7'
+            },
+            {
+                type: 'Student Housing',
+                name: 'The Warren, Singapore',
+                location: '37 Choa Chu Kang Loop, Singapore, Central Singapore 689675 (Choa Chu Kang)',
+                region: 'Choa Chu Kang',
+                price: 1050,
+                priceUnit: '/month',
+                latitude: 1.3867,
+                longitude: 103.7450,
+                contact: 'contact@uhomes.com | +65 9123 4568',
+                keyFeatures: ['Near Subway', 'Near Bus Station', 'Near Park', 'Near Shopping Center', 'Gym', 'Swimming Pool', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/Azs9JyPw259zNbzf9'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Maysprings, Singapore',
+                location: '2 Petir Road, Singapore, Central Singapore 678265 (Bukit Panjang)',
+                region: 'Bukit Panjang',
+                price: 700,
+                priceUnit: '/month',
+                latitude: 1.3758,
+                longitude: 103.7755,
+                contact: 'contact@uhomes.com | +65 9123 4569',
+                keyFeatures: ['Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/2gMxMKck9cGndkar6'
+            },
+            {
+                type: 'Student Housing',
+                name: 'The Madeira, Singapore',
+                location: '56 Bukit Batok Street 31, Singapore, Central Singapore 659445 (Bukit Gombak)',
+                region: 'Bukit Gombak',
+                price: 1280,
+                priceUnit: '/month',
+                latitude: 1.3445,
+                longitude: 103.7650,
+                contact: 'contact@uhomes.com | +65 9123 4570',
+                keyFeatures: ['Near Subway', 'Swimming Pool', 'Gym'],
+                googleMapsLink: 'https://maps.app.goo.gl/JB3W24sDvGT8tiib9'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Bishan Park Condominium, Singapore',
+                location: '24 Sin Ming Walk, Singapore, Central Singapore 575572 (Bright Hill)',
+                region: 'Bright Hill',
+                price: 800,
+                priceUnit: '/month',
+                latitude: 1.3520,
+                longitude: 103.8370,
+                contact: 'contact@uhomes.com | +65 9123 4571',
+                keyFeatures: ['Near Park', 'Near Subway', 'Near Bus Station', 'Near Supermarket', 'Gym', 'Air Conditioner', 'Swimming Pool'],
+                googleMapsLink: 'https://maps.app.goo.gl/NPnschaiH5LzH3Ma8'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Ivory Heights - BESPOKE, Singapore',
+                location: '117 Jurong East Street 13, Singapore, Central Singapore 600117 (Chinese Garden)',
+                region: 'Chinese Garden',
+                price: 1040,
+                priceUnit: '/month',
+                latitude: 1.3345,
+                longitude: 103.7424,
+                contact: 'contact@uhomes.com | +65 9123 4572',
+                keyFeatures: ['Kitchen Cleaning', 'Free Parking', 'Near School Bus', 'Washing Machine', 'Free Regular Cleaning'],
+                googleMapsLink: 'https://maps.app.goo.gl/rbQ2ktum74E6KmvA8'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Cashew Heights - AP, Singapore',
+                location: '97 Cashew Road, Singapore, Central Singapore 679668 (Cashew)',
+                region: 'Cashew',
+                price: 690,
+                priceUnit: '/month',
+                latitude: 1.4045,
+                longitude: 103.8255,
+                contact: 'contact@uhomes.com | +65 9123 4573',
+                keyFeatures: ['Near Subway', 'Near Bus Station', 'Air Conditioner', 'Gym', 'Swimming Pool'],
+                googleMapsLink: 'https://maps.app.goo.gl/WHg5vfnZMm14giaZ8'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Lagoon View - X1, Singapore',
+                location: '5000K Marine Parade Road, Singapore, Central Singapore 449295 (Siglap)',
+                region: 'Siglap',
+                price: 850,
+                priceUnit: '/month',
+                latitude: 1.3048,
+                longitude: 103.8993,
+                contact: 'contact@uhomes.com | +65 9123 4574',
+                keyFeatures: ['Free Laundry', 'Near Bus Station', 'Near Supermarket', 'Near Park', '24 Hour Security', 'Near Subway', 'Balcony'],
+                googleMapsLink: 'https://maps.app.goo.gl/jPkGiHfLmDqHpV4B6'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Eastpoint Green, Singapore',
+                location: '7 Simei Street 3, Singapore, Central Singapore 529893 (Simei)',
+                region: 'Simei',
+                price: 890,
+                priceUnit: '/month',
+                latitude: 1.3455,
+                longitude: 103.9545,
+                contact: 'contact@uhomes.com | +65 9123 4575',
+                keyFeatures: ['Near Subway', 'Near Shopping Center', 'Gym', 'Swimming Pool', 'Washing Machine', 'Air Conditioner', 'Elevator'],
+                googleMapsLink: 'https://maps.app.goo.gl/PLTo7ViESRgPHnp77'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Aquarius by the Park, Singapore',
+                location: '5 Bedok Reservoir View, Singapore, Central Singapore 478928 (Bedok Reservoir)',
+                region: 'Bedok Reservoir',
+                price: 1280,
+                priceUnit: '/month',
+                latitude: 1.3310,
+                longitude: 103.8679,
+                contact: 'contact@uhomes.com | +65 9123 4576',
+                keyFeatures: ['Near Subway', 'Near Supermarket', 'Near Shopping Center', 'Gym', 'Washing Machine', 'Air Conditioner', 'Swimming Pool'],
+                googleMapsLink: 'https://maps.app.goo.gl/pUaz9hSRrNKa7QCj8'
+            },
+            {
+                type: 'Student Housing',
+                name: 'The Meyer Place, Singapore',
+                location: '2 Meyer Place, Singapore, Central Singapore 437989 (Katong Park)',
+                region: 'Katong Park',
+                price: 1000,
+                priceUnit: '/month',
+                latitude: 1.3055,
+                longitude: 103.8912,
+                contact: 'contact@uhomes.com | +65 9123 4577',
+                keyFeatures: ['Near Subway', 'Near Supermarket', 'Near Shopping Center', 'Gym', 'Washing Machine', 'Air Conditioner', 'Swimming Pool'],
+                googleMapsLink: 'https://maps.app.goo.gl/prQHyBd5w57no5wb9'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Elias Green, Singapore',
+                location: '1 Elias Green, Singapore, Central Singapore 519959 (Pasir Ris)',
+                region: 'Pasir Ris',
+                price: 980,
+                priceUnit: '/month',
+                latitude: 1.3791,
+                longitude: 103.9791,
+                contact: 'contact@uhomes.com | +65 9123 4578',
+                keyFeatures: ['Near Supermarket', 'Near Subway', 'Near Shopping Center', 'Gym', 'Washing Machine', 'Swimming Pool', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/5thMaTAZPGmTNTpP9'
+            },
+            {
+                type: 'Student Housing',
+                name: '334 Ubi Ave 1, Singapore',
+                location: '334 Ubi Avenue 1, Singapore, Central Singapore 400334 (Ubi)',
+                region: 'Ubi',
+                price: 690,
+                priceUnit: '/month',
+                latitude: 1.3297,
+                longitude: 103.8905,
+                contact: 'contact@uhomes.com | +65 9123 4579',
+                keyFeatures: ['Near Subway', 'Elevator', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/qwLa2JWU2WoFYn9c8'
+            },
+            {
+                type: 'Student Housing',
+                name: 'TRE Residences - HC, Singapore',
+                location: '9 Geylang East Avenue 1, Singapore, Central Singapore 389783 (Aljunied)',
+                region: 'Aljunied',
+                price: 1280,
+                priceUnit: '/month',
+                latitude: 1.3168,
+                longitude: 103.8748,
+                contact: 'contact@uhomes.com | +65 9123 4580',
+                keyFeatures: ['Near Subway', 'Near Supermarket', 'Gym', 'Washing Machine', 'Swimming Pool', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/tiaPFXq6FjBm4u6o6'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Principal Garden, Singapore',
+                location: '99 Prince Charles Crescent, Singapore, Central Singapore 159029 (Redhill)',
+                region: 'Redhill',
+                price: 1100,
+                priceUnit: '/month',
+                latitude: 1.2878,
+                longitude: 103.8169,
+                contact: 'contact@uhomes.com | +65 9123 4581',
+                keyFeatures: ['Near Bus Station', 'Near Subway', 'Swimming Pool'],
+                googleMapsLink: 'https://maps.app.goo.gl/C1mUfCimQiGKhb8N8'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Horizon Towers, Singapore',
+                location: '29 Leonie Hill, Singapore, Central Singapore 239228 (Great World)',
+                region: 'Great World',
+                price: 1250,
+                priceUnit: '/month',
+                latitude: 1.2960,
+                longitude: 103.8317,
+                contact: 'contact@uhomes.com | +65 9123 4582',
+                keyFeatures: ['Gym', 'Swimming Pool', 'Near Subway', 'Near Bus Station', '24 Hour Security'],
+                googleMapsLink: 'https://maps.app.goo.gl/XweY8Bt8vgxRpLyr8'
+            },
+            {
+                type: 'Student Housing',
+                name: 'The Clement Canopy - Z, Singapore',
+                location: '16 Clementi Avenue 1, Singapore, Central Singapore 129960 (Clementi)',
+                region: 'Clementi',
+                price: 990,
+                priceUnit: '/month',
+                latitude: 1.3150,
+                longitude: 103.7643,
+                contact: 'contact@uhomes.com | +65 9123 4583',
+                keyFeatures: ['Near Subway', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/Dd7pPo8mTiydvhVbA'
+            },
+            {
+                type: 'Student Housing',
+                name: '25 Woodleigh Close, Singapore',
+                location: '25 Woodleigh Close, Singapore, Central Singapore 357920 (Woodleigh)',
+                region: 'Woodleigh',
+                price: 1278,
+                priceUnit: '/month',
+                latitude: 1.3572,
+                longitude: 103.8683,
+                contact: 'contact@uhomes.com | +65 9123 4584',
+                keyFeatures: ['Swimming Pool', 'Near Bus Station', 'Air Conditioner', 'Gym', 'Near Subway'],
+                googleMapsLink: 'https://maps.app.goo.gl/hPYJNmgzxYKuKvtx8'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Summerdale - HC, Singapore',
+                location: '10 Boon Lay Drive, Singapore, Central Singapore 649929 (Boon Lay)',
+                region: 'Boon Lay',
+                price: 890,
+                priceUnit: '/month',
+                latitude: 1.3409,
+                longitude: 103.7633,
+                contact: 'contact@uhomes.com | +65 9123 4585',
+                keyFeatures: ['Near Bus Station', 'Near Park', 'Near Subway', 'Near Shopping Centre', 'Washing Machine', 'Gym', 'Swimming Pool', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/TJyXL96uBHXeziQu6'
+            },
+            {
+                type: 'Student Housing',
+                name: 'Caspian - BESPOKE, Singapore',
+                location: '54 Lakeside Drive, Singapore, Central Singapore 648317 (Lakeside)',
+                region: 'Lakeside',
+                price: 700,
+                priceUnit: '/month',
+                latitude: 1.3554,
+                longitude: 103.7258,
+                contact: 'contact@uhomes.com | +65 9123 4586',
+                keyFeatures: ['Near Subway', 'Swimming Pool', 'Air Conditioner', 'Gym'],
+                googleMapsLink: 'https://maps.app.goo.gl/qqKy1qxdcYk4wA9M9'
+            },
+            // Budget Hotels (7 properties)
+            {
+                type: 'Hotel/Budget Hotel',
+                name: 'Jen Singapore Orchardgateway by Shangri-La',
+                location: '277 Orchard Rd, Singapore, 238858 (Somerset)',
+                region: 'Somerset',
+                price: 96,
+                priceUnit: '/night',
+                latitude: 1.3022,
+                longitude: 103.8343,
+                contact: '+65 6708 8880 | reservations.singapore@hoteljen.com',
+                keyFeatures: ['Near Subway', 'Swimming Pool', 'Air Conditioner', 'Gym'],
+                googleMapsLink: 'https://maps.app.goo.gl/v4ccfiG6pBxP4wif8'
+            },
+            {
+                type: 'Hotel/Budget Hotel',
+                name: 'Genting Hotel Jurong',
+                location: '2 Town Hall Link, Singapore, 608516 (Jurong East)',
+                region: 'Jurong East',
+                price: 70,
+                priceUnit: '/night',
+                latitude: 1.3341,
+                longitude: 103.7429,
+                contact: '+65 6577 8881 | reservations.singapore@hoteljen.com',
+                keyFeatures: ['Near Shopping Center', 'Near Supermarket', 'Balcony', 'Swimming Pool', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/it6L3AoY3sv4Fq1T9'
+            },
+            {
+                type: 'Hotel/Budget Hotel',
+                name: 'Sheraton Towers Singapore',
+                location: '39 Scotts Rd, Singapore, 228230 (Newton)',
+                region: 'Newton',
+                price: 90,
+                priceUnit: '/night',
+                latitude: 1.3145,
+                longitude: 103.8386,
+                contact: '+65 6577 8882 | reservations.singapore@hoteljen.com',
+                keyFeatures: ['Near Subway', 'Elevator', 'Gym'],
+                googleMapsLink: 'https://maps.app.goo.gl/ZcYaie99wRgpedNo7'
+            },
+            {
+                type: 'Hotel/Budget Hotel',
+                name: 'Dorsett Singapore (Newly Refurbished)',
+                location: '333 New Bridge Rd, Singapore, 088765 (Outram Park)',
+                region: 'Outram Park',
+                price: 180,
+                priceUnit: '/night',
+                latitude: 1.2878,
+                longitude: 103.8090,
+                contact: '+65 6577 8883 | reservations.singapore@hoteljen.com',
+                keyFeatures: ['Near Subway', 'Near Bus Station', 'Near Shopping Center', 'Gym', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/AN1sLFesGRfFgoQz9'
+            },
+            {
+                type: 'Hotel/Budget Hotel',
+                name: 'Hotel 1900 Express @ Chinatown',
+                location: 'Mosque St, #46, Singapore, 059525 (Chinatown)',
+                region: 'Chinatown',
+                price: 63,
+                priceUnit: '/night',
+                latitude: 1.2836,
+                longitude: 103.8436,
+                contact: '+65 6577 8884 | reservations.singapore@hoteljen.com',
+                keyFeatures: ['Near Park', 'Near Supermarket', 'Washing Machine', 'Swimming Pool'],
+                googleMapsLink: 'https://maps.app.goo.gl/xe7X4NqvQpHvPsrv8'
+            },
+            {
+                type: 'Hotel/Budget Hotel',
+                name: 'Value Hotel Nice',
+                location: '302 Balestier Rd, #01-02, Singapore, 329738 (Novena)',
+                region: 'Novena',
+                price: 50,
+                priceUnit: '/night',
+                latitude: 1.3236,
+                longitude: 103.8436,
+                contact: '+65 6577 8885 | reservations.singapore@hoteljen.com',
+                keyFeatures: ['Near Bus Station', 'Near Subway', 'Swimming Pool', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/nC3ksqM2YvNvMGPC7'
+            },
+            {
+                type: 'Hotel/Budget Hotel',
+                name: 'Fragrance Hotel – Kovan',
+                location: '760 Upper Serangoon Road, Singapore, 534629 (Kovan)',
+                region: 'Kovan',
+                price: 60,
+                priceUnit: '/night',
+                latitude: 1.3750,
+                longitude: 103.8650,
+                contact: '+65 6577 8886 | reservations.singapore@hoteljen.com',
+                keyFeatures: ['Near Subway', 'Near Shopping Centre', 'Gym', 'Swimming Pool', 'Washing Machine'],
+                googleMapsLink: 'https://maps.app.goo.gl/eAMcYwiY5zmXQ5ib6'
+            },
+            // Short-Term Rentals (9 properties)
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 193 @ 27 Casuarina Road',
+                location: '27 Casuarina Road, Singapore, 579415 (Mayflower)',
+                region: 'Mayflower',
+                price: 850,
+                priceUnit: '/month',
+                latitude: 1.3956,
+                longitude: 103.8150,
+                contact: 'bookings@cove.sg | +65 9234 4860',
+                keyFeatures: ['Near Subway', 'Near Supermarket', 'Gym', 'Swimming Pool', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/oxJrn6ay3jh5fyc8A'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 320 @ Esta Ruby',
+                location: '500 Guillemard Rd, Singapore 399839 (Paya Lebar)',
+                region: 'Paya Lebar',
+                price: 1150,
+                priceUnit: '/month',
+                latitude: 1.3345,
+                longitude: 103.8933,
+                contact: 'bookings@cove.sg | +65 9234 4861',
+                keyFeatures: ['Near Subway', 'Near Shopping Centre', 'Near Bus Station', 'Elevator'],
+                googleMapsLink: 'https://maps.app.goo.gl/KWte7DHux8THds3N9'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room within a Landed House (Cove 271)',
+                location: '22A Jalan Selamat, Singapore, 418545 (Kembangan)',
+                region: 'Kembangan',
+                price: 1250,
+                priceUnit: '/month',
+                latitude: 1.3486,
+                longitude: 103.8947,
+                contact: 'bookings@cove.sg | +65 9234 4862',
+                keyFeatures: ['Near Subway', 'Near Supermarket', 'Gym', 'Swimming Pool', 'Balcony'],
+                googleMapsLink: 'https://maps.app.goo.gl/MCkB49FABnyPfcyU8'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Pocket Room Cove 491 @ Emerald Park',
+                location: 'Emerald Park, #02-08, 2 Indus Road, Singapore, 169586 (Havelock)',
+                region: 'Havelock',
+                price: 1200,
+                priceUnit: '/month',
+                latitude: 1.2885,
+                longitude: 103.8269,
+                contact: 'bookings@cove.sg | +65 9234 4863',
+                keyFeatures: ['Near Subway', 'Air Conditioner', 'Free Parking', 'Kitchen Cleaning'],
+                googleMapsLink: 'https://maps.app.goo.gl/TKgzkJmyjoekNwYW9'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 144 @ 19A Tai Thong Crescent',
+                location: '19A Tai Thong Crescent, Singapore, 347853 (Potong Pasir)',
+                region: 'Potong Pasir',
+                price: 1200,
+                priceUnit: '/month',
+                latitude: 1.3369,
+                longitude: 103.8684,
+                contact: 'bookings@cove.sg | +65 9234 4865',
+                keyFeatures: ['Near Subway', 'Near Bus Station', 'Near Park', 'Gym', 'Swimming Pool'],
+                googleMapsLink: 'https://maps.app.goo.gl/we67NyfnTpHHU7TH8'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 238 @ Nuovo',
+                location: '23 Ang Mo Kio Avenue 9, Singapore, 569787 (Ang Mo Kio)',
+                region: 'Ang Mo Kio',
+                price: 1200,
+                priceUnit: '/month',
+                latitude: 1.3693,
+                longitude: 103.8453,
+                contact: 'bookings@cove.sg | +65 9234 4866',
+                keyFeatures: ['Near Subway', 'Near Shopping Centre', 'Washing Machine', '24 Hour Security'],
+                googleMapsLink: 'https://maps.app.goo.gl/Mvv14dBA9YQSHqfL7'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 195 @ 18A Valley Road',
+                location: '18A Valley Road, Singapore, 534475 (Kovan)',
+                region: 'Kovan',
+                price: 950,
+                priceUnit: '/month',
+                latitude: 1.3750,
+                longitude: 103.8620,
+                contact: 'bookings@cove.sg | +65 9234 4867',
+                keyFeatures: ['Near Subway', 'Near School Bus', 'Free Parking', 'Kitchen Cleaning'],
+                googleMapsLink: 'https://maps.app.goo.gl/Fj7QfLBeLaWbqTRc8'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Pocket Room Cove 433 @ Cassia View',
+                location: 'Cassia View, #16-02, 320 Guillemard Rd, Singapore, 399746 (Dakota)',
+                region: 'Dakota',
+                price: 1000,
+                priceUnit: '/month',
+                latitude: 1.3290,
+                longitude: 103.8900,
+                contact: 'bookings@cove.sg | +65 9234 4868',
+                keyFeatures: ['Near Shopping Centre', 'Near Park', 'Swimming Pool', 'Air Conditioner'],
+                googleMapsLink: 'https://maps.app.goo.gl/BJwbbqXMLFwVFtvRA'
+            },
+            {
+                type: 'Short-Term Rental',
+                name: 'Standard Room Cove 89 @ Havelock Road',
+                location: '743b Havelock Road, 169656 (Tiong Bahru)',
+                region: 'Tiong Bahru',
+                price: 1250,
+                priceUnit: '/month',
+                latitude: 1.2878,
+                longitude: 103.8240,
+                contact: 'bookings@cove.sg | +65 9234 4869',
+                keyFeatures: ['Near Bus Station', 'Near Supermarket', 'Free Regular Cleaning', 'Washing Machine', 'Gym'],
+                googleMapsLink: 'https://maps.app.goo.gl/bLa3CDTEmA3C4F7H9'
+            }
+        ];
+
+        let currentUserLocation = null;
+
+        // Calculate distance between two coordinates (Haversine formula)
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Earth's radius in kilometers
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+
+        // Get user's current location
+        function getUserLocation() {
+            const statusDiv = document.getElementById('currentLocationStatus');
+            statusDiv.innerHTML = '<div class="loading"><span class="spinner"></span>Getting your location...</div>';
+
+            if (!navigator.geolocation) {
+                statusDiv.innerHTML = '<div class="error-message">Geolocation is not supported by your browser</div>';
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    currentUserLocation = {
+                        lat: position.coords.latitude,
+                        lon: position.coords.longitude
+                    };
+                    statusDiv.innerHTML = `<div class="success-message">✓ Location found! Now showing nearby accommodations...</div>`;
+                    showNearbyAccommodations();
+                },
+                (error) => {
+                    statusDiv.innerHTML = `<div class="error-message">Error: ${error.message}. Please enable location access or try searching by location.</div>`;
+                }
+            );
+        }
+
+        // Search location by name
+        function searchLocation() {
+            const searchInput = document.getElementById('locationSearch').value.trim();
+            if (!searchInput) {
+                alert('Please enter a location to search');
+                return;
+            }
+
+            const searchLower = searchInput.toLowerCase();
+            const matchedAccommodations = allAccommodations.filter(acc =>
+                acc.region.toLowerCase().includes(searchLower) ||
+                acc.location.toLowerCase().includes(searchLower) ||
+                acc.name.toLowerCase().includes(searchLower)
+            );
+
+            if (matchedAccommodations.length > 0) {
+                displayResults(matchedAccommodations);
+                document.getElementById('currentLocationStatus').innerHTML = `<div class="success-message">Found ${matchedAccommodations.length} accommodation(s) matching "${searchInput}"</div>`;
+            } else {
+                document.getElementById('resultsSection').style.display = 'none';
+                document.getElementById('currentLocationStatus').innerHTML = `<div class="error-message">No accommodations found for "${searchInput}". Try another location or use current location.</div>`;
+            }
+        }
+
+        // Show nearby accommodations based on current location
+        function showNearbyAccommodations() {
+            if (!currentUserLocation) {
+                alert('Please share your location first');
+                return;
+            }
+
+            const nearby = allAccommodations.map(acc => ({
+                ...acc,
+                distance: calculateDistance(currentUserLocation.lat, currentUserLocation.lon, acc.latitude, acc.longitude)
+            })).sort((a, b) => a.distance - b.distance).slice(0, 20);
+
+            displayResults(nearby);
+        }
+
+        // Toggle filter panel
+        function toggleFilterPanel() {
+            const filterPanel = document.getElementById('filterPanel');
+            filterPanel.classList.toggle('show');
+        }
+
+        // Close filter panel when clicking outside
+        document.addEventListener('click', function(event) {
+            const filterPanel = document.getElementById('filterPanel');
+            const filterBtn = document.querySelector('.filter-toggle-btn');
+            if (filterPanel && !filterPanel.contains(event.target) && !filterBtn.contains(event.target)) {
+                filterPanel.classList.remove('show');
+            }
+        });
+
+        // Apply all filters
+        function applyAllFilters() {
+            const selectedTypes = Array.from(document.querySelectorAll('.type-filter:checked')).map(cb => cb.value);
+            const selectedPrices = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => cb.value);
+            const selectedDistances = Array.from(document.querySelectorAll('.distance-filter:checked')).map(cb => cb.value);
+            const selectedRegions = Array.from(document.querySelectorAll('.region-filter:checked')).map(cb => cb.value);
+            const selectedFeatures = Array.from(document.querySelectorAll('.feature-filter:checked')).map(cb => cb.value);
+
+            // Helper function to check if price falls within selected range
+            function matchesPrice(price, ranges) {
+                return ranges.some(range => {
+                    if (range === '0-100' && price >= 0 && price <= 100) return true;
+                    if (range === '100-500' && price > 100 && price <= 500) return true;
+                    if (range === '500-1000' && price > 500 && price <= 1000) return true;
+                    if (range === '1000-2000' && price > 1000 && price <= 2000) return true;
+                    if (range === '2000+' && price > 2000) return true;
+                    return false;
+                });
+            }
+
+            // Helper function to check if distance falls within selected range
+            function matchesDistance(distance, ranges) {
+                return ranges.some(range => {
+                    if (range === '0-5' && distance >= 0 && distance <= 5) return true;
+                    if (range === '5-10' && distance > 5 && distance <= 10) return true;
+                    if (range === '10-20' && distance > 10 && distance <= 20) return true;
+                    if (range === '20+' && distance > 20) return true;
+                    return false;
+                });
+            }
+
+            // Helper function to check if accommodation has all selected features
+            function matchesFeatures(accFeatures, selectedFeaturesArray) {
+                if (selectedFeaturesArray.length === 0) return true;
+                return selectedFeaturesArray.every(feature => 
+                    accFeatures && accFeatures.includes(feature)
+                );
+            }
+
+            // Filter accommodations based on ALL selected criteria
+            let filtered = allAccommodations.filter(acc => {
+                // Check type filter (if any selected, must match)
+                if (selectedTypes.length > 0 && !selectedTypes.includes(acc.type)) {
+                    return false;
+                }
+
+                // Check price filter (if any selected, must match)
+                if (selectedPrices.length > 0 && !matchesPrice(acc.price, selectedPrices)) {
+                    return false;
+                }
+
+                // Check region filter (if any selected, must match)
+                if (selectedRegions.length > 0 && !selectedRegions.includes(acc.region)) {
+                    return false;
+                }
+
+                // Check features filter (if any selected, must have ALL selected features)
+                if (selectedFeatures.length > 0 && !matchesFeatures(acc.keyFeatures, selectedFeatures)) {
+                    return false;
+                }
+
+                // All selected filters matched
+                return true;
+            });
+
+            // Add distance calculation for sorting and distance filtering
+            if (currentUserLocation) {
+                filtered = filtered.map(acc => ({
+                    ...acc,
+                    distance: calculateDistance(currentUserLocation.lat, currentUserLocation.lon, acc.latitude, acc.longitude)
+                }));
+
+                // Apply distance filter if any selected
+                if (selectedDistances.length > 0) {
+                    filtered = filtered.filter(acc => matchesDistance(acc.distance, selectedDistances));
+                }
+
+                // Sort by distance
+                filtered.sort((a, b) => a.distance - b.distance);
+            }
+
+            displayResults(filtered);
+            toggleFilterPanel();
+
+            if (filtered.length === 0) {
+                document.getElementById('resultsList').innerHTML = '<div class="no-results">No accommodations match your filters. Try adjusting your criteria.</div>';
+            }
+        }
+
+        // Reset all filters
+        function resetAllFilters() {
+            document.querySelectorAll('.type-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.price-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.distance-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.region-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.feature-filter').forEach(cb => cb.checked = false);
+        }
+
+        // Display results
+        function displayResults(accommodations) {
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsList = document.getElementById('resultsList');
+            const filterToggleBtn = document.getElementById('filterToggleBtn');
+
+            if (accommodations.length === 0) {
+                resultsList.innerHTML = '<div class="no-results">No accommodations found.</div>';
+                resultsSection.style.display = 'block';
+                filterToggleBtn.classList.remove('show');
+                return;
+            }
+
+            resultsList.innerHTML = accommodations.map(acc => {
+                // Determine booking link based on accommodation type
+                let bookingLink = '';
+                if (acc.type === 'Student Housing') {
+                    bookingLink = 'http://127.0.0.1:5500/booking.html';
+                } else if (acc.type === 'Hotel/Budget Hotel') {
+                    bookingLink = 'http://127.0.0.1:5500/budget-hotels-booking.html';
+                } else if (acc.type === 'Short-Term Rental') {
+                    bookingLink = 'http://127.0.0.1:5500/short-term-rentals-booking.html';
+                }
+
+                return `
+                <div class="accommodation-card">
+                    <div class="accommodation-type">${acc.type}</div>
+                    <div class="accommodation-name">${acc.name}</div>
+                    <div class="accommodation-location">📍 ${acc.location}</div>
+                    <div class="accommodation-price">SGD $${acc.price} ${acc.priceUnit}</div>
+                    
+                    <div class="accommodation-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Region:</span>
+                            <span class="detail-value">${acc.region}</span>
+                        </div>
+                        ${acc.distance ? `<div class="detail-row">
+                            <span class="detail-label">Distance:</span>
+                            <span class="detail-value distance">${acc.distance.toFixed(2)} km away</span>
+                        </div>` : ''}
+                        <div class="detail-row">
+                            <span class="detail-label">Contact:</span>
+                            <span class="detail-value">${acc.contact}</span>
+                        </div>
+                        ${bookingLink ? `<div class="detail-row">
+                            <span class="detail-label">Booking Link:</span>
+                            <span class="detail-value"><a href="${bookingLink}" target="_blank" style="color: #B40000; text-decoration: underline; cursor: pointer;">Book Now</a></span>
+                        </div>` : ''}
+                    </div>
+
+                    ${acc.keyFeatures && acc.keyFeatures.length > 0 ? `
+                    <div class="key-features">
+                        <span class="key-features-label">Key Features:</span>
+                        <div class="features-tags">
+                            ${acc.keyFeatures.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+                    
+                    <button class="directions-btn" onclick="openDirections('${acc.googleMapsLink}')">
+                        🗺️ Get Directions
+                    </button>
+                </div>
+            `;
+            }).join('');
+
+            resultsSection.style.display = 'block';
+            // Show the filter button only when there are results
+            filterToggleBtn.classList.add('show');
+        }
+
+        // Open directions in Google Maps
+        function openDirections(googleMapsLink) {
+            if (googleMapsLink) {
+                window.open(googleMapsLink, '_blank');
+            }
+        }
+
+        // Clear results
+        function clearResults() {
+            document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('locationSearch').value = '';
+            document.getElementById('currentLocationStatus').innerHTML = '';
+            document.getElementById('filterToggleBtn').classList.remove('show');
+            document.getElementById('filterPanel').classList.remove('show');
+            currentUserLocation = null;
+        }
+
+        // Allow Enter key to search
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('locationSearch').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchLocation();
+                }
+            });
+        });
+    </script>
+    <script src="hotel-styles.js"></script>
+</body>
+</html>

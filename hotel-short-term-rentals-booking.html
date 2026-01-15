@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Short-Term Rentals (Cove) - TravelMate Singapore</title>
+    <link rel="stylesheet" href="hotel-styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-content">
+                    <svg class="logo-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#B40000;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="60" cy="45" r="35" fill="url(#logoGradient)" />
+                        <text x="60" y="50" font-size="50" text-anchor="middle" dominant-baseline="middle">✈️</text>
+                    </svg><span>TravelMate</span>
+                </div>
+                <div class="logo-tagline">Your Student Staycation Partner</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="hotel-index.html">Home</a></li>
+                <li><a href="hotel-student-housing.html">Student Housing</a></li>
+                <li><a href="hotel-budget-hotels.html">Budget Hotels</a></li>
+                <li><a href="hotel-short-term-stays.html">Short-Term Rentals (Cove)</a></li>
+                <li><a href="hotel-location-finder.html">🗺️ Location Finder</a></li>
+                <li><a href="hotel-index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="budget-hotels-hero">
+        <div class="hero-content">
+            <h1>Book Short-Term Rentals (Cove) in Singapore</h1>
+            <p>Find and reserve your perfect flexible accommodation by the month</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filter-section" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <button class="filter-toggle-btn" onclick="toggleFilterPanel()">🔍 Filter Properties</button>
+            <div id="filterPanel" class="filter-panel hidden">
+                <div class="filter-panel-header">
+                    <h3>Filter by:</h3>
+                    <button class="filter-close-btn" onclick="toggleFilterPanel()">✕</button>
+                </div>
+                <div class="filter-panel-content">
+                    <div class="filter-category">
+                        <h4>💰 Price Range (SGD)</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="800-1000" onchange="applyCoveFilters()"> $800 - $1,000
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="1000-1100" onchange="applyCoveFilters()"> $1,000 - $1,100
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="1100-1200" onchange="applyCoveFilters()"> $1,100 - $1,200
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="1200-1300" onchange="applyCoveFilters()"> $1,200 - $1,300
+                        </label>
+                    </div>
+
+                    <div class="filter-category">
+                        <h4>📍 Location</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Mayflower" onchange="applyCoveFilters()"> Mayflower
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Paya Lebar" onchange="applyCoveFilters()"> Paya Lebar
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Kembangan" onchange="applyCoveFilters()"> Kembangan
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Havelock" onchange="applyCoveFilters()"> Havelock
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Potong Pasir" onchange="applyCoveFilters()"> Potong Pasir
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Ang Mo Kio" onchange="applyCoveFilters()"> Ang Mo Kio
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Kovan" onchange="applyCoveFilters()"> Kovan
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Dakota" onchange="applyCoveFilters()"> Dakota
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Tiong Bahru" onchange="applyCoveFilters()"> Tiong Bahru
+                        </label>
+                    </div>
+
+                    <div class="filter-category">
+                        <h4>✨ Key Features</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Swimming Pool" onchange="applyCoveFilters()"> 🏊 Swimming Pool
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Gym" onchange="applyCoveFilters()"> 💪 Gym
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Free Parking" onchange="applyCoveFilters()"> 🅿️ Free Parking
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Washing Machine" onchange="applyCoveFilters()"> 🧺 Washing Machine
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="amenity-filter" value="Near Subway" onchange="applyCoveFilters()"> 🚇 Near Subway
+                        </label>
+                    </div>
+
+                    <div class="filter-category">
+                        <h4>🎁 Special Offers</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="rent rebate" onchange="applyCoveFilters()"> 💰 Rent Rebate
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="free cleaning" onchange="applyCoveFilters()"> 🧹 Free Cleaning Session
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="shopping voucher" onchange="applyCoveFilters()"> 🛍️ Shopping Voucher
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="transport card" onchange="applyCoveFilters()"> 🚌 Transport Card Top-up
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="dining credit" onchange="applyCoveFilters()"> 🍽️ Dining Credit
+                        </label>
+                    </div>
+                </div>
+                <div class="filter-panel-footer">
+                    <button onclick="resetCoveFilters()" class="btn-reset-filters">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Properties Grid -->
+        <div class="hotels-booking-grid">
+            <!-- Property 1: Cove 193 -->
+            <div class="hotel-booking-card" data-price="850" data-location="Mayflower" data-amenities="Near Subway,Near Supermarket,Gym,Swimming Pool,Air Conditioner">
+                <div class="hotel-booking-header">
+                    <h3>Standard Room Cove 193 @ 27 Casuarina Road</h3>
+                    <span class="location-tag">📍 Mayflower</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove1')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove1')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'offers-cove1')">Offer(s)</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove1')">Floor Plan/Virtual Tour (VR)</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove1">
+                    <p class="hotel-address">27 Casuarina Road, Singapore, 579415</p>
+                    <p class="price-highlight"><strong>SGD$850 per month</strong></p>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🏬 Near Supermarket</span>
+                        <span class="amenity-badge">💪 Gym</span>
+                        <span class="amenity-badge">🏊 Swimming Pool</span>
+                        <span class="amenity-badge">❄️ Air Conditioner</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>📧 Email:</strong> bookings@cove.sg</p>
+                        <p><strong>📱 Phone:</strong> +65 9234 4860</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openCoveBookingModal(850, 'Standard Room Cove 193')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove1">
+                    <div class="hotel-photos-grid" id="photo-grid-cove1"></div>
+                </div>
+                <div class="hotel-booking-offers" id="offers-cove1">
+                    <h4>Special Offers Available:</h4>
+                    <p>💰 <strong>$280 Rent Rebate</strong> - Enjoy a $280 discount on your rent when you book this month!</p>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove1">
+                    <div class="floorplan-container"></div>
+                </div>
+            </div>
+
+            <!-- Property 2: Cove 320 -->
+            <div class="hotel-booking-card" data-price="1150" data-location="Paya Lebar" data-amenities="Near Subway,Near Shopping Centre,Near Bus Station,Elevator">
+                <div class="hotel-booking-header">
+                    <h3>Standard Room Cove 320 @ Esta Ruby</h3>
+                    <span class="location-tag">📍 Paya Lebar</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove2')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove2')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'offers-cove2')">Offer(s)</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove2')">Floor Plan/Virtual Tour (VR)</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove2">
+                    <p class="hotel-address">500 Guillemard Rd, Singapore, 399839</p>
+                    <p class="price-highlight"><strong>SGD$1,150 per month</strong></p>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🛒 Near Shopping Centre</span>
+                        <span class="amenity-badge">🚌 Near Bus Station</span>
+                        <span class="amenity-badge">🛗 Elevator</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>📧 Email:</strong> bookings@cove.sg</p>
+                        <p><strong>📱 Phone:</strong> +65 9234 4861</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openCoveBookingModal(1150, 'Standard Room Cove 320')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove2">
+                    <div class="hotel-photos-grid" id="photo-grid-cove2"></div>
+                </div>
+                <div class="hotel-booking-offers" id="offers-cove2">
+                    <h4>Special Offers Available:</h4>
+                    <p>💰 <strong>$280 Rent Rebate</strong> - Enjoy a $280 discount on your rent when you book this month!</p>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove2">
+                    <div class="floorplan-container"></div>
+                </div>
+            </div>
+
+            <!-- Property 3: Cove 271 -->
+            <div class="hotel-booking-card" data-price="1250" data-location="Kembangan" data-amenities="Near Subway,Near Supermarket,Gym,Swimming Pool,Balcony">
+                <div class="hotel-booking-header">
+                    <h3>Standard Room within a Landed House (Cove 271)</h3>
+                    <span class="location-tag">📍 Kembangan</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove3')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove3')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'offers-cove3')">Offer(s)</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove3')">Floor Plan/Virtual Tour (VR)</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove3">
+                    <p class="hotel-address">22A Jalan Selamat, Singapore, 418545</p>
+                    <p class="price-highlight"><strong>SGD$1,250 per month</strong></p>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🏬 Near Supermarket</span>
+                        <span class="amenity-badge">💪 Gym</span>
+                        <span class="amenity-badge">🏊 Swimming Pool</span>
+                        <span class="amenity-badge">🏡 Balcony</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>📧 Email:</strong> bookings@cove.sg</p>
+                        <p><strong>📱 Phone:</strong> +65 9234 4862</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openCoveBookingModal(1250, 'Standard Room Cove 271')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove3">
+                    <div class="hotel-photos-grid" id="photo-grid-cove3"></div>
+                </div>
+                <div class="hotel-booking-offers" id="offers-cove3">
+                    <h4>Special Offers Available:</h4>
+                    <p>💰 <strong>$280 Rent Rebate</strong> - Enjoy a $280 discount on your rent when you book this month!</p>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove3">
+                    <div class="floorplan-container"></div>
+                </div>
+            </div>
+
+            <!-- Property 4: Cove 491 -->
+            <div class="hotel-booking-card" data-price="1200" data-location="Havelock" data-amenities="Near Subway,Air Conditioner,Free Parking,Kitchen Cleaning">
+                <div class="hotel-booking-header">
+                    <h3>Pocket Room Cove 491 @ Emerald Park</h3>
+                    <span class="location-tag">📍 Havelock</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove4')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove4')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'offers-cove4')">Offer(s)</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove4')">Floor Plan/Virtual Tour (VR)</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove4">
+                    <p class="hotel-address">Emerald Park, #02-08, 2 Indus Road, Singapore, 169586</p>
+                    <p class="price-highlight"><strong>SGD$1,200 per month</strong></p>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">❄️ Air Conditioner</span>
+                        <span class="amenity-badge">🅿️ Free Parking</span>
+                        <span class="amenity-badge">🧹 Kitchen Cleaning</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>📧 Email:</strong> bookings@cove.sg</p>
+                        <p><strong>📱 Phone:</strong> +65 9234 4863</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openCoveBookingModal(1200, 'Pocket Room Cove 491')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove4">
+                    <div class="hotel-photos-grid" id="photo-grid-cove4"></div>
+                </div>
+                <div class="hotel-booking-offers" id="offers-cove4">
+                    <h4>Special Offers Available:</h4>
+                    <p>🧹 <strong>1 Free Cleaning Session</strong> - Get one complimentary cleaning session when you book this month!</p>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove4">
+                    <div class="floorplan-container"></div>
+                </div>
+            </div>
+
+            <!-- Property 5: Cove 144 -->
+            <div class="hotel-booking-card" data-price="1200" data-location="Potong Pasir" data-amenities="Near Subway,Near Bus Station,Near Park,Gym,Swimming Pool">
+                <div class="hotel-booking-header">
+                    <h3>Standard Room Cove 144 @ 19A Tai Thong Crescent</h3>
+                    <span class="location-tag">📍 Potong Pasir</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove5')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove5')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'offers-cove5')">Offer(s)</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove5')">Floor Plan/Virtual Tour (VR)</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove5">
+                    <p class="hotel-address">19A Tai Thong Crescent, Singapore, 347853</p>
+                    <p class="price-highlight"><strong>SGD$1,200 per month</strong></p>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🚌 Near Bus Station</span>
+                        <span class="amenity-badge">🌳 Near Park</span>
+                        <span class="amenity-badge">💪 Gym</span>
+                        <span class="amenity-badge">🏊 Swimming Pool</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>📧 Email:</strong> bookings@cove.sg</p>
+                        <p><strong>📱 Phone:</strong> +65 9234 4865</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openCoveBookingModal(1200, 'Standard Room Cove 144')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove5">
+                    <div class="hotel-photos-grid" id="photo-grid-cove5"></div>
+                </div>
+                <div class="hotel-booking-offers" id="offers-cove5">
+                    <h4>Special Offers Available:</h4>
+                    <p>🚌 <strong>$40 Transport Card Top-up</strong> - Get $40 credit for your transport card when you book this month!</p>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove5">
+                    <div class="floorplan-container"></div>
+                </div>
+            </div>
+
+            <!-- Property 6: Cove 238 -->
+            <div class="hotel-booking-card" data-price="1200" data-location="Ang Mo Kio" data-amenities="Near Subway,Near Shopping Centre,Washing Machine,24 Hour Security">
+                <div class="hotel-booking-header">
+                    <h3>Standard Room Cove 238 @ Nuovo</h3>
+                    <span class="location-tag">📍 Ang Mo Kio</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove6')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove6')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'offers-cove6')">Offer(s)</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove6')">Floor Plan/Virtual Tour (VR)</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove6">
+                    <p class="hotel-address">23 Ang Mo Kio Avenue 9, Singapore, 569787</p>
+                    <p class="price-highlight"><strong>SGD$1,200 per month</strong></p>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🛒 Near Shopping Centre</span>
+                        <span class="amenity-badge">🧺 Washing Machine</span>
+                        <span class="amenity-badge">🔒 24-Hour Security</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>📧 Email:</strong> bookings@cove.sg</p>
+                        <p><strong>📱 Phone:</strong> +65 9234 4866</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openCoveBookingModal(1200, 'Standard Room Cove 238')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove6">
+                    <div class="hotel-photos-grid" id="photo-grid-cove6"></div>
+                </div>
+                <div class="hotel-booking-offers" id="offers-cove6">
+                    <h4>Special Offers Available:</h4>
+                    <p>🍽️ <strong>$60 Dining Credit</strong> - Enjoy $60 credit for dining at partner restaurants when you book this month!</p>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove6">
+                    <div class="floorplan-container"></div>
+                </div>
+            </div>
+
+            <!-- Property 7: Cove 195 -->
+            <div class="hotel-booking-card" data-price="950" data-location="Kovan" data-amenities="Near Subway,Near School Bus,Free Parking,Kitchen Cleaning">
+                <div class="hotel-booking-header">
+                    <h3>Standard Room Cove 195 @ 18A Valley Road</h3>
+                    <span class="location-tag">📍 Kovan</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove7')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove7')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'offers-cove7')">Offer(s)</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove7')">Floor Plan/Virtual Tour (VR)</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove7">
+                    <p class="hotel-address">18A Valley Road, Singapore, 534475</p>
+                    <p class="price-highlight"><strong>SGD$950 per month</strong></p>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚇 Near Subway</span>
+                        <span class="amenity-badge">🚐 Near School Bus</span>
+                        <span class="amenity-badge">🅿️ Free Parking</span>
+                        <span class="amenity-badge">🧹 Kitchen Cleaning</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>📧 Email:</strong> bookings@cove.sg</p>
+                        <p><strong>📱 Phone:</strong> +65 9234 4867</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openCoveBookingModal(950, 'Standard Room Cove 195')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove7">
+                    <div class="hotel-photos-grid" id="photo-grid-cove7"></div>
+                </div>
+                <div class="hotel-booking-offers" id="offers-cove7">
+                    <h4>Special Offers Available:</h4>
+                    <p>🧹 <strong>1 Free Cleaning Session</strong> - Get one complimentary cleaning session when you book this month!</p>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove7">
+                    <div class="floorplan-container"></div>
+                </div>
+            </div>
+
+            <!-- Property 8: Cove 433 -->
+            <div class="hotel-booking-card" data-price="1000" data-location="Dakota" data-amenities="Near Shopping Centre,Near Park,Swimming Pool,Air Conditioner">
+                <div class="hotel-booking-header">
+                    <h3>Pocket Room Cove 433 @ Cassia View</h3>
+                    <span class="location-tag">📍 Dakota</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove8')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove8')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'offers-cove8')">Offer(s)</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove8')">Floor Plan/Virtual Tour (VR)</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove8">
+                    <p class="hotel-address">Cassia View, #16-02, 320 Guillemard Rd, Singapore, 399746</p>
+                    <p class="price-highlight"><strong>SGD$1,000 per month</strong></p>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🛒 Near Shopping Centre</span>
+                        <span class="amenity-badge">🌳 Near Park</span>
+                        <span class="amenity-badge">🏊 Swimming Pool</span>
+                        <span class="amenity-badge">❄️ Air Conditioner</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>📧 Email:</strong> bookings@cove.sg</p>
+                        <p><strong>📱 Phone:</strong> +65 9234 4868</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openCoveBookingModal(1000, 'Pocket Room Cove 433')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove8">
+                    <div class="hotel-photos-grid" id="photo-grid-cove8"></div>
+                </div>
+                <div class="hotel-booking-offers" id="offers-cove8">
+                    <h4>Special Offers Available:</h4>
+                    <p>🛍️ <strong>$40 Shopping Voucher</strong> - Get a $40 voucher for shopping at major retailers when you book this month!</p>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove8">
+                    <div class="floorplan-container"></div>
+                </div>
+            </div>
+
+            <!-- Property 9: Cove 89 -->
+            <div class="hotel-booking-card" data-price="1250" data-location="Tiong Bahru" data-amenities="Near Bus Station,Near Supermarket,Free Regular Cleaning,Washing Machine,Gym">
+                <div class="hotel-booking-header">
+                    <h3>Standard Room Cove 89 @ Havelock Road</h3>
+                    <span class="location-tag">📍 Tiong Bahru</span>
+                </div>
+                <div class="hotel-booking-tabs">
+                    <button class="hotel-tab-btn active" onclick="switchCoveTab(this, 'details-cove9')">Details</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'photos-cove9')">Photos</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'offers-cove9')">Offer(s)</button>
+                    <button class="hotel-tab-btn" onclick="switchCoveTab(this, 'floorplan-cove9')">Floor Plan/Virtual Tour (VR)</button>
+                </div>
+                <div class="hotel-booking-details active" id="details-cove9">
+                    <p class="hotel-address">743b Havelock Road, Singapore, 169656</p>
+                    <p class="price-highlight"><strong>SGD$1,250 per month</strong></p>
+                    <div class="amenities-list">
+                        <span class="amenity-badge">🚌 Near Bus Station</span>
+                        <span class="amenity-badge">🏬 Near Supermarket</span>
+                        <span class="amenity-badge">🧹 Free Regular Cleaning</span>
+                        <span class="amenity-badge">🧺 Washing Machine</span>
+                        <span class="amenity-badge">💪 Gym</span>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>📧 Email:</strong> bookings@cove.sg</p>
+                        <p><strong>📱 Phone:</strong> +65 9234 4869</p>
+                    </div>
+                    <button class="book-now-btn" onclick="openCoveBookingModal(1250, 'Standard Room Cove 89')">BOOK NOW</button>
+                </div>
+                <div class="hotel-booking-photos" id="photos-cove9">
+                    <div class="hotel-photos-grid" id="photo-grid-cove9"></div>
+                </div>
+                <div class="hotel-booking-offers" id="offers-cove9">
+                    <h4>Special Offers Available:</h4>
+                    <p>🍽️ <strong>$60 Dining Credit</strong> - Enjoy $60 credit for dining at partner restaurants when you book this month!</p>
+                </div>
+                <div class="hotel-booking-floorplan" id="floorplan-cove9">
+                    <div class="floorplan-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 TravelMate Singapore. All rights reserved.</p>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="coveBookingModal" class="booking-modal">
+        <div class="booking-modal-content">
+            <button class="booking-modal-close" onclick="closeCoveBookingModal()">&times;</button>
+            
+            <!-- Step 1: Booking Guide -->
+            <div id="step1" class="booking-step-container active">
+                <h2>Booking Guide</h2>
+                
+                <div class="booking-step">
+                    <h3>Step 1: Enter Details</h3>
+                    <p>Enter your name, Phone Number, Email Address, Number of Occupants, and select your Start Date and End Date. The duration will be calculated automatically.</p>
+                </div>
+
+                <div class="booking-step">
+                    <h3>Step 2: Submit Documents</h3>
+                    <p>Submit the required documents such as your passport number, Student Pass and emergency contact.</p>
+                </div>
+
+                <div class="booking-step">
+                    <h3>Step 3: Payment</h3>
+                    <p>Pay the full amount using any of the following payment methods: bank transfer (Direct bank transfer to our account), PayNow (Fast local transfer using PayNow (Singapore)), or card payment (Visa, Mastercard, or American Express).</p>
+                </div>
+
+                <div class="booking-step">
+                    <h3>Step 4: Final</h3>
+                    <p>Wait for further instructions in your email.</p>
+                </div>
+
+                <div class="booking-modal-buttons">
+                    <button onclick="goToCoveStep(2)" class="btn-next" style="background-color: #486220;">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Guest Information Form -->
+            <div id="step2" class="booking-step-container">
+                <h2>Guest Information</h2>
+                <form id="guestForm" class="booking-form">
+                    <div class="form-group">
+                        <label for="guestName">Full Name *</label>
+                        <input type="text" id="guestName" name="guestName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guestPhone">Phone Number *</label>
+                        <input type="tel" id="guestPhone" name="guestPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guestEmail">Email Address *</label>
+                        <input type="email" id="guestEmail" name="guestEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="occupants">Number of Occupants *</label>
+                        <select id="occupants" name="occupants" required>
+                            <option value="">Select number of occupants</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5+ People</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Start Date *</label>
+                        <input type="date" id="startDate" name="startDate" required onchange="calculateCoveDuration()">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date *</label>
+                        <input type="date" id="endDate" name="endDate" required onchange="calculateCoveDuration()">
+                    </div>
+                    <div class="form-group">
+                        <label for="stayDuration">Duration of Stay (Months)</label>
+                        <input type="number" id="stayDuration" name="stayDuration" readonly placeholder="Calculated automatically" disabled>
+                    </div>
+                </form>
+                <div class="booking-modal-buttons">
+                    <button onclick="goToCoveStep(1)" class="btn-back">Back</button>
+                    <button onclick="validateAndGoToCoveStep(3)" class="btn-next" style="background-color: #486220;">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Application Form -->
+            <div id="step3" class="booking-step-container">
+                <h2>Submit Documents</h2>
+                <form id="applicationForm" class="booking-form">
+                    <div class="form-group">
+                        <label for="passport">Passport Number *</label>
+                        <input type="text" id="passport" name="passport" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentPass">Student Pass Document *</label>
+                        <input type="file" id="studentPass" name="studentPass" accept="*" required>
+                        <small>Accepted all file types</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergencyContact">Emergency Contact (Name & Phone) *</label>
+                        <input type="text" id="emergencyContact" name="emergencyContact" placeholder="e.g., John Doe, +65 9123 4567" required>
+                    </div>
+                </form>
+                <div class="booking-modal-buttons">
+                    <button onclick="goToCoveStep(2)" class="btn-back">Back</button>
+                    <button onclick="validateAndGoToCoveStep(4)" class="btn-next" style="background-color: #486220;">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Payment Page -->
+            <div id="step4" class="booking-step-container">
+                <h2>Payment</h2>
+                <div class="payment-section">
+                    <h3>Select Payment Method</h3>
+                    <p class="payment-info">Total Amount: <strong id="coveTotalAmount">SGD$850</strong></p>
+                    
+                    <div class="payment-methods">
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="bank-transfer" required>
+                            <div class="payment-option-content">
+                                <h4>💳 Bank Transfer</h4>
+                                <p>Direct bank transfer to our account</p>
+                            </div>
+                        </label>
+                        
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="paynow" required>
+                            <div class="payment-option-content">
+                                <h4>📱 PayNow</h4>
+                                <p>Fast local transfer using PayNow (Singapore)</p>
+                            </div>
+                        </label>
+                        
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="card" required>
+                            <div class="payment-option-content">
+                                <h4>💰 Card Payment</h4>
+                                <p>Visa, Mastercard, or American Express</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="booking-modal-buttons">
+                    <button onclick="goToCoveStep(3)" class="btn-back">Back</button>
+                    <button onclick="completeCoveBooking()" class="btn-done" style="background-color: #486220;">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModalCove" class="booking-modal">
+        <div class="booking-modal-content thank-you-content">
+            <div class="thank-you-message">
+                <div class="success-icon">✓</div>
+                <h2>Thank You for Booking!</h2>
+                <p>Your booking has been successfully submitted.</p>
+                <p class="thank-you-subtitle">Please wait for further instructions in your email.</p>
+                <button onclick="closeThankYouModalCove()" class="btn-close-thank-you">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentCovePrice = 850;
+        let currentCoveProperty = '';
+
+        // Image Gallery Functions
+        function changeImage(button, direction) {
+            const gallery = button.closest('.property-image-gallery');
+            const images = gallery.querySelectorAll('.gallery-image');
+            const dots = gallery.querySelectorAll('.gallery-dot');
+            let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+            let newIndex = (currentIndex + direction + images.length) % images.length;
+            
+            images[currentIndex].classList.remove('active');
+            images[newIndex].classList.add('active');
+            dots[currentIndex].classList.remove('active');
+            dots[newIndex].classList.add('active');
+            
+            gallery.querySelector('.current-image').textContent = newIndex + 1;
+        }
+
+        function selectImage(dot) {
+            const gallery = dot.closest('.property-image-gallery');
+            const images = gallery.querySelectorAll('.gallery-image');
+            const dots = gallery.querySelectorAll('.gallery-dot');
+            const newIndex = Array.from(dots).indexOf(dot);
+            
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            images[newIndex].classList.add('active');
+            dots[newIndex].classList.add('active');
+            
+            gallery.querySelector('.current-image').textContent = newIndex + 1;
+        }
+
+        // Toggle filter panel
+        function toggleFilterPanel() {
+            const filterPanel = document.getElementById('filterPanel');
+            filterPanel.classList.toggle('hidden');
+        }
+
+        // Close filter panel when clicking outside
+        document.addEventListener('click', function(event) {
+            const filterSection = document.querySelector('.filter-section');
+            if (filterSection && !filterSection.contains(event.target)) {
+                const filterPanel = document.getElementById('filterPanel');
+                filterPanel.classList.add('hidden');
+            }
+        });
+
+        function openCoveBookingModal(price, propertyName) {
+            currentCovePrice = price || 850;
+            currentCoveProperty = propertyName || '';
+            document.getElementById('coveBookingModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            goToCoveStep(1);
+        }
+
+        function closeCoveBookingModal() {
+            document.getElementById('coveBookingModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function goToCoveStep(stepNumber) {
+            // Hide all steps
+            const steps = document.querySelectorAll('#coveBookingModal .booking-step-container');
+            steps.forEach(step => step.classList.remove('active'));
+            
+            // Show selected step
+            document.getElementById('step' + stepNumber).classList.add('active');
+            
+            // Calculate payment if going to step 4 (Payment)
+            if (stepNumber === 4) {
+                calculateCovePaymentAmount();
+            }
+        }
+
+        function validateAndGoToCoveStep(stepNumber) {
+            const currentStep = stepNumber - 1;
+            
+            if (currentStep === 2) {
+                const form = document.getElementById('guestForm');
+                if (form.checkValidity() === false) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+            } else if (currentStep === 3) {
+                const form = document.getElementById('applicationForm');
+                if (form.checkValidity() === false) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+            } else if (currentStep === 4) {
+                const paymentMethod = document.querySelector('#coveBookingModal input[name="paymentMethod"]:checked');
+                if (!paymentMethod) {
+                    alert('Please select a payment method');
+                    return;
+                }
+            }
+            
+            goToCoveStep(stepNumber);
+        }
+
+        function calculateCoveDuration() {
+            const startDateInput = document.getElementById('startDate').value;
+            const endDateInput = document.getElementById('endDate').value;
+            
+            if (!startDateInput || !endDateInput) {
+                document.getElementById('stayDuration').value = '';
+                return;
+            }
+            
+            const startDate = new Date(startDateInput);
+            const endDate = new Date(endDateInput);
+            
+            if (startDate >= endDate) {
+                alert('End Date must be after Start Date');
+                document.getElementById('stayDuration').value = '';
+                return;
+            }
+            
+            // Calculate difference in months
+            let months = (endDate.getFullYear() - startDate.getFullYear()) * 12;
+            months += endDate.getMonth() - startDate.getMonth();
+            
+            // Round up to include partial months
+            const daysDifference = endDate.getDate() - startDate.getDate();
+            if (daysDifference > 0 || (daysDifference === 0 && months > 0)) {
+                months += 1;
+            }
+            
+            const finalMonths = Math.max(1, Math.ceil(months));
+            document.getElementById('stayDuration').value = finalMonths;
+        }
+
+        function calculateCovePaymentAmount() {
+            const stayDuration = parseInt(document.getElementById('stayDuration').value) || 1;
+            const totalAmount = currentCovePrice * stayDuration;
+            
+            document.getElementById('coveTotalAmount').textContent = 'SGD$' + totalAmount.toLocaleString();
+        }
+
+        function completeCoveBooking() {
+            const paymentMethod = document.querySelector('#coveBookingModal input[name="paymentMethod"]:checked');
+            if (!paymentMethod) {
+                alert('Please select a payment method');
+                return;
+            }
+            
+            // Show thank you modal
+            document.getElementById('coveBookingModal').classList.remove('active');
+            document.getElementById('thankYouModalCove').classList.add('active');
+        }
+
+        function closeThankYouModalCove() {
+            document.getElementById('thankYouModalCove').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Filter functionality
+        function applyCoveFilters() {
+            const priceFilters = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => cb.value);
+            const locationFilters = Array.from(document.querySelectorAll('.location-filter:checked')).map(cb => cb.value);
+            const amenityFilters = Array.from(document.querySelectorAll('.amenity-filter:checked')).map(cb => cb.value);
+            const offerFilters = Array.from(document.querySelectorAll('.offer-filter:checked')).map(cb => cb.value);
+
+            const cards = document.querySelectorAll('.hotel-booking-card');
+            
+            cards.forEach(card => {
+                const price = parseInt(card.getAttribute('data-price'));
+                const location = card.getAttribute('data-location');
+                const amenities = card.getAttribute('data-amenities').split(',').map(a => a.trim());
+                const offer = card.getAttribute('data-offer') || '';
+
+                let priceMatch = priceFilters.length === 0;
+                let locationMatch = locationFilters.length === 0;
+                let amenityMatch = amenityFilters.length === 0;
+                let offerMatch = offerFilters.length === 0;
+
+                // Price range matching
+                if (priceFilters.length > 0) {
+                    priceMatch = priceFilters.some(filter => {
+                        if (filter === '800-1000') return price >= 800 && price < 1000;
+                        if (filter === '1000-1100') return price >= 1000 && price < 1100;
+                        if (filter === '1100-1200') return price >= 1100 && price < 1200;
+                        if (filter === '1200-1300') return price >= 1200 && price <= 1300;
+                        return false;
+                    });
+                }
+
+                // Location matching
+                if (locationFilters.length > 0) {
+                    locationMatch = locationFilters.includes(location);
+                }
+
+                // Amenity matching - ALL selected amenities must be present
+                if (amenityFilters.length > 0) {
+                    amenityMatch = amenityFilters.every(filter => amenities.includes(filter));
+                }
+
+                // Offer matching - ANY selected offer must be present
+                if (offerFilters.length > 0) {
+                    offerMatch = offerFilters.some(filter => offer.toLowerCase().includes(filter.toLowerCase()));
+                }
+
+                // Show card only if all conditions are met
+                card.style.display = (priceMatch && locationMatch && amenityMatch && offerMatch) ? 'flex' : 'none';
+            });
+        }
+
+        // Reset filters
+        function resetCoveFilters() {
+            document.querySelectorAll('.price-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.location-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.amenity-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.offer-filter').forEach(cb => cb.checked = false);
+            
+            const cards = document.querySelectorAll('.hotel-booking-card');
+            cards.forEach(card => {
+                card.style.display = 'flex';
+            });
+        }
+
+        // Tab switching for photos and floorplans
+        function switchCoveTab(button, tabId) {
+            const card = button.closest('.hotel-booking-card');
+            
+            // Remove active class from all buttons and tabs in this card
+            card.querySelectorAll('.hotel-tab-btn').forEach(btn => btn.classList.remove('active'));
+            card.querySelectorAll('[id^="details-"], [id^="photos-"], [id^="offers-"], [id^="floorplan-"]').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Add active class to clicked button and corresponding tab
+            button.classList.add('active');
+            const tabElement = card.querySelector('#' + tabId);
+            if (tabElement) {
+                tabElement.classList.add('active');
+                
+                // Load photos if switching to photos tab
+                if (tabId.startsWith('photos-')) {
+                    loadCovePhotos(tabId);
+                }
+                
+                // Load floorplans if switching to floorplans tab
+                if (tabId.startsWith('floorplan-')) {
+                    loadCoveFloorplans(tabId);
+                }
+            }
+        }
+
+        // Cove property photos and floorplans data
+        const covePhotosData = {
+            'cove1': {
+                name: 'Standard Room Cove 193 @ 27 Casuarina Road',
+                photos: [
+                    { url: 'https://media.coveliving.io/81809/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Red-2-large.jpg', label: 'Room View 1' },
+                    { url: 'https://media.coveliving.io/81808/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Red-3-large.jpg', label: 'Room View 2' },
+                    { url: 'https://media.coveliving.io/81811/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Living-1-large.jpg', label: 'Living Area 1' },
+                    { url: 'https://media.coveliving.io/81812/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Living-2-large.jpg', label: 'Living Area 2' },
+                    { url: 'https://media.coveliving.io/81816/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Living-4-large.jpg', label: 'Living Area 3' },
+                    { url: 'https://media.coveliving.io/81815/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Living-7-large.jpg', label: 'Living Area 4' },
+                    { url: 'https://media.coveliving.io/81818/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Balcony-1-large.jpg', label: 'Balcony 1' },
+                    { url: 'https://media.coveliving.io/81819/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Balcony-3-large.jpg', label: 'Balcony 2' },
+                    { url: 'https://media.coveliving.io/81821/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Kitchen-1-large.jpg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/81824/conversions/C193-27-Casuarina-Road-Mayflower-MRT-Toilet-1-large.jpg', label: 'Bathroom' }
+                ],
+                floorplan: 'https://media.coveliving.io/80699/conversions/Cove-193---27-Casuarina_Red-large.png',
+                vr: 'https://my.matterport.com/show/?m=vxoZLyXxbq4'
+            },
+            'cove2': {
+                name: 'Standard Room Cove 320 @ Esta Ruby',
+                photos: [
+                    { url: 'https://media.coveliving.io/43684/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Yellow-Room-1-large.jpg', label: 'Room View 1' },
+                    { url: 'https://media.coveliving.io/43682/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Yellow-Room-2-large.jpg', label: 'Room View 2' },
+                    { url: 'https://media.coveliving.io/43687/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Living-1-large.jpg', label: 'Living Area 1' },
+                    { url: 'https://media.coveliving.io/43689/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Living-2-large.jpg', label: 'Living Area 2' },
+                    { url: 'https://media.coveliving.io/43688/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Living-3-large.jpg', label: 'Living Area 3' },
+                    { url: 'https://media.coveliving.io/43695/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Kitchen-1-large.jpg', label: 'Kitchen 1' },
+                    { url: 'https://media.coveliving.io/43696/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Kitchen-2-large.jpg', label: 'Kitchen 2' },
+                    { url: 'https://media.coveliving.io/43697/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-Common-Toilet-large.jpg', label: 'Common Toilet' },
+                    { url: 'https://media.coveliving.io/43698/conversions/C320-Esta-Ruby--03-04-Paya-Lebar-MRT-BBQ-Pit-large.jpg', label: 'BBQ Area' }
+                ],
+                floorplan: 'https://media.coveliving.io/43624/conversions/Cove-320---Esta-Ruby-03-04_Yellow-small.png',
+                vr: null
+            },
+            'cove3': {
+                name: 'Standard Room within a Landed House (Cove 271)',
+                photos: [
+                    { url: 'https://media.coveliving.io/22355/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Black-Room-1-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/22356/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Black-Room-Detached-Toilet-large.jpg', label: 'Attached Toilet' },
+                    { url: 'https://media.coveliving.io/22441/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Living-3-large.jpg', label: 'Living Area 1' },
+                    { url: 'https://media.coveliving.io/22442/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Living-2-large.jpg', label: 'Living Area 2' },
+                    { url: 'https://media.coveliving.io/22443/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Lounge-large.jpg', label: 'Lounge' },
+                    { url: 'https://media.coveliving.io/22437/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---L2-Staircase-2-large.jpg', label: 'Staircase' },
+                    { url: 'https://media.coveliving.io/22434/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Kitchen-1-large.jpg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/22436/conversions/C271---22A-Jalan-Selamat---Kembangan-MRT---Front-Porch-2-large.jpg', label: 'Front Porch' }
+                ],
+                floorplan: 'https://media.coveliving.io/42443/conversions/Cove-271---22A-Jalan-Selamat_Black-large.png',
+                vr: null
+            },
+            'cove4': {
+                name: 'Pocket Room Cove 491 @ Emerald Park',
+                photos: [
+                    { url: 'https://media.coveliving.io/94184/conversions/pictures-Piccola-2-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/96143/conversions/pictures-DSC06238-large.jpg', label: 'Room View 2' },
+                    { url: 'https://media.coveliving.io/96138/conversions/pictures-Kitchen-large.jpg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/96133/conversions/pictures-Dining-area-large.jpg', label: 'Dining Area' },
+                    { url: 'https://media.coveliving.io/94183/conversions/pictures-Piccola-bathroom-large.jpg', label: 'Bathroom' }
+                ],
+                floorplan: null,
+                vr: 'https://my.matterport.com/show/?m=BVUf3EzHjfc'
+            },
+            'cove5': {
+                name: 'Standard Room Cove 144 @ 19A Tai Thong Crescent',
+                photos: [
+                    { url: 'https://media.coveliving.io/90944/conversions/C144-19A-Tai-Thong-Crescent-Potong-Pasir-MRT-Purple-1-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/90945/conversions/C144-19A-Tai-Thong-Crescent-Potong-Pasir-MRT-Living-large.jpg', label: 'Living Area' },
+                    { url: 'https://media.coveliving.io/86523/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-common-area-1-large.jpeg', label: 'Common Area 1' },
+                    { url: 'https://media.coveliving.io/86519/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-common-area-3-large.jpeg', label: 'Common Area 2' },
+                    { url: 'https://media.coveliving.io/86521/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-kitchen-2-large.jpeg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/86524/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-balcony-1-large.jpeg', label: 'Balcony' },
+                    { url: 'https://media.coveliving.io/86527/conversions/C144-19A-Tai-Thong-Cres-Potong-Pasir-MRT-shared-bathroom-2-large.jpeg', label: 'Bathroom' }
+                ],
+                floorplan: 'https://media.coveliving.io/86577/conversions/Cove-144-19A-Tai-Thong-Cres_Purple-large.png',
+                vr: 'https://my.matterport.com/show/?m=QuNc6N4QXmS'
+            },
+            'cove6': {
+                name: 'Standard Room Cove 238 @ Nuovo',
+                photos: [
+                    { url: 'https://media.coveliving.io/25383/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Kitchen-large.jpg', label: 'Kitchen' },
+                    { url: 'https://media.coveliving.io/24899/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Yellow-Room-2-large.jpg', label: 'Room View 1' },
+                    { url: 'https://media.coveliving.io/24896/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Yellow-Room-4-large.jpg', label: 'Room View 2' },
+                    { url: 'https://media.coveliving.io/24901/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Common-Toilet-large.jpg', label: 'Common Toilet' },
+                    { url: 'https://media.coveliving.io/24905/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Common-Area-large.jpg', label: 'Common Area' },
+                    { url: 'https://media.coveliving.io/24906/conversions/C238---Nuovo-Unit---Yio-Chu-Kang-Mrt---Stoe-large.jpg', label: 'Store Area' }
+                ],
+                floorplan: 'https://media.coveliving.io/25384/conversions/Cove-238---Nuovo--02-09_Yellow-large.png',
+                vr: 'https://my.matterport.com/show/?m=qWajdqgQyee'
+            },
+            'cove7': {
+                name: 'Standard Room Cove 195 @ 18A Valley Road',
+                photos: [
+                    { url: 'https://media.coveliving.io/81642/conversions/C195-18A-Valley-Road-Kovan-MRT-Red-1-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/81645/conversions/C195-18A-Valley-Road-Kovan-MRT-Living-1-large.jpg', label: 'Living Area 1' },
+                    { url: 'https://media.coveliving.io/81649/conversions/C195-18A-Valley-Road-Kovan-MRT-Living-5-large.jpg', label: 'Living Area 2' },
+                    { url: 'https://media.coveliving.io/71094/conversions/C195---18A-Valley-Road---Kitchen---3-large.jpeg', label: 'Kitchen 1' },
+                    { url: 'https://media.coveliving.io/71096/conversions/C195---18A-Valley-Road---Kitchen-large.jpeg', label: 'Kitchen 2' },
+                    { url: 'https://media.coveliving.io/71102/conversions/C195---18A-Valley-Road---2nd-Level-Toilet-large.jpeg', label: 'Toilet' },
+                    { url: 'https://media.coveliving.io/71104/conversions/C195---18A-Valley-Road---Laundry-large.jpg', label: 'Laundry Area' },
+                    { url: 'https://media.coveliving.io/71106/conversions/C195---18A-Valley-Road---Balcony-1-large.jpeg', label: 'Balcony' }
+                ],
+                floorplan: 'https://media.coveliving.io/75497/conversions/Cove-195---18A-Valley-Road_Red-(1)-large.png',
+                vr: null
+            },
+            'cove8': {
+                name: 'Pocket Room Cove 433 @ Cassia View',
+                photos: [
+                    { url: 'https://media.coveliving.io/93548/conversions/pictures-fb9713ef-0617-4d04-8d45-5f5e4ee01aeaPiccola-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/94910/conversions/pictures-6b5c3d81-4e40-4771-8217-cbef72cdb264Living-room-large.jpg', label: 'Living Room' },
+                    { url: 'https://media.coveliving.io/94915/conversions/pictures-be1cf11c-0978-408f-8a8f-98d8346a74c8TV-area-large.jpg', label: 'TV Area' },
+                    { url: 'https://media.coveliving.io/94920/conversions/pictures-471cc6e5-a29d-4373-af84-819d3aab3365Kitchen-large.jpg', label: 'Kitchen' }
+                ],
+                floorplan: null,
+                vr: 'https://my.matterport.com/show/?m=io7L7zTXTF3'
+            },
+            'cove9': {
+                name: 'Standard Room Cove 89 @ Havelock Road',
+                photos: [
+                    { url: 'https://media.coveliving.io/37879/conversions/C89-743B-Havelock-Road-Tiong-Bahru-MRT-Yellow-Room-1-large.jpg', label: 'Room View' },
+                    { url: 'https://media.coveliving.io/32353/conversions/01.-Cove-89-743B-Havelock-Road-Tiong-Bahru-MRT-Living-room-1-large.jpg', label: 'Living Room' },
+                    { url: 'https://media.coveliving.io/32361/conversions/09.-Cove-89-743B-Havelock-Road-Tiong-Bahru-MRT-dry-kitchen-1-large.jpg', label: 'Dry Kitchen 1' },
+                    { url: 'https://media.coveliving.io/32362/conversions/10.-Cove-89-743B-Havelock-Road-Tiong-Bahru-MRT-dry-kitchen-2-large.jpg', label: 'Dry Kitchen 2' },
+                    { url: 'https://media.coveliving.io/32364/conversions/12.-Cove-87-89-743-Havelock-Road-Tiong-Bahru-MRT-wet-kitchen-2-large.jpg', label: 'Wet Kitchen' },
+                    { url: 'https://media.coveliving.io/34077/conversions/15.-Cove-89-743B-Havelock-Road-Tiong-Bahru-MRT-shared-bathroom-1-large.jpg', label: 'Bathroom' }
+                ],
+                floorplan: 'https://media.coveliving.io/37226/conversions/Cove-87-89---Havelock-Road_Yellow-large.png',
+                vr: null
+            }
+        };
+
+        // Load Cove photos
+        function loadCovePhotos(tabId) {
+            const propertyId = tabId.replace('photos-', '');
+            const photoGrid = document.getElementById('photo-grid-' + propertyId);
+            
+            if (!photoGrid || photoGrid.innerHTML) {
+                return; // Already loaded
+            }
+            
+            const propertyData = covePhotosData[propertyId];
+            if (!propertyData || !propertyData.photos) {
+                return;
+            }
+            
+            propertyData.photos.forEach(photo => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'hotel-photo-item';
+                photoItem.innerHTML = `
+                    <img src="${photo.url}" alt="${photo.label}" loading="lazy">
+                    <div class="hotel-photo-label">${photo.label}</div>
+                `;
+                photoGrid.appendChild(photoItem);
+            });
+        }
+
+        // Load Cove floorplans
+        function loadCoveFloorplans(tabId) {
+            const propertyId = tabId.replace('floorplan-', '');
+            const floorplanContainer = document.querySelector('#' + tabId + ' .floorplan-container');
+            
+            if (!floorplanContainer || floorplanContainer.innerHTML) {
+                return; // Already loaded
+            }
+            
+            const propertyData = covePhotosData[propertyId];
+            if (!propertyData) {
+                return;
+            }
+            
+            // Add floorplan if available
+            if (propertyData.floorplan) {
+                const floorplanItem = document.createElement('div');
+                floorplanItem.className = 'floorplan-item';
+                floorplanItem.innerHTML = `
+                    <h4>📐 Floor Plan</h4>
+                    <img src="${propertyData.floorplan}" alt="Floor Plan" class="floorplan-image" loading="lazy">
+                `;
+                floorplanContainer.appendChild(floorplanItem);
+            }
+            
+            // Add VR if available
+            if (propertyData.vr) {
+                const vrItem = document.createElement('div');
+                vrItem.className = 'floorplan-item';
+                vrItem.innerHTML = `
+                    <h4>🥽 Virtual Tour (VR)</h4>
+                    <a href="${propertyData.vr}" target="_blank" class="vr-link">View Virtual Tour</a>
+                    <p style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;">Click to explore the property in 360°</p>
+                `;
+                floorplanContainer.appendChild(vrItem);
+            }
+            
+            // Show message if neither floorplan nor VR available
+            if (!propertyData.floorplan && !propertyData.vr) {
+                floorplanContainer.innerHTML = '<p style="text-align: center; color: #999; padding: 2rem;">Floor plan and VR tour coming soon</p>';
+            }
+        }
+
+        window.onclick = function(event) {
+            const coveBookingModal = document.getElementById('coveBookingModal');
+            const thankYouModalCove = document.getElementById('thankYouModalCove');
+            if (event.target === coveBookingModal) {
+                closeCoveBookingModal();
+            }
+            if (event.target === thankYouModalCove) {
+                closeThankYouModalCove();
+            }
+        }
+    </script>
+
+    <style>
+        .price-highlight {
+            color: #B40000;
+            font-size: 1.2rem;
+            margin: 0.8rem 0;
+            padding: 0.5rem 0;
+        }
+    </style>
+
+    <script src="styles.js"></script>
+
+    <script src="hotel-styles.js"></script>
+</body>
+</html>

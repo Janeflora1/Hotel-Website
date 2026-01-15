@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short-Term Rentals - TravelMate Singapore</title>
+    <link rel="stylesheet" href="hotel-styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-content">
+                    <svg class="logo-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#B40000;stop-opacity:1" /><stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" /></linearGradient></defs><circle cx="60" cy="45" r="35" fill="url(#logoGradient)" /><text x="60" y="50" font-size="50" text-anchor="middle" dominant-baseline="middle">✈️</text></svg><span>TravelMate</span>
+                </div>
+                <div class="logo-tagline">Your Student Staycation Partner</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="hotel-index.html">Home</a></li>
+                <li><a href="hotel-student-housing.html">Student Housing</a></li>
+                <li><a href="hotel-budget-hotels.html">Hotels/Budget Hotels</a></li>
+                <li><a href="hotel-short-term-stays.html">Short-Term Rentals (Cove)</a></li>
+                <li><a href="hotel-location-finder.html">🗺️ Location Finder</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="short-term-hero">
+        <div class="hero-content">
+            <h1>Cove Short-Term Rentals</h1>
+            <p>Fully furnished properties for flexible month-to-month stays across Singapore</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container" style="padding: 3rem 0;">
+        <!-- Q1: Price Ranges -->
+        <div class="faq-section">
+            <h2>📍 Available Properties & Price Ranges</h2>
+            <p class="section-intro">We offer 9 Cove short-term rental properties, all fully furnished and designed for leases of at least one month.</p>
+            
+            <div class="price-range-grid">
+                <div class="price-category">
+                    <div class="price-badge budget">Budget-Friendly</div>
+                    <h3>💰 SGD$850 - $1,000/month</h3>
+                    <div class="property-list">
+                        <div class="property-item">
+                            <strong>Cove 193 @ 27 Casuarina Road (Mayflower)</strong><br>
+                            Standard Room - SGD$850/month<br>
+                            <span class="amenity-tag">🚇 Near Subway</span>
+                            <span class="amenity-tag">🏬 Near Supermarket</span>
+                            <span class="amenity-tag">💪 Gym</span>
+                            <span class="amenity-tag">🏊 Swimming Pool</span>
+                            <span class="amenity-tag">❄️ Air Conditioning</span>
+                        </div>
+                        <div class="property-item">
+                            <strong>Cove 195 @ 18A Valley Road (Kovan)</strong><br>
+                            Standard Room - SGD$950/month<br>
+                            <span class="amenity-tag">🚇 Near Subway</span>
+                            <span class="amenity-tag">🅿️ Free Parking</span>
+                            <span class="amenity-tag">🧹 Kitchen Cleaning</span>
+                        </div>
+                        <div class="property-item">
+                            <strong>Cove 433 @ Cassia View (Dakota)</strong><br>
+                            Pocket Room - SGD$1,000/month<br>
+                            <span class="amenity-tag">🛒 Near Shopping Centre</span>
+                            <span class="amenity-tag">🌳 Near Park</span>
+                            <span class="amenity-tag">🏊 Swimming Pool</span>
+                            <span class="amenity-tag">❄️ Air Conditioning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-category">
+                    <div class="price-badge midrange">Mid-Range</div>
+                    <h3>💵 SGD$1,150 - $1,200/month</h3>
+                    <div class="property-list">
+                        <div class="property-item">
+                            <strong>Cove 320 @ Esta Ruby (Paya Lebar)</strong><br>
+                            Standard Room - SGD$1,150/month
+                        </div>
+                        <div class="property-item">
+                            <strong>Cove 491 @ Emerald Park (Havelock)</strong><br>
+                            Pocket Room - SGD$1,200/month<br>
+                            <span class="amenity-tag">🅿️ Free Parking</span>
+                            <span class="amenity-tag">🧹 Kitchen Cleaning</span>
+                        </div>
+                        <div class="property-item">
+                            <strong>Cove 144 @ 19A Tai Thong Crescent (Potong Pasir)</strong><br>
+                            Standard Room - SGD$1,200/month<br>
+                            <span class="amenity-tag">🚇 Near Subway</span>
+                            <span class="amenity-tag">🚌 Near Bus</span>
+                            <span class="amenity-tag">💪 Gym</span>
+                            <span class="amenity-tag">🏊 Swimming Pool</span>
+                            <span class="amenity-tag">🌳 Near Park</span>
+                        </div>
+                        <div class="property-item">
+                            <strong>Cove 238 @ Nuovo (Ang Mo Kio)</strong><br>
+                            Standard Room - SGD$1,200/month<br>
+                            <span class="amenity-tag">🚇 Near Subway</span>
+                            <span class="amenity-tag">🛒 Near Shopping Centre</span>
+                            <span class="amenity-tag">🧺 Washing Machine</span>
+                            <span class="amenity-tag">🔒 24-Hour Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-category">
+                    <div class="price-badge premium">Premium</div>
+                    <h3>✨ SGD$1,250/month</h3>
+                    <div class="property-list">
+                        <div class="property-item">
+                            <strong>Cove 271 @ Jalan Selamat (Kembangan)</strong><br>
+                            Standard Room in Landed House - SGD$1,250/month<br>
+                            <span class="amenity-tag">🏠 Landed House</span>
+                            <span class="amenity-tag">🏡 Balcony</span>
+                            <span class="amenity-tag">💪 Gym</span>
+                            <span class="amenity-tag">🏊 Swimming Pool</span>
+                        </div>
+                        <div class="property-item">
+                            <strong>Cove 89 @ Havelock Road (Tiong Bahru)</strong><br>
+                            Standard Room - SGD$1,250/month<br>
+                            <span class="amenity-tag">🧹 Free Regular Cleaning</span>
+                            <span class="amenity-tag">🧺 Washing Machine</span>
+                            <span class="amenity-tag">💪 Gym</span>
+                            <span class="amenity-tag">🚌 Near Bus Station</span>
+                            <span class="amenity-tag">🏬 Near Supermarket</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q2: Room Types -->
+        <div class="faq-section">
+            <h2>🏨 Standard Rooms vs Pocket Rooms</h2>
+            <p class="section-intro">Cove offers two room categories to suit different lifestyles and budgets:</p>
+            
+            <div class="room-comparison">
+                <div class="room-type-card standard-room">
+                    <div class="room-type-icon">📏</div>
+                    <h3>Standard Rooms</h3>
+                    <div class="room-features">
+                        <p><strong>Size & Layout:</strong></p>
+                        <ul>
+                            <li>✓ Larger floor space</li>
+                            <li>✓ Full-size bed</li>
+                            <li>✓ Spacious wardrobe</li>
+                            <li>✓ Dedicated desk</li>
+                        </ul>
+                        <p><strong>Best For:</strong></p>
+                        <ul>
+                            <li>✓ Working/studying from room</li>
+                            <li>✓ Storing more belongings</li>
+                            <li>✓ Longer stays (3-12 months)</li>
+                        </ul>
+                        <p><strong>Available at:</strong></p>
+                        <p>Cove 193, 195, 320, 144, 238, 271, 89</p>
+                        <p><strong>Price Range:</strong> SGD$850 - SGD$1,250/month</p>
+                    </div>
+                </div>
+
+                <div class="room-type-card pocket-room">
+                    <div class="room-type-icon">📦</div>
+                    <h3>Pocket Rooms</h3>
+                    <div class="room-features">
+                        <p><strong>Size & Layout:</strong></p>
+                        <ul>
+                            <li>✓ Compact & space-efficient</li>
+                            <li>✓ Single bed</li>
+                            <li>✓ Smaller storage solutions</li>
+                            <li>✓ Optimized for sleeping</li>
+                        </ul>
+                        <p><strong>Best For:</strong></p>
+                        <ul>
+                            <li>✓ Budget-conscious residents</li>
+                            <li>✓ Time spent outside room</li>
+                            <li>✓ Minimalist lifestyle</li>
+                        </ul>
+                        <p><strong>Available at:</strong></p>
+                        <p>Cove 491 @ Emerald Park, Cove 433 @ Cassia View</p>
+                        <p><strong>Price Range:</strong> SGD$1,000 - SGD$1,200/month</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shared-facilities-box">
+                <h4>✨ Shared Facilities in All Rooms</h4>
+                <div class="facilities-grid">
+                    <div class="facility">🍳 Shared Kitchen</div>
+                    <div class="facility">🚿 Shared/En-suite Bathroom</div>
+                    <div class="facility">🛋️ Common Area Access</div>
+                    <div class="facility">📡 High-Speed WiFi</div>
+                    <div class="facility">💡 Utilities Included/Capped</div>
+                    <div class="facility">🧹 Common Area Cleaning</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q3: Amenities -->
+        <div class="faq-section">
+            <h2>🎯 Amenities & Special Features</h2>
+            <p class="section-intro">All Cove properties are fully furnished and located close to MRT stations with standard inclusions and premium facilities:</p>
+            
+            <div class="amenities-highlights">
+                <div class="amenity-highlight">
+                    <h4>🌟 Cove 193 @ Casuarina Road (Mayflower)</h4>
+                    <p class="best-value">⭐ Best Overall Value</p>
+                    <div class="amenity-badges">
+                        <span>🚇 Near Subway</span>
+                        <span>🏬 Near Supermarket</span>
+                        <span>💪 Gym</span>
+                        <span>🏊 Swimming Pool</span>
+                        <span>❄️ Air Conditioning</span>
+                    </div>
+                </div>
+
+                <div class="amenity-highlight">
+                    <h4>🌟 Cove 195 @ Valley Road (Kovan)</h4>
+                    <p class="best-value">⭐ Best for Vehicle Owners</p>
+                    <div class="amenity-badges">
+                        <span>🚇 Near Subway</span>
+                        <span>🅿️ Free Parking</span>
+                        <span>🧹 Kitchen Cleaning</span>
+                    </div>
+                </div>
+
+                <div class="amenity-highlight">
+                    <h4>🌟 Cove 89 @ Havelock Road (Tiong Bahru)</h4>
+                    <p class="best-value">⭐ Best Service Package</p>
+                    <div class="amenity-badges">
+                        <span>🧹 Free Regular Cleaning</span>
+                        <span>🧺 Washing Machine</span>
+                        <span>💪 Gym</span>
+                        <span>🚌 Near Bus Station</span>
+                        <span>🏬 Near Supermarket</span>
+                    </div>
+                </div>
+
+                <div class="amenity-highlight">
+                    <h4>🌟 Cove 271 @ Jalan Selamat (Kembangan)</h4>
+                    <p class="best-value">⭐ Unique Landed House Experience</p>
+                    <div class="amenity-badges">
+                        <span>🏠 Landed House</span>
+                        <span>🏡 Balcony</span>
+                        <span>💪 Gym</span>
+                        <span>🏊 Swimming Pool</span>
+                    </div>
+                </div>
+
+                <div class="amenity-highlight">
+                    <h4>🌟 Cove 144 @ Tai Thong Crescent (Potong Pasir)</h4>
+                    <p class="best-value">⭐ Best Mid-Range Option</p>
+                    <div class="amenity-badges">
+                        <span>🚇 Near Subway</span>
+                        <span>🚌 Near Bus</span>
+                        <span>💪 Gym</span>
+                        <span>🏊 Swimming Pool</span>
+                        <span>🌳 Near Park</span>
+                    </div>
+                </div>
+
+                <div class="amenity-highlight">
+                    <h4>🌟 Cove 238 @ Nuovo (Ang Mo Kio)</h4>
+                    <p class="best-value">⭐ Best Security & Accessibility</p>
+                    <div class="amenity-badges">
+                        <span>🚇 Near Subway</span>
+                        <span>🛒 Near Shopping Centre</span>
+                        <span>🧺 Washing Machine</span>
+                        <span>🔒 24-Hour Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q5: Lease Terms -->
+        <div class="faq-section">
+            <h2>📋 Lease Terms & Flexibility</h2>
+            <p class="section-intro">Cove offers flexible lease arrangements ideal for medium-term stays:</p>
+            
+            <div class="lease-terms-grid">
+                <div class="lease-term-card">
+                    <div class="term-icon">📅</div>
+                    <h4>Minimum Lease Period</h4>
+                    <p><strong>1 Month</strong></p>
+                    <p class="term-note">No strict maximum limit</p>
+                </div>
+
+                <div class="lease-term-card">
+                    <div class="term-icon">🔄</div>
+                    <h4>Lease Extensions</h4>
+                    <p><strong>Flexible Month-to-Month</strong></p>
+                    <p class="term-note">Continue after initial term</p>
+                </div>
+
+                <div class="lease-term-card">
+                    <div class="term-icon">⏱️</div>
+                    <h4>Ideal Stay Duration</h4>
+                    <p><strong>1 to 12 Months</strong></p>
+                    <p class="term-note">Perfect for medium-term needs</p>
+                </div>
+
+                <div class="lease-term-card">
+                    <div class="term-icon">📝</div>
+                    <h4>Contract Adjustments</h4>
+                    <p><strong>Usually ~1 Month Notice</strong></p>
+                    <p class="term-note">Early termination possible with penalties</p>
+                </div>
+            </div>
+
+            <div class="legal-note-box">
+                <h4>⚠️ Important Legal Note</h4>
+                <p>Cove operates under <strong>serviced-apartment-style licensing</strong>, allowing flexible one-month minimum stays. This differs from typical private residential leases (minimum 3 months) and HDB leases (minimum 6 months) in Singapore. Always review specific contract terms before signing, as early termination may involve forfeiting part of the deposit or incurring penalties.</p>
+            </div>
+        </div>
+
+        <!-- Who Should Choose Cove -->
+        <div class="faq-section">
+            <h2>👥 Who Should Choose Cove?</h2>
+            
+            <div class="suitability-grid">
+                <div class="suitability-card excellent">
+                    <h4>✅ Excellent For</h4>
+                    <ul>
+                        <li>🎓 Students</li>
+                        <li>💼 Young professionals</li>
+                        <li>🌍 Expats (1-12 months)</li>
+                        <li>📚 Interns with short tenures</li>
+                        <li>👨‍👩‍👧‍👦 Relocating families</li>
+                        <li>💰 Budget-conscious travelers</li>
+                    </ul>
+                </div>
+
+                <div class="suitability-card advantages">
+                    <h4>⭐ Key Advantages</h4>
+                    <ul>
+                        <li>✓ Fully furnished rooms</li>
+                        <li>✓ No long-term commitment</li>
+                        <li>✓ Utilities often included</li>
+                        <li>✓ Near MRT stations</li>
+                        <li>✓ WiFi & amenities included</li>
+                        <li>✓ Flexible month-to-month</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section" style="background: linear-gradient(135deg, #B40000 0%, #8B0000 100%); color: white; padding: 3rem; border-radius: 12px; text-align: center; margin-top: 3rem;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Ready to Start Your Cove Journey?</h3>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="hotel-short-term-rentals-booking.html" style="background: white; color: #B40000; padding: 1rem 2.5rem; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-block; font-size: 1.05rem;">BOOK YOUR SHORT-TERM RENTALS (COVE) NOW</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 TravelMate Singapore. All rights reserved.</p>
+    </footer>
+
+    <style>
+        .short-term-hero {
+            background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .short-term-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .short-term-hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        .faq-section {
+            margin-bottom: 4rem;
+        }
+
+        .faq-section h2 {
+            color: #B40000;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .section-intro {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .price-range-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .price-category {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #B40000;
+        }
+
+        .price-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .price-badge.budget {
+            background-color: #4CAF50;
+        }
+
+        .price-badge.midrange {
+            background-color: #FF9800;
+        }
+
+        .price-badge.premium {
+            background-color: #2196F3;
+        }
+
+        .price-category h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .property-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .property-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .property-item strong {
+            color: #B40000;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .amenity-tag {
+            display: inline-block;
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin: 0.3rem 0.3rem 0.3rem 0;
+            border: 1px solid #A5D6A7;
+        }
+
+        .room-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .room-type-card {
+            padding: 2rem;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .standard-room {
+            background: linear-gradient(135deg, #486220 0%, #3a5018 100%);
+        }
+
+        .pocket-room {
+            background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
+        }
+
+        .room-type-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .room-type-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .room-features {
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .room-features p {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .room-features ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        .room-features li {
+            margin-bottom: 0.5rem;
+        }
+
+        .shared-facilities-box {
+            background: #F0F8FF;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+            margin-top: 2rem;
+        }
+
+        .shared-facilities-box h4 {
+            color: #1976D2;
+            margin-bottom: 1.5rem;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .facility {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #90CAF9;
+        }
+
+        .amenities-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .amenity-highlight {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .amenity-highlight h4 {
+            color: #B40000;
+            margin-bottom: 0.5rem;
+        }
+
+        .best-value {
+            display: inline-block;
+            background: #FFE082;
+            color: #F57F17;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .amenity-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .amenity-badges span {
+            background: #F0F8FF;
+            color: #1976D2;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid #90CAF9;
+        }
+
+        .lease-terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .lease-term-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 3px solid #B40000;
+        }
+
+        .term-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lease-term-card h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .lease-term-card p {
+            color: #666;
+        }
+
+        .lease-term-card strong {
+            color: #B40000;
+            font-size: 1.1rem;
+        }
+
+        .term-note {
+            font-size: 0.85rem !important;
+            color: #999 !important;
+            margin-top: 0.5rem;
+        }
+
+        .legal-note-box {
+            background: #FFF3E0;
+            border-left: 4px solid #FF9800;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 2rem;
+        }
+
+        .legal-note-box h4 {
+            color: #E65100;
+            margin-bottom: 1rem;
+        }
+
+        .legal-note-box p {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .suitability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .suitability-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .suitability-card.excellent {
+            background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+        }
+
+        .suitability-card.advantages {
+            background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%);
+        }
+
+        .suitability-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .suitability-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .suitability-card li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+
+        .cta-section a {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-section a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .short-term-hero h1 {
+                font-size: 2rem;
+            }
+
+            .price-range-grid,
+            .room-comparison,
+            .amenities-highlights,
+            .lease-terms-grid,
+            .suitability-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="styles.js"></script>
+
+    <script src="hotel-styles.js"></script>
+</body>
+</html>

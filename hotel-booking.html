@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Housing Booking - TravelMate Singapore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
+            padding: 1rem 2rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #e0e0e0;
+        }
+
+        .property-info {
+            padding: 1.5rem;
+        }
+
+        .property-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #B40000;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-location {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #486220;
+            margin: 1rem 0;
+        }
+
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .feature-badge {
+            background: #f0f0f0;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid #e0e0e0;
+            margin: 1rem 0 0 0;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 0.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-button.active {
+            color: #B40000;
+            border-bottom-color: #B40000;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 1rem 0;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .photo-item {
+            position: relative;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .photo-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 0.3rem;
+            text-align: center;
+        }
+
+        .book-now-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            margin-top: 1rem;
+        }
+
+        .book-now-btn:hover {
+            opacity: 0.9;
+        }
+
+        .offer-section {
+            background: #fff3cd;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .offer-label {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+
+        .offer-text {
+            color: #856404;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .booking-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .booking-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: #B40000;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+        }
+
+        .booking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .step.active .step-number {
+            background: #B40000;
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .step.active .step-label {
+            color: #B40000;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #B40000;
+            box-shadow: 0 0 0 3px rgba(180,0,0,0.1);
+        }
+
+        .form-group input[readonly] {
+            background: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+        .form-group input[type="file"] {
+            padding: 0.5rem;
+            cursor: pointer;
+            background: #f9f9f9;
+        }
+
+        .form-group input[type="file"]::file-selector-button {
+            padding: 0.6rem 1rem;
+            background: #B40000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-right: 1rem;
+            transition: background 0.3s;
+        }
+
+        .form-group input[type="file"]::file-selector-button:hover {
+            background: #8B0000;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-back,
+        .btn-next {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-back {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
+            color: white;
+        }
+
+        .btn-back:hover,
+        .btn-next:hover {
+            opacity: 0.9;
+        }
+
+        .payment-summary {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .summary-line strong {
+            color: #B40000;
+            font-size: 1.1rem;
+        }
+
+        .total-line {
+            border-top: 2px solid #ddd;
+            padding-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .payment-methods {
+            margin: 1.5rem 0;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .payment-option:hover {
+            border-color: #B40000;
+            background: #fff9f9;
+        }
+
+        .payment-option input[type="radio"] {
+            width: auto;
+            margin-right: 1rem;
+        }
+
+        .thank-you-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thank-you-modal.active {
+            display: flex;
+        }
+
+        .thank-you-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .thank-you-content h2 {
+            color: #B40000;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .thank-you-content p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .photos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-content">
+                    <svg class="logo-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#B40000;stop-opacity:1" /><stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" /></linearGradient></defs><circle cx="60" cy="45" r="35" fill="url(#logoGradient)" /><text x="60" y="50" font-size="50" text-anchor="middle" dominant-baseline="middle">✈️</text></svg><span>TravelMate</span>
+                </div>
+                <div class="logo-tagline">Your Student Staycation Partner</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="hotel-index.html">Home</a></li>
+                <li><a href="hotel-student-housing.html">Student Housing</a></li>
+                <li><a href="hotel-budget-hotels.html">Budget Hotels</a></li>
+                <li><a href="hotel-short-term-stays.html">Short-Term Rentals (Cove)</a></li>
+                <li><a href="hotel-location-finder.html">🗺️ Location Finder</a></li>
+                <li><a href="hotel-index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 2rem; color: #B40000;">Student Housing Bookings</h1>
+        
+        <!-- Filter Section -->
+        <div class="filter-section" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <button class="filter-toggle-btn" onclick="toggleFilterPanel()">🔍 Filter Student Housing</button>
+            <div id="filterPanel" class="filter-panel hidden">
+                <div class="filter-panel-header">
+                    <h3>Filter by:</h3>
+                    <button class="filter-close-btn" onclick="toggleFilterPanel()">✕</button>
+                </div>
+                <div class="filter-panel-content">
+                    <div class="filter-category">
+                        <h4>💰 Price Range (SGD)</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="690-800" onchange="applyFilters()"> $690 - $800
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="850-1100" onchange="applyFilters()"> $850 - $1100
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="price-filter" value="1040-1280" onchange="applyFilters()"> $1040 - $1280
+                        </label>
+                    </div>
+
+                    <div class="filter-category">
+                        <h4>📍 Region</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Woodlands" onchange="applyFilters()"> Woodlands
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Choa Chu Kang" onchange="applyFilters()"> Choa Chu Kang
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Bukit Panjang" onchange="applyFilters()"> Bukit Panjang
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Bukit Gombak" onchange="applyFilters()"> Bukit Gombak
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Bright Hill" onchange="applyFilters()"> Bright Hill
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Chinese Garden" onchange="applyFilters()"> Chinese Garden
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Cashew" onchange="applyFilters()"> Cashew
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Siglap" onchange="applyFilters()"> Siglap
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Simei" onchange="applyFilters()"> Simei
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Bedok Reservoir" onchange="applyFilters()"> Bedok Reservoir
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Katong Park" onchange="applyFilters()"> Katong Park
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Pasir Ris" onchange="applyFilters()"> Pasir Ris
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Ubi" onchange="applyFilters()"> Ubi
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Aljunied" onchange="applyFilters()"> Aljunied
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Redhill" onchange="applyFilters()"> Redhill
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Great World" onchange="applyFilters()"> Great World
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Clementi" onchange="applyFilters()"> Clementi
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Woodleigh" onchange="applyFilters()"> Woodleigh
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Boon Lay" onchange="applyFilters()"> Boon Lay
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="location-filter" value="Lakeside" onchange="applyFilters()"> Lakeside
+                        </label>
+                    </div>
+
+                    <div class="filter-category">
+                        <h4>✨ Key Features</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Swimming Pool" onchange="applyFilters()"> 🏊 Swimming Pool
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Gym" onchange="applyFilters()"> 🏋️ Gym
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Air Conditioner" onchange="applyFilters()"> ❄️ Air Conditioner
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Near Subway" onchange="applyFilters()"> 🚇 Near Subway
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Washing Machine" onchange="applyFilters()"> 🧺 Washing Machine
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Near Bus Station" onchange="applyFilters()"> 🚌 Near Bus Station
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="Free Laundry" onchange="applyFilters()"> 🧹 Free Laundry
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="feature-filter" value="24 Hour Security" onchange="applyFilters()"> 🔒 24 Hour Security
+                        </label>
+                    </div>
+
+                    <div class="filter-category">
+                        <h4>🎁 Special Offers</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="Rent Rebate" onchange="applyFilters()"> 💰 Rent Rebate
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="free cleaning" onchange="applyFilters()"> 🧹 Free Cleaning Services
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="shopping voucher" onchange="applyFilters()"> 🛍️ Shopping Voucher
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="transport card" onchange="applyFilters()"> 🚌 Transport Card Top-up
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="offer-filter" value="dining credit" onchange="applyFilters()"> 🍽️ Dining Credit
+                        </label>
+                    </div>
+                </div>
+                <div class="filter-panel-footer">
+                    <button onclick="resetFilters()" class="btn-reset-filters">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="properties-grid" id="propertiesGrid"></div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="booking-modal" id="bookingModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeBookingModal()">×</button>
+            <h2 class="modal-title" id="modalPropertyName">Property Name</h2>
+
+            <!-- Progress Steps -->
+            <div class="booking-steps">
+                <div class="step active" id="stepIndicator0">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Guide</div>
+                </div>
+                <div class="step" id="stepIndicator1">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Guest Info</div>
+                </div>
+                <div class="step" id="stepIndicator2">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Documents</div>
+                </div>
+                <div class="step" id="stepIndicator3">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Payment</div>
+                </div>
+            </div>
+
+            <!-- Step 0: Booking Guide -->
+            <div id="step0" class="step-content active">
+                <div style="background: #f9f9f9; padding: 1.5rem; border-radius: 8px; line-height: 1.8;">
+                    <h3 style="color: #B40000; margin-bottom: 1.5rem;">📋 How to Book Student Housing</h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="background: #B40000; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">1</div>
+                            <div>
+                                <strong>Guest Information</strong>
+                                <p style="color: #666; font-size: 0.9rem; margin-top: 0.3rem;">Enter your name, phone number, email address, number of occupants, and duration of stay (months)</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="background: #B40000; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">2</div>
+                            <div>
+                                <strong>Application & Documents</strong>
+                                <p style="color: #666; font-size: 0.9rem; margin-top: 0.3rem;">Submit your passport number, student pass, and emergency contact information (name and phone number)</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="background: #B40000; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">3</div>
+                            <div>
+                                <strong>Payment Method</strong>
+                                <p style="color: #666; font-size: 0.9rem; margin-top: 0.3rem;">Pay the full amount using:<br>
+                                • <strong>Bank Transfer</strong> - Direct bank transfer to our account<br>
+                                • <strong>PayNow</strong> - Fast local transfer using PayNow (Singapore)<br>
+                                • <strong>Card Payment</strong> - Visa, Mastercard, or American Express</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="background: #B40000; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">4</div>
+                            <div>
+                                <strong>Confirmation</strong>
+                                <p style="color: #666; font-size: 0.9rem; margin-top: 0.3rem;">Wait for further instructions in your email from our team</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-next" onclick="goToStep(1)" style="background: #486220;">Let's Get Started</button>
+                </div>
+            </div>
+
+            <!-- Step 1: Guest Information -->
+            <div id="step1" class="step-content hidden">
+                <form id="guestForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="occupants">Number of Occupants *</label>
+                        <input type="number" id="occupants" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Start Date *</label>
+                        <input type="date" id="startDate" required onchange="calculateDuration()">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date *</label>
+                        <input type="date" id="endDate" required onchange="calculateDuration()">
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duration of Stay (Months) *</label>
+                        <input type="number" id="duration" readonly>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" class="btn-back" onclick="goToStep(0)">Back</button>
+                        <button type="button" class="btn-next" onclick="goToStep(2)" style="background: #486220;">Next</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 2: Application & Documents -->
+            <div id="step2" class="step-content hidden">
+                <form id="documentsForm">
+                    <div style="background: #fff3cd; padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; border-left: 4px solid #ffc107;">
+                        <p style="color: #856404; font-size: 0.9rem;"><strong>📄 Please provide the following information:</strong></p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passportNumber">Passport Number *</label>
+                        <input type="text" id="passportNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentPassFile">Upload Student Pass *</label>
+                        <input type="file" id="studentPassFile" accept="image/*,.pdf,.doc,.docx" required onchange="handleStudentPassUpload(event)">
+                        <small style="color: #666; display: block; margin-top: 0.5rem;">Accepted formats: Image (JPG, PNG), PDF, Word (DOC, DOCX)</small>
+                        <div id="studentPassPreview" style="margin-top: 1rem; display: none;">
+                            <p style="font-size: 0.9rem; color: #486220; font-weight: bold;">✓ File uploaded: <span id="uploadedFileName"></span></p>
+                        </div>
+                    </div>
+                    
+                    <div style="border-top: 2px solid #e0e0e0; padding-top: 1.5rem; margin-top: 1.5rem;">
+                        <h4 style="color: #B40000; margin-bottom: 1rem;">Emergency Contact Information</h4>
+                        <div class="form-group">
+                            <label for="emergencyName">Emergency Contact Name *</label>
+                            <input type="text" id="emergencyName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergencyPhone">Emergency Contact Phone Number *</label>
+                            <input type="tel" id="emergencyPhone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-buttons">
+                        <button type="button" class="btn-back" onclick="goToStep(1)">Back</button>
+                        <button type="button" class="btn-next" onclick="goToStep(3)" style="background: #486220;">Next</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 3: Payment -->
+            <div id="step3" class="step-content hidden">
+                <div class="payment-summary">
+                    <div class="summary-line">
+                        <span>Base Price (per month):</span>
+                        <strong id="basePrice">SGD$0</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Duration (months):</span>
+                        <strong id="displayDuration">1</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Subtotal:</span>
+                        <strong id="subtotal">SGD$0</strong>
+                    </div>
+                    <div class="summary-line total-line">
+                        <span>Total Amount:</span>
+                        <strong id="totalAmount">SGD$0</strong>
+                    </div>
+                </div>
+
+                <h3>Select Payment Method</h3>
+                <div class="payment-methods">
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="bank-transfer" required>
+                        <div>
+                            <strong>💳 Bank Transfer</strong>
+                            <p style="font-size: 0.8rem; color: #666;">Direct bank transfer to our account</p>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="paynow">
+                        <div>
+                            <strong>📱 PayNow</strong>
+                            <p style="font-size: 0.8rem; color: #666;">Fast local transfer using PayNow (Singapore)</p>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="card">
+                        <div>
+                            <strong>🎫 Card Payment</strong>
+                            <p style="font-size: 0.8rem; color: #666;">Visa, Mastercard, or American Express</p>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-back" onclick="goToStep(2)">Back</button>
+                    <button type="button" class="btn-next" onclick="completeBooking()" style="background: #486220;">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div class="thank-you-modal" id="thankYouModal">
+        <div class="thank-you-content">
+            <h2>Thank You for Booking!</h2>
+            <p style="font-size: 1.1rem; color: #333; margin-bottom: 1rem;">Your booking has been successfully submitted.</p>
+            <p style="font-size: 0.95rem; color: #666;">Please wait for further instructions in your email.</p>
+            <button type="button" class="btn-next" onclick="closeThankYouModal()" style="width: 200px; margin: 1.5rem auto 0; background: #486220;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Property Data
+        const properties = [
+            {
+                name: 'Rosewood Condo',
+                location: '10 Woodlands Street 13, Singapore 737853 (Woodlands)',
+                price: 750,
+                features: ['🚇 Near Subway', '🏊 Swimming Pool', '🏋️ Gym'],
+                offer: 'One-time SG$320 Rent Rebate',
+                contact: 'contact@uhomes.com | +65 9123 4567',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1395/01JDA3EA13JC5EFCWN8XX6JESP_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1391/01JDA3ECNFBFKB4P56C90VSWC2_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1391/01JDA32GRP03GZ45RDNEZW0ZSP_z.webp', label: 'Common Room 2' }
+                ]
+            },
+            {
+                name: 'The Warren',
+                location: '20 Choa Chu Kang Road, Singapore 689578 (Choa Chu Kang)',
+                price: 900,
+                features: ['🚌 Near Bus Station', '🛍️ Near Shopping Center', '❄️ Air Conditioner', '🚇 Near Subway'],
+                offer: 'One-time SG$320 Rent Rebate',
+                contact: 'contact@uhomes.com | +65 9123 4568',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1389/01JFSY3EGSD8E2M8NAZPBP66V1_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1381/01JH0HGV9HBJ080VZQTMWBNR8G_z.webp', label: 'Common Room 1' }
+                ]
+            },
+            {
+                name: 'Maysprings',
+                location: '18 Bukit Panjang Road, Singapore 679842 (Bukit Panjang)',
+                price: 1050,
+                features: ['🚇 Near Subway', '🛍️ Near Shopping Center', '🏋️ Gym', '🧺 Washing Machine', '🏊 Swimming Pool'],
+                offer: '2 free cleaning services',
+                contact: 'contact@uhomes.com | +65 9123 4569',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1395/01K0CBCEYF7HM8D6DFR4J5FYRG_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1397/01K22DQKBV49PJM35FCX1M6TQA_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01K22DKYZ6TPHH637F5YHCJBCA_z.webp', label: 'Common Room 2' },
+                    { url: 'https://media.uhzcdn.com/image/1391/01K0CB2Y17P93FVR9HY0Y4TY1X_z.webp', label: 'Common Room 3' },
+                    { url: 'https://media.uhzcdn.com/image/1393/01K09RRAT68JMHMEMQPFRDF5J7_z.webp', label: 'Common Room 4' },
+                    { url: 'https://media.uhzcdn.com/image/1381/01K0PN30G0C5KSNSQCMCKKH4WR_z.webp', label: 'Common Room 5' },
+                    { url: 'https://media.uhzcdn.com/image/1381/01K18P3EYY76JN6ED3WEG0VM10_z.webp', label: 'Common Room 6' }
+                ]
+            },
+            {
+                name: 'The Madeira',
+                location: '56 Bukit Batok Street 31, Singapore 659445 (Bukit Gombak)',
+                price: 1280,
+                features: ['🚇 Near Subway', '🏊 Swimming Pool', '🏋️ Gym'],
+                offer: 'One-time free SGD$60 shopping voucher',
+                contact: 'contact@uhomes.com | +65 9123 4570',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1389/01JMA3H1B6NEX38BRHVA6YZY43_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1391/01K3RG04Q3GXBFRMHRGJFPATAJ_z.webp', label: 'Common Room 1' }
+                ]
+            },
+            {
+                name: 'Bishan Park Condominium',
+                location: '24 Sin Ming Walk, Singapore 575572 (Bright Hill)',
+                price: 800,
+                features: ['🌳 Near Park', '🚇 Near Subway', '🚌 Near Bus Station', '🏪 Near Supermarket', '🏋️ Gym', '❄️ Air Conditioner', '🏊 Swimming Pool'],
+                offer: 'One-time SG$320 Rent Rebate',
+                contact: 'contact@uhomes.com | +65 9123 4571',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1385/01K8TWY29NCFRKX9JF70TDB673_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01K92EAQPB08DDJP43DW36TXSM_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1395/01K8TW94PCHX800HD6ST5MS2RJ_z.webp', label: 'Common Room 2' }
+                ]
+            },
+            {
+                name: 'Ivory Heights - BESPOKE',
+                location: '117 Jurong East Street 13, Singapore 600117 (Chinese Garden)',
+                price: 1040,
+                features: ['🧹 Kitchen Cleaning', '🅿️ Free Parking', '🚌 Near School Bus', '🧺 Washing Machine', '🧹 Free Regular Cleaning'],
+                offer: '2 free cleaning services',
+                contact: 'contact@uhomes.com | +65 9123 4572',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1385/01JZ0J9FXKN5515Z9Y1C7BXEER_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1397/01J7KR53GG5GKGG1QN82YKW80T_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1391/01J7P25F0HYVC1SD1BZ02Z5RTD_z.webp', label: 'Common Room 2' },
+                    { url: 'https://media.uhzcdn.com/image/1389/01J7P43ZM1BW6K8RHQ3Y2YFM99_z.webp', label: 'Common Room 3' },
+                    { url: 'https://media.uhzcdn.com/image/1397/01J7KQWGB2KBKZJSDA2546AMZZ_z.webp', label: 'Common Room 4' },
+                    { url: 'https://media.uhzcdn.com/image/1381/01J7KT6PXQR8W1T8QFVGT7KS6B_z.webp', label: 'Common Room 5' },
+                    { url: 'https://media.uhzcdn.com/image/1395/01K8BCD8B9RSYYG6FF6VPWCHHN_z.webp', label: 'Common Room 6' },
+                    { url: 'https://media.uhzcdn.com/image/1395/01JYRVCYK4HKCTY2S2JGY0WCJ7_z.webp', label: 'Common Room 7' },
+                    { url: 'https://media.uhzcdn.com/image/1395/01K3GRR0WA4ZJ7D2HAZEJYD3XB_z.webp', label: 'Common Room 8' },
+                    { url: 'https://media.uhzcdn.com/image/1389/01K10YKZNF9VAPMB53WGAQHW22_z.webp', label: 'Common Room 9' },
+                    { url: 'https://media.uhzcdn.com/image/1383/01J7PAQN5VGT6316RC9DD8A9R2_z.webp', label: 'Common Room 10' }
+                ]
+            },
+            {
+                name: 'Cashew Heights - AP',
+                location: '97 Cashew Road, Singapore 679668 (Cashew)',
+                price: 690,
+                features: ['🚇 Near Subway', '🚌 Near Bus Station', '❄️ Air Conditioner', '🏋️ Gym', '🏊 Swimming Pool'],
+                offer: 'One-time SG$320 Rent Rebate',
+                contact: 'contact@uhomes.com | +65 9123 4573',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1399/01KBFP6G0FWRS6Y6C7RBN2QPQC_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1397/01K59DVWNN1Z5DRG4JXSA7TR8E_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1399/01K8R608N0NDFZ7MXT3QPF9QYQ_z.webp', label: 'Common Room 2' }
+                ]
+            },
+            {
+                name: 'Lagoon View - X1',
+                location: '5000K Marine Parade Road, Singapore 449295 (Siglap)',
+                price: 850,
+                features: ['🧺 Free Laundry', '🚌 Near Bus Station', '🏪 Near Supermarket', '🌳 Near Park', '🔒 24 Hour Security', '🚇 Near Subway', '🪟 Balcony'],
+                offer: '2 free cleaning services + One-time free SGD$60 shopping voucher',
+                contact: 'contact@uhomes.com | +65 9123 4574',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1387/01J7PBB8GHV096CJT9S4S8W2M6_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1397/01HWGBYK7VQGJJPHE7094VX7V6_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1387/01HWGBYFMYTKCCKMA1H5SB54HP_z.webp', label: 'Common Room 2' },
+                    { url: 'https://media.uhzcdn.com/image/1397/01HWGBY982FC8KR36GCS9DQA5H_z.webp', label: 'Common Room 3' },
+                    { url: 'https://media.uhzcdn.com/image/1387/01HWGBY55GNTBCF6J9AV24Q27Z_z.webp', label: 'Common Room 4' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01JTR3EKT4Y5DGRA6032ECY5ZZ_z.webp', label: 'Common Room 5' }
+                ]
+            },
+            {
+                name: 'Eastpoint Green',
+                location: '7 Simei Street 3, Singapore 529893 (Simei)',
+                price: 890,
+                features: ['🚇 Near Subway', '🛍️ Near Shopping Center', '🏋️ Gym', '🏊 Swimming Pool', '🧺 Washing Machine', '❄️ Air Conditioner', '🛗 Elevator'],
+                offer: 'One-time free SGD$60 shopping voucher',
+                contact: 'contact@uhomes.com | +65 9123 4575',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1381/01JFFMJH9EBF4RSF3W6BXE7SR2_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1391/01JFFM2YQBHQ67EC82J5Y3WY65_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1383/01JFFN2Z1XNEYYQVGNJ9XB1R6X_z.webp', label: 'Common Room 2' },
+                    { url: 'https://media.uhzcdn.com/image/1383/01JFFMNJ4S84NAJMWE0CHK6Q0G_z.webp', label: 'Common Room 3' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01JFFMJBK89P6FXY1156PRSQHG_z.webp', label: 'Common Room 4' },
+                    { url: 'https://media.uhzcdn.com/image/1381/01KBZ4HBCW0MZX8C33HEDASQHZ_z.webp', label: 'Common Room 5' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01JFFM3MKKXVJV4ZTT3S431P3M_z.webp', label: 'Common Room 6' },
+                    { url: 'https://media.uhzcdn.com/image/1393/01KC6WAMNV4W3KXW46XQME6TP5_z.webp', label: 'Common Room 7' },
+                    { url: 'https://media.uhzcdn.com/image/1389/01KD5S0Q61ANNJ07ED37P7DAWS_z.webp', label: 'Common Room 8' },
+                    { url: 'https://media.uhzcdn.com/image/1389/01KD5RC0HZ5586HSVJ7N11MRA3_z.webp', label: 'Common Room 9' }
+                ]
+            },
+            {
+                name: 'Aquarius by the Park',
+                location: '5 Bedok Reservoir View, Singapore 478928 (Bedok Reservoir)',
+                price: 1280,
+                features: ['🚇 Near Subway', '🏪 Near Supermarket', '🛍️ Near Shopping Center', '🏋️ Gym', '🧺 Washing Machine', '❄️ Air Conditioner', '🏊 Swimming Pool'],
+                offer: '2 free cleaning services',
+                contact: 'contact@uhomes.com | +65 9123 4576',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1385/01JNRF1Z719R4GKVSRK0CPF09G_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01JFFKZFC18BPM2NKB6VC6G3M9_z.webp', label: 'Master Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01JFFMNA54K2QHQP85KQERX2KD_z.webp', label: 'Common Room 2' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01JFFKMQETN5A6YFBFQYKEHENJ_z.webp', label: 'Common Room 3' }
+                ]
+            },
+            {
+                name: 'The Meyer Place',
+                location: '2 Meyer Place, Singapore 437989 (Katong Park)',
+                price: 1000,
+                features: ['🚇 Near Subway', '🏪 Near Supermarket', '🛍️ Near Shopping Center', '🏋️ Gym', '🧺 Washing Machine', '❄️ Air Conditioner', '🏊 Swimming Pool'],
+                offer: 'One-time SG$80 transport card top-up',
+                contact: 'contact@uhomes.com | +65 9123 4577',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1397/01J7P30A17CFFAZBB08DCXMYJS_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1381/01J7KDRQMGBFBG82FCM1VQJZT8_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1389/01J7KF6ZK76EJYT84NS23P1ZVW_z.webp', label: 'Common Room 2' },
+                    { url: 'https://media.uhzcdn.com/image/1397/01JNRERABKAYJR5XBQ9N1JP60G_z.webp', label: 'Common Room 3' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01J7NZ46K4X5DBCG2Y6NBMHHC4_z.webp', label: 'Common Room 4' }
+                ]
+            },
+            {
+                name: 'Elias Green',
+                location: '1 Elias Green, Singapore 519959 (Pasir Ris)',
+                price: 980,
+                features: ['🏪 Near Supermarket', '🚇 Near Subway', '🛍️ Near Shopping Center', '🏋️ Gym', '🧺 Washing Machine', '🏊 Swimming Pool', '❄️ Air Conditioner'],
+                offer: 'One-time SG$100 dining credit',
+                contact: 'contact@uhomes.com | +65 9123 4578',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1399/01JFWG88FCPJHKHV6NV45TGT43_z.webp', label: 'Common Room' }
+                ]
+            },
+            {
+                name: '334 Ubi Ave 1',
+                location: '334 Ubi Avenue 1, Singapore 400334 (Ubi)',
+                price: 690,
+                features: ['🚇 Near Subway', '🛗 Elevator', '❄️ Air Conditioner'],
+                offer: 'One-time SG$80 transport card top-up',
+                contact: 'contact@uhomes.com | +65 9123 4579',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1387/01J7PA4PAZ5N3JDF794PFZC4ZD_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1393/01J7KRBRJRG921W8FGRM89K9QK_z.webp', label: 'Common Room' },
+                    { url: 'https://media.uhzcdn.com/image/1399/01J7NXQFFYK40PEH5MZ2ND82ST_z.webp', label: 'Common Room' },
+                    { url: 'https://media.uhzcdn.com/image/1399/01J7KADR829PPQVN5HJV1JX1DR_z.webp', label: 'Common Room' }
+                ]
+            },
+            {
+                name: 'TRE Residences - HC',
+                location: '9 Geylang East Avenue 1, Singapore 389783 (Aljunied)',
+                price: 1280,
+                features: ['🚇 Near Subway', '🏪 Near Supermarket', '🏋️ Gym', '🧺 Washing Machine', '🏊 Swimming Pool', '❄️ Air Conditioner'],
+                offer: 'One-time SG$100 dining credit + 2 free cleaning services',
+                contact: 'contact@uhomes.com | +65 9123 4580',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1391/01JFSXS9VYZCKZHJ7HS86PWRVK_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1381/01JFSY4PV4JX25K9EQJDCR93Q6_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1393/01JFSYCAM9RBMFHERBEWAMM8T0_z.webp', label: 'Common Room 2' }
+                ]
+            },
+            {
+                name: 'Principal Garden',
+                location: '99 Prince Charles Crescent, Singapore 159029 (Redhill)',
+                price: 1100,
+                features: ['🚌 Near Bus Station', '🚇 Near Subway', '🏊 Swimming Pool'],
+                offer: 'One-time SG$100 dining credit',
+                contact: 'contact@uhomes.com | +65 9123 4581',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1387/01K4WHSJGZGTTBFMB63PK63HSG_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1387/01K4WHRDB9F91RH1TXSJ1N6MK2_z.webp', label: 'Common Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1393/01K4Z3ZEPMFJWWGWZ38PT6WMG9_z.webp', label: 'Common Room 2' },
+                    { url: 'https://media.uhzcdn.com/image/1383/01K56V2MAN9BY9GJFWXYC8WNSH_z.webp', label: 'Common Room 3' }
+                ]
+            },
+            {
+                name: 'Horizon Towers',
+                location: '29 Leonie Hill, Singapore 239228 (Great World)',
+                price: 1250,
+                features: ['🏋️ Gym', '🏊 Swimming Pool', '🚇 Near Subway', '🚌 Near Bus Station', '🔒 24 Hour Security'],
+                offer: 'One-time SG$320 Rent Rebate',
+                contact: 'contact@uhomes.com | +65 9123 4582',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1385/01JZAW6F0MKAC2T304YDF7N5C3_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1399/01JZ8A8N6R3R1GHET2BVSGNPVD_z.webp', label: 'Common Room 1' }
+                ]
+            },
+            {
+                name: 'The Clement Canopy - Z',
+                location: '16 Clementi Avenue 1, Singapore 129960 (Clementi)',
+                price: 990,
+                features: ['🚇 Near Subway', '❄️ Air Conditioner'],
+                offer: 'One-time SG$320 Rent Rebate',
+                contact: 'contact@uhomes.com | +65 9123 4583',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1391/01J7P58KEY6NCDYP839E93P54Q_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1383/01JHQPTPTNZ04PNFKRQVMHMYPJ_z.webp', label: 'Common Room' },
+                    { url: 'https://media.uhzcdn.com/image/1397/01KCVEWAB26QB9T1YG7VBE93C9_z.webp', label: 'Common Room' }
+                ]
+            },
+            {
+                name: '25 Woodleigh Close',
+                location: '25 Woodleigh Close, Singapore 357920 (Woodleigh)',
+                price: 1278,
+                features: ['🏊 Swimming Pool', '🚌 Near Bus Station', '❄️ Air Conditioner', '🏋️ Gym', '🚇 Near Subway'],
+                offer: '2 free cleaning services',
+                contact: 'contact@uhomes.com | +65 9123 4584',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1391/01JA5NHHBQPZSGFHQRW0PE5KBC_z.webp', label: 'Common Room' }
+                ]
+            },
+            {
+                name: 'Summerdale - HC',
+                location: '10 Boon Lay Drive, Singapore 649929 (Boon Lay)',
+                price: 890,
+                features: ['🚌 Near Bus Station', '🌳 Near Park', '🚇 Near Subway', '🛍️ Near Shopping Centre', '🧺 Washing Machine', '🏋️ Gym', '🏊 Swimming Pool', '❄️ Air Conditioner'],
+                offer: 'One-time SG$320 Rent Rebate',
+                contact: 'contact@uhomes.com | +65 9123 4585',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1391/01KB07ST33M4WV5WMD1X55ZF6Z_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1397/01KB080KV7R1RFZKNH0CXST6JX_z.webp', label: 'Common Room' },
+                    { url: 'https://media.uhzcdn.com/image/1399/01JFJ6GR28RZ0ZPAXF8D1DS5F8_z.webp', label: 'Common Room' },
+                    { url: 'https://media.uhzcdn.com/image/1387/01JFJ64BMPYC3W1Y272NNKD8YH_z.webp', label: 'Common Room' }
+                ]
+            },
+            {
+                name: 'Caspian - BESPOKE',
+                location: '54 Lakeside Drive, Singapore 648317 (Lakeside)',
+                price: 700,
+                features: ['🚇 Near Subway', '🏊 Swimming Pool', '❄️ Air Conditioner', '🏋️ Gym'],
+                offer: 'One-time free SGD$60 shopping voucher',
+                contact: 'contact@uhomes.com | +65 9123 4586',
+                photos: [
+                    { url: 'https://media.uhzcdn.com/image/1395/01K68AC7GMFMJMYGXY6ZY5G5X2_z.webp', label: 'Master Room' },
+                    { url: 'https://media.uhzcdn.com/image/1389/01J7KMJZBYC8JW7A1N5RP4YT6B_z.webp', label: 'Master Room 1' },
+                    { url: 'https://media.uhzcdn.com/image/1391/01J7P2A5W7EYZXMCCPEH15FPVD_z.webp', label: 'Common Room 2' },
+                    { url: 'https://media.uhzcdn.com/image/1383/01JWRF2D5CR4CTJNDSRQ07CCK4_z.webp', label: 'Common Room 3' },
+                    { url: 'https://media.uhzcdn.com/image/1395/01K68AHTEQ6GDA3CW544C77QNK_z.webp', label: 'Common Room 4' },
+                    { url: 'https://media.uhzcdn.com/image/1399/01K0PMZA33GG6HDWCXWQSVJ6XB_z.webp', label: 'Common Room 5' },
+                    { url: 'https://media.uhzcdn.com/image/1393/01J7KE2Z18XRVZW0S1K4C8R9R3_z.webp', label: 'Common Room 6' },
+                    { url: 'https://media.uhzcdn.com/image/1385/01KA922A3NWZZ1D81JQW8C5CFK_z.webp', label: 'Common Room 7' }
+                ]
+            }
+        ];
+
+        // Toggle filter panel
+        function toggleFilterPanel() {
+            const filterPanel = document.getElementById('filterPanel');
+            filterPanel.classList.toggle('hidden');
+        }
+
+        // Close filter panel when clicking outside
+        document.addEventListener('click', function(event) {
+            const filterSection = document.querySelector('.filter-section');
+            if (filterSection && !filterSection.contains(event.target)) {
+                const filterPanel = document.getElementById('filterPanel');
+                filterPanel.classList.add('hidden');
+            }
+        });
+
+        // Apply filters
+        function applyFilters() {
+            const priceFilters = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => cb.value);
+            const locationFilters = Array.from(document.querySelectorAll('.location-filter:checked')).map(cb => cb.value);
+            const featureFilters = Array.from(document.querySelectorAll('.feature-filter:checked')).map(cb => cb.value);
+            const offerFilters = Array.from(document.querySelectorAll('.offer-filter:checked')).map(cb => cb.value);
+
+            const cards = document.querySelectorAll('.property-card');
+            
+            cards.forEach(card => {
+                const priceRange = card.getAttribute('data-price-range');
+                const location = card.getAttribute('data-location');
+                const features = card.getAttribute('data-features').split(',').map(f => f.trim());
+                const offer = card.getAttribute('data-offer');
+
+                let priceMatch = priceFilters.length === 0;
+                let locationMatch = locationFilters.length === 0;
+                let featureMatch = featureFilters.length === 0;
+                let offerMatch = offerFilters.length === 0;
+
+                // Price range matching
+                if (priceFilters.length > 0) {
+                    priceMatch = priceFilters.includes(priceRange);
+                }
+
+                // Location matching
+                if (locationFilters.length > 0) {
+                    locationMatch = locationFilters.includes(location);
+                }
+
+                // Feature matching - ALL selected features must be present
+                if (featureFilters.length > 0) {
+                    featureMatch = featureFilters.every(filter => features.includes(filter));
+                }
+
+                // Offer matching - ANY selected offer must be present
+                if (offerFilters.length > 0) {
+                    offerMatch = offerFilters.some(filter => offer.toLowerCase().includes(filter.toLowerCase()));
+                }
+
+                // Show card only if all conditions are met
+                card.style.display = (priceMatch && locationMatch && featureMatch && offerMatch) ? '' : 'none';
+            });
+        }
+
+        // Reset filters
+        function resetFilters() {
+            document.querySelectorAll('.price-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.location-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.feature-filter').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.offer-filter').forEach(cb => cb.checked = false);
+            
+            const cards = document.querySelectorAll('.property-card');
+            cards.forEach(card => {
+                card.style.display = '';
+            });
+        }
+
+        let currentProperty = null;
+
+        // Get price range for filtering
+        function getPriceRange(price) {
+            if (price >= 690 && price <= 800) return '690-800';
+            if (price >= 850 && price <= 1100) return '850-1100';
+            if (price >= 1040 && price <= 1280) return '1040-1280';
+            return 'unknown';
+        }
+
+        // Initialize properties grid
+        function initializeProperties() {
+            const grid = document.getElementById('propertiesGrid');
+            grid.innerHTML = properties.map((prop, idx) => {
+                // Extract location region from the full location string
+                const locationRegion = prop.location.split('(')[1]?.replace(')', '').trim() || '';
+                // Combine all features for filtering
+                const featureString = prop.features.map(f => f.replace(/^[^\s]+ /, '')).join(',');
+                
+                return `
+                <div class="property-card" data-price="${prop.price}" data-price-range="${getPriceRange(prop.price)}" data-location="${locationRegion}" data-features="${featureString}" data-offer="${prop.offer}">
+                    <img src="${prop.photos[0].url}" alt="${prop.name}" class="property-image">
+                    <div class="property-info">
+                        <div class="property-name">${prop.name}</div>
+                        <div class="property-location">${prop.location}</div>
+                        <div class="property-price">SGD$${prop.price}/month</div>
+                        <div class="features-list">
+                            ${prop.features.slice(0, 3).map(f => `<span class="feature-badge">${f}</span>`).join('')}
+                        </div>
+                        
+                        <div class="tabs">
+                            <button class="tab-button active" onclick="switchTab(${idx}, 'details')">Details</button>
+                            <button class="tab-button" onclick="switchTab(${idx}, 'offer')">Offer(s)</button>
+                            <button class="tab-button" onclick="switchTab(${idx}, 'photos')">Photos</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="details-${idx}">
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">
+                                <strong>Features:</strong><br>
+                                ${prop.features.join('<br>')}
+                            </p>
+                            <p style="font-size: 0.85rem; color: #666;">
+                                <strong>Contact:</strong><br>${prop.contact}
+                            </p>
+                        </div>
+
+                        <div class="tab-content" id="offer-${idx}">
+                            <div class="offer-section">
+                                <div class="offer-label">✨ Special Offer</div>
+                                <div class="offer-text">${prop.offer}</div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="photos-${idx}">
+                            <div class="photos-grid">
+                                ${prop.photos.map(photo => `
+                                    <div class="photo-item">
+                                        <img src="${photo.url}" alt="${photo.label}" onclick="viewPhoto('${photo.url}')">
+                                        <div class="photo-label">${photo.label}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <button class="book-now-btn" onclick="openBookingModal(${idx})">Book Now</button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function switchTab(propIdx, tabName) {
+            // Hide all tabs for this property
+            document.getElementById(`details-${propIdx}`).classList.remove('active');
+            document.getElementById(`offer-${propIdx}`).classList.remove('active');
+            document.getElementById(`photos-${propIdx}`).classList.remove('active');
+
+            // Remove active from all buttons
+            const buttons = document.querySelectorAll(`[onclick*="switchTab(${propIdx}"]`);
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(`${tabName}-${propIdx}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function openBookingModal(propIdx) {
+            currentProperty = properties[propIdx];
+            document.getElementById('modalPropertyName').textContent = currentProperty.name;
+            document.getElementById('basePrice').textContent = 'SGD$' + currentProperty.price;
+            document.getElementById('bookingModal').classList.add('active');
+            resetForm();
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.remove('active');
+        }
+
+        function resetForm() {
+            document.getElementById('guestForm').reset();
+            document.getElementById('documentsForm').reset();
+            document.getElementById('duration').value = '';
+            document.getElementById('displayDuration').textContent = '1';
+            goToStep(0);
+        }
+
+        function goToStep(stepNum) {
+            // Hide all steps
+            document.getElementById('step0').classList.add('hidden');
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.add('hidden');
+
+            // Remove active from all indicators
+            document.getElementById('stepIndicator0').classList.remove('active');
+            document.getElementById('stepIndicator1').classList.remove('active');
+            document.getElementById('stepIndicator2').classList.remove('active');
+            document.getElementById('stepIndicator3').classList.remove('active');
+
+            // Show selected step
+            document.getElementById('step' + stepNum).classList.remove('hidden');
+            document.getElementById('stepIndicator' + stepNum).classList.add('active');
+
+            if (stepNum === 3) {
+                calculatePayment();
+            }
+        }
+
+        function calculateDuration() {
+            const startDate = new Date(document.getElementById('startDate').value);
+            const endDate = new Date(document.getElementById('endDate').value);
+
+            if (!startDate || !endDate) {
+                document.getElementById('duration').value = '';
+                return;
+            }
+
+            if (startDate >= endDate) {
+                alert('End Date must be after Start Date');
+                document.getElementById('duration').value = '';
+                return;
+            }
+
+            // Calculate months
+            let months = (endDate.getFullYear() - startDate.getFullYear()) * 12;
+            months += endDate.getMonth() - startDate.getMonth();
+
+            // Only add 1 if day difference is positive
+            if (endDate.getDate() > startDate.getDate()) {
+                months += 1;
+            }
+
+            const finalMonths = Math.max(1, months);
+            document.getElementById('duration').value = finalMonths;
+        }
+
+        function calculatePayment() {
+            const durationValue = parseInt(document.getElementById('duration').value) || 1;
+            const price = currentProperty.price;
+            const subtotal = price * durationValue;
+
+            document.getElementById('basePrice').textContent = 'SGD$' + price;
+            document.getElementById('displayDuration').textContent = durationValue;
+            document.getElementById('subtotal').textContent = 'SGD$' + subtotal;
+            document.getElementById('totalAmount').textContent = 'SGD$' + subtotal;
+        }
+
+        function completeBooking() {
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!paymentMethod) {
+                alert('Please select a payment method');
+                return;
+            }
+
+            // Show thank you modal
+            document.getElementById('bookingModal').classList.remove('active');
+            document.getElementById('thankYouModal').classList.add('active');
+        }
+
+        function closeThankYouModal() {
+            document.getElementById('thankYouModal').classList.remove('active');
+        }
+
+        function viewPhoto(url) {
+            window.open(url, '_blank');
+        }
+
+        function handleStudentPassUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Validate file
+            const maxFileSize = 10 * 1024 * 1024; // 10MB
+            const allowedFormats = ['image/jpeg', 'image/png', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            
+            if (file.size > maxFileSize) {
+                alert('File size exceeds 10MB. Please upload a smaller file.');
+                event.target.value = '';
+                return;
+            }
+
+            if (!allowedFormats.includes(file.type)) {
+                alert('Invalid file format. Please upload: Image (JPG, PNG), PDF, or Word (DOC, DOCX)');
+                event.target.value = '';
+                return;
+            }
+
+            // Show upload confirmation
+            document.getElementById('uploadedFileName').textContent = file.name;
+            document.getElementById('studentPassPreview').style.display = 'block';
+
+            // Store file in a global variable for submission
+            window.studentPassFile = file;
+            console.log('Student Pass uploaded:', file.name, 'Size:', (file.size / 1024).toFixed(2) + 'KB', 'Type:', file.type);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initializeProperties);
+    </script>
+    <script src="hotel-styles.js"></script>
+</body>
+</html>
