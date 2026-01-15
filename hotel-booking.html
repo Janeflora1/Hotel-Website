@@ -4,7 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Housing Booking - TravelMate Singapore</title>
+    <link rel="stylesheet" href="hotel-styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-content">
+                    <svg class="logo-icon" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#B40000;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="60" cy="45" r="35" fill="url(#logoGradient)" />
+                        <text x="60" y="50" font-size="50" text-anchor="middle" dominant-baseline="middle">✈️</text>
+                    </svg><span>TravelMate</span>
+                </div>
+                <div class="logo-tagline">Your Student Staycation Partner</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="hotel-index.html">Home</a></li>
+                <li><a href="hotel-student-housing.html">Student Housing</a></li>
+                <li><a href="hotel-budget-hotels.html">Budget Hotels</a></li>
+                <li><a href="hotel-short-term-stays.html">Short-Term Rentals (Cove)</a></li>
+                <li><a href="hotel-location-finder.html">🗺️ Location Finder</a></li>
+                <li><a href="hotel-index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="student-housing-hero">
+        <div class="hero-content">
+            <h1>Book Student Housing in Singapore</h1>
+            <p>Find and reserve your perfect student accommodation</p>
+        </div>
+    </section>
+
     <style>
+        .student-housing-hero {
+            background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .student-housing-hero .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-housing-hero .hero-content p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,36 +72,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f5f5;
             color: #333;
-        }
-
-        .navbar {
-            background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
-            padding: 1rem 2rem;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
         }
 
         .container {
@@ -532,8 +559,6 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h1 style="text-align: center; margin-bottom: 2rem; color: #B40000;">Student Housing Bookings</h1>
-        
         <!-- Filter Section -->
         <div class="filter-section" style="margin-top: 2rem; margin-bottom: 2rem;">
             <button class="filter-toggle-btn" onclick="toggleFilterPanel()">🔍 Filter Student Housing</button>
@@ -648,24 +673,7 @@
                         </label>
                     </div>
 
-                    <div class="filter-category">
-                        <h4>🎁 Special Offers</h4>
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="offer-filter" value="Rent Rebate" onchange="applyFilters()"> 💰 Rent Rebate
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="offer-filter" value="free cleaning" onchange="applyFilters()"> 🧹 Free Cleaning Services
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="offer-filter" value="shopping voucher" onchange="applyFilters()"> 🛍️ Shopping Voucher
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="offer-filter" value="transport card" onchange="applyFilters()"> 🚌 Transport Card Top-up
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="offer-filter" value="dining credit" onchange="applyFilters()"> 🍽️ Dining Credit
-                        </label>
-                    </div>
+
                 </div>
                 <div class="filter-panel-footer">
                     <button onclick="resetFilters()" class="btn-reset-filters">Reset Filters</button>
@@ -1218,7 +1226,6 @@
             const priceFilters = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => cb.value);
             const locationFilters = Array.from(document.querySelectorAll('.location-filter:checked')).map(cb => cb.value);
             const featureFilters = Array.from(document.querySelectorAll('.feature-filter:checked')).map(cb => cb.value);
-            const offerFilters = Array.from(document.querySelectorAll('.offer-filter:checked')).map(cb => cb.value);
 
             const cards = document.querySelectorAll('.property-card');
             
@@ -1231,7 +1238,6 @@
                 let priceMatch = priceFilters.length === 0;
                 let locationMatch = locationFilters.length === 0;
                 let featureMatch = featureFilters.length === 0;
-                let offerMatch = offerFilters.length === 0;
 
                 // Price range matching
                 if (priceFilters.length > 0) {
@@ -1248,13 +1254,8 @@
                     featureMatch = featureFilters.every(filter => features.includes(filter));
                 }
 
-                // Offer matching - ANY selected offer must be present
-                if (offerFilters.length > 0) {
-                    offerMatch = offerFilters.some(filter => offer.toLowerCase().includes(filter.toLowerCase()));
-                }
-
                 // Show card only if all conditions are met
-                card.style.display = (priceMatch && locationMatch && featureMatch && offerMatch) ? '' : 'none';
+                card.style.display = (priceMatch && locationMatch && featureMatch) ? '' : 'none';
             });
         }
 
@@ -1263,7 +1264,6 @@
             document.querySelectorAll('.price-filter').forEach(cb => cb.checked = false);
             document.querySelectorAll('.location-filter').forEach(cb => cb.checked = false);
             document.querySelectorAll('.feature-filter').forEach(cb => cb.checked = false);
-            document.querySelectorAll('.offer-filter').forEach(cb => cb.checked = false);
             
             const cards = document.querySelectorAll('.property-card');
             cards.forEach(card => {
@@ -1301,60 +1301,16 @@
                             ${prop.features.slice(0, 3).map(f => `<span class="feature-badge">${f}</span>`).join('')}
                         </div>
                         
-                        <div class="tabs">
-                            <button class="tab-button active" onclick="switchTab(${idx}, 'details')">Details</button>
-                            <button class="tab-button" onclick="switchTab(${idx}, 'offer')">Offer(s)</button>
-                            <button class="tab-button" onclick="switchTab(${idx}, 'photos')">Photos</button>
-                        </div>
-                        
-                        <div class="tab-content active" id="details-${idx}">
-                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">
-                                <strong>Features:</strong><br>
-                                ${prop.features.join('<br>')}
-                            </p>
-                            <p style="font-size: 0.85rem; color: #666;">
-                                <strong>Contact:</strong><br>${prop.contact}
-                            </p>
-                        </div>
-
-                        <div class="tab-content" id="offer-${idx}">
-                            <div class="offer-section">
-                                <div class="offer-label">✨ Special Offer</div>
-                                <div class="offer-text">${prop.offer}</div>
-                            </div>
-                        </div>
-
-                        <div class="tab-content" id="photos-${idx}">
-                            <div class="photos-grid">
-                                ${prop.photos.map(photo => `
-                                    <div class="photo-item">
-                                        <img src="${photo.url}" alt="${photo.label}" onclick="viewPhoto('${photo.url}')">
-                                        <div class="photo-label">${photo.label}</div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">
+                            <strong>Features:</strong><br>
+                            ${prop.features.join('<br>')}
+                        </p>
 
                         <button class="book-now-btn" onclick="window.open('${prop.bookingUrl}', '_blank')">Book Now</button>
                     </div>
                 </div>
                 `;
             }).join('');
-        }
-
-        function switchTab(propIdx, tabName) {
-            // Hide all tabs for this property
-            document.getElementById(`details-${propIdx}`).classList.remove('active');
-            document.getElementById(`offer-${propIdx}`).classList.remove('active');
-            document.getElementById(`photos-${propIdx}`).classList.remove('active');
-
-            // Remove active from all buttons
-            const buttons = document.querySelectorAll(`[onclick*="switchTab(${propIdx}"]`);
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Show selected tab
-            document.getElementById(`${tabName}-${propIdx}`).classList.add('active');
-            event.target.classList.add('active');
         }
 
         function openBookingModal(propIdx) {
