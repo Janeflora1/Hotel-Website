@@ -13,16 +13,43 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: white;
             min-height: 100vh;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
         }
 
         .navbar {
             background: white;
             padding: 1rem 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #B40000 0%, #8B0000 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
             margin-bottom: 2rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0 0 1rem 0;
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 0;
         }
 
         .nav-container {
@@ -35,9 +62,33 @@
         }
 
         .logo {
-            color: #000;
-            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .logo-content {
+            font-size: 1.8rem;
             font-weight: bold;
+            color: #B40000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-tagline {
+            font-size: 0.65rem;
+            font-style: italic;
+            color: #888;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
         }
 
         .nav-links {
@@ -63,6 +114,7 @@
             border-radius: 12px;
             padding: 2rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
         }
 
         h1 {
@@ -533,10 +585,15 @@
         </div>
     </nav>
 
-    <div class="container">
-        <h1>🗺️ Find Accommodation Near You</h1>
-        <p class="intro-text">Discover student housing, budget hotels, and short-term rentals near your preferred location in Singapore</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🗺️ Find Accommodation Near You</h1>
+            <p>Discover student housing, budget hotels, and short-term rentals near your preferred location in Singapore</p>
+        </div>
+    </section>
 
+    <div class="container">
         <!-- Location Input Section -->
         <div class="location-input-section">
             <!-- Current Location -->
@@ -1191,7 +1248,8 @@
                 longitude: 103.8150,
                 contact: 'bookings@cove.sg | +65 9234 4860',
                 keyFeatures: ['Near Subway', 'Near Supermarket', 'Gym', 'Swimming Pool', 'Air Conditioner'],
-                googleMapsLink: 'https://maps.app.goo.gl/oxJrn6ay3jh5fyc8A'
+                googleMapsLink: 'https://maps.app.goo.gl/oxJrn6ay3jh5fyc8A',
+                bookingUrl: 'https://cove.sg/listings/2317-cove-193-standard-room-27-casuarina-road'
             },
             {
                 type: 'Short-Term Rental',
@@ -1204,7 +1262,8 @@
                 longitude: 103.8933,
                 contact: 'bookings@cove.sg | +65 9234 4861',
                 keyFeatures: ['Near Subway', 'Near Shopping Centre', 'Near Bus Station', 'Elevator'],
-                googleMapsLink: 'https://maps.app.goo.gl/KWte7DHux8THds3N9'
+                googleMapsLink: 'https://maps.app.goo.gl/KWte7DHux8THds3N9',
+                bookingUrl: 'https://cove.sg/listings/1772-cove-320-standard-room-esta-ruby'
             },
             {
                 type: 'Short-Term Rental',
@@ -1217,7 +1276,8 @@
                 longitude: 103.8947,
                 contact: 'bookings@cove.sg | +65 9234 4862',
                 keyFeatures: ['Near Subway', 'Near Supermarket', 'Gym', 'Swimming Pool', 'Balcony'],
-                googleMapsLink: 'https://maps.app.goo.gl/MCkB49FABnyPfcyU8'
+                googleMapsLink: 'https://maps.app.goo.gl/MCkB49FABnyPfcyU8',
+                bookingUrl: 'https://cove.sg/listings/1139-cove-271-standard-room-22a-jalan-selamat'
             },
             {
                 type: 'Short-Term Rental',
@@ -1230,7 +1290,8 @@
                 longitude: 103.8269,
                 contact: 'bookings@cove.sg | +65 9234 4863',
                 keyFeatures: ['Near Subway', 'Air Conditioner', 'Free Parking', 'Kitchen Cleaning'],
-                googleMapsLink: 'https://maps.app.goo.gl/TKgzkJmyjoekNwYW9'
+                googleMapsLink: 'https://maps.app.goo.gl/TKgzkJmyjoekNwYW9',
+                bookingUrl: 'https://cove.sg/listings/3198-cove-491-pocket-room-emerald-park'
             },
             {
                 type: 'Short-Term Rental',
@@ -1243,7 +1304,8 @@
                 longitude: 103.8684,
                 contact: 'bookings@cove.sg | +65 9234 4865',
                 keyFeatures: ['Near Subway', 'Near Bus Station', 'Near Park', 'Gym', 'Swimming Pool'],
-                googleMapsLink: 'https://maps.app.goo.gl/we67NyfnTpHHU7TH8'
+                googleMapsLink: 'https://maps.app.goo.gl/we67NyfnTpHHU7TH8',
+                bookingUrl: 'https://cove.sg/listings/2488-cove-144-standard-room-19a-tai-thong-crescent'
             },
             {
                 type: 'Short-Term Rental',
@@ -1256,7 +1318,8 @@
                 longitude: 103.8453,
                 contact: 'bookings@cove.sg | +65 9234 4866',
                 keyFeatures: ['Near Subway', 'Near Shopping Centre', 'Washing Machine', '24 Hour Security'],
-                googleMapsLink: 'https://maps.app.goo.gl/Mvv14dBA9YQSHqfL7'
+                googleMapsLink: 'https://maps.app.goo.gl/Mvv14dBA9YQSHqfL7',
+                bookingUrl: 'https://cove.sg/listings/1076-cove-238-standard-room-nuovo'
             },
             {
                 type: 'Short-Term Rental',
@@ -1269,7 +1332,8 @@
                 longitude: 103.8620,
                 contact: 'bookings@cove.sg | +65 9234 4867',
                 keyFeatures: ['Near Subway', 'Near School Bus', 'Free Parking', 'Kitchen Cleaning'],
-                googleMapsLink: 'https://maps.app.goo.gl/Fj7QfLBeLaWbqTRc8'
+                googleMapsLink: 'https://maps.app.goo.gl/Fj7QfLBeLaWbqTRc8',
+                bookingUrl: 'https://cove.sg/listings/1653-cove-195-standard-room-18a-valley-road'
             },
             {
                 type: 'Short-Term Rental',
@@ -1282,7 +1346,8 @@
                 longitude: 103.8900,
                 contact: 'bookings@cove.sg | +65 9234 4868',
                 keyFeatures: ['Near Shopping Centre', 'Near Park', 'Swimming Pool', 'Air Conditioner'],
-                googleMapsLink: 'https://maps.app.goo.gl/BJwbbqXMLFwVFtvRA'
+                googleMapsLink: 'https://maps.app.goo.gl/BJwbbqXMLFwVFtvRA',
+                bookingUrl: 'https://cove.sg/listings/2910-cove-433-pocket-room-cassia-view'
             },
             {
                 type: 'Short-Term Rental',
@@ -1295,7 +1360,8 @@
                 longitude: 103.8240,
                 contact: 'bookings@cove.sg | +65 9234 4869',
                 keyFeatures: ['Near Bus Station', 'Near Supermarket', 'Free Regular Cleaning', 'Washing Machine', 'Gym'],
-                googleMapsLink: 'https://maps.app.goo.gl/bLa3CDTEmA3C4F7H9'
+                googleMapsLink: 'https://maps.app.goo.gl/bLa3CDTEmA3C4F7H9',
+                bookingUrl: 'https://cove.sg/listings/1380-cove-89-standard-room-havelock-road'
             }
         ];
 
